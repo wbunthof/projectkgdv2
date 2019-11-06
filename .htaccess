@@ -1,0 +1,10 @@
+##------Forceer HTTPS verbinding geheel domein------##
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+##------Verplaats "/" naar "/public"------##
+RewriteCond %{HTTP_HOST} ^pure-air.nl$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.pure-air.nl$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
