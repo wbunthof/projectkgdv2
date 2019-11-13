@@ -13,9 +13,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/{email}/nieuwWW', function(){
-//   return 'Hello World!';
-// })->name('nieuwWW');
 
 Auth::routes();
 
