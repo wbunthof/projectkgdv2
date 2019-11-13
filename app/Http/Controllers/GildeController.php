@@ -157,7 +157,7 @@ class GildeController extends Controller
         return back()->with('error' , 'Niet opgeslagen, probeer opnieuw!');
     }
 
-    return redirect(route('gilde.account'))->with('success', 'Gegevens geüpdate');
+    return redirect(route('gilde.account'))->with('succes', 'Gegevens geüpdate');
   }
 
   private function GetKolommen($formonderdeel)
