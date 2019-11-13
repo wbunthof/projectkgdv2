@@ -20,23 +20,19 @@ use App\Junioren;
 
 class DataController extends Controller
 {
+    /**
+     * @param $NBFS
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function gilde($NBFS)
     {
-      $vragenPerOnderdeel = array();
-      foreach (Formonderdeel::all() as $onderdeel) {
-        array_push($vragenPerOnderdeel, array($onderdeel->onderdeel, Antwoord::with(['vraag' => function ($query) use ($onderdeel) {
-            $query->where('formonderdeel_id', $onderdeel->id);
-            }])->where('NBFS', $NBFS)->get()));
-      }
-
-      // return dump($vragenPerOnderdeel);
-
-      return  view('organiser.data.gilde')
+//        return dump(Antwoord::antwoordenPerOnderdeel($NBFS));
+        return  view('organiser.data.gilde')
                     ->with('gilde', Gilde::find($NBFS))
                     ->with('formonderdelen', Formonderdeel::all())
                     ->with('antwoorden', Antwoord::where('NBFS', $NBFS)->get())
                     ->with('vragen', Vraag::orderBy('formonderdeel_id')->get())
-                    ->with('vragenPerOnderdeel', $vragenPerOnderdeel)
+                    ->with('vragenPerOnderdeel', Antwoord::perOnderdeelPerGilde($NBFS))
                     ->with('gilden', Gilde::all());
     }
 
@@ -66,10 +62,7 @@ class DataController extends Controller
 
     public function leden($id)
     {
-      if (!Discipline::find($id)) {
-        return abort(404);
-      }
-      $discipline = Discipline::find($id);
+      $discipline = Discipline::findOrFail($id);
       $tmp = 'App\\' . ucfirst($discipline->discipline);
 
       $tmp = new $tmp;
@@ -80,7 +73,7 @@ class DataController extends Controller
       return view('organiser.data.leden')
                     ->with('gilden', Gilde::all())
                     ->with('leden', $leden)
-                    ->with('kolommen', DataController::GetKolommen($discipline->discipline))
+                    ->with('kolommen', $this->GetKolommen($discipline->discipline))
                     ->with('discipline', $discipline);
     }
 
@@ -117,9 +110,5 @@ class DataController extends Controller
         }
       }
       return array($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie);
-    }
-
-    private function return(){
-
     }
 }
