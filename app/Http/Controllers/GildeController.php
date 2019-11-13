@@ -152,11 +152,10 @@ class GildeController extends Controller
 
   public function accountUpdate(Request $request)
   {
-    //update gebruikergegevens
-    $user = Gilde::find($request->id);
-    $tempOnderdeel = $request->onderdeel;
-    $user->$tempOnderdeel = $request->waarde;
-    $user->save();
+    if(!Gilde::updateAccount(Gilde::find($request->id), $request->onderdeel, $request->waarde))
+    {
+        return back()->with('error' , 'Niet opgeslagen, probeer opnieuw!');
+    }
 
     return redirect(route('gilde.account'))->with('success', 'Gegevens geüpdate');
   }

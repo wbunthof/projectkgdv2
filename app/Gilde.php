@@ -8,11 +8,27 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class Gilde extends Authenticatable
 {
     use Notifiable;
 
+    static function updateAccount(Gilde $gilde, $onderdeel, $antwoord){
+        if (Schema::hasColumn('gilde', $onderdeel)){
+
+            $gilde->$onderdeel = $antwoord;
+            $gilde->save();
+            return true;
+
+        } else {
+            Log::warning('A user tried to update his personal info, but somehow the application wanted to update an non existing column. Look into the App/Gilde.php model @updateAccount funtion');
+            return false;
+        }
+    }
+
+    //Relations
     public function antwoorden()
     {
       return $this->hasMany('App\Antwoord', 'NBFS');
