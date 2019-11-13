@@ -13,6 +13,8 @@ class Formonderdeel extends Model
 
     protected $table = 'formOnderdelen';
     protected $fillable = [
-        'id', 'onderdeel',
+        'id', 'onderdeel', ' vragen', 'leden'
     ];
+    protected $casts = ['vragen' => 'boolean',
+                        'leden' => 'boolean'];
 }

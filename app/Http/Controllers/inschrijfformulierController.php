@@ -16,7 +16,7 @@ use App\Antwoord;
 use App\Formonderdeel;
 
 
-class inschrijfformulierController extends Controller
+class  inschrijfformulierController extends Controller
 {
     // Normale formulier gedeelte met alleen vragen
     public function formShowNormal($formonderdeel)
@@ -24,8 +24,6 @@ class inschrijfformulierController extends Controller
       // Als het $formonderdeel niet in de if zit geef 404 error weer
       if ($formonderdeel == 'deelname' || $formonderdeel == 'gildemis' || $formonderdeel == 'optocht' || $formonderdeel == 'tentoonstelling' || $formonderdeel == 'geweer' || $formonderdeel == 'kruis-handboog' || $formonderdeel == 'standaardrijden') {
         $formonderdeel = str_replace('-', '', $formonderdeel);
-        // $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-        // $class = New $formonderdeelTotal();
 
         $vragen = Vraag::where('formonderdeel', $formonderdeel)->get();
 
