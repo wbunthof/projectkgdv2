@@ -14,16 +14,6 @@ use App\Junioren;
 use App\JuniorenDiscipline;
 use App\Antwoord;
 use App\Formonderdeel;
-// use App\Deelname;
-// use App\Gildemis;
-// use App\Optocht;
-// use App\Tentoonstelling;
-// use App\Geweer;
-// use App\Kruishandboog;
-// use App\Standaardrijden;
-// use App\Bazuinblazen;
-// use App\Trommen;
-// use App\Groep;
 
 
 class inschrijfformulierController extends Controller
