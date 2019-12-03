@@ -9,8 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class raadsheerrechten extends Model
 {
-
     protected $table = 'raadsheerrechten';
+
+    public function formonderdeel() {
+        
+    }
 }
 
 //

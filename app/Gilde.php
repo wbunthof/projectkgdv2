@@ -5,6 +5,7 @@
 
 namespace App;
 
+use App\Factory\UpdateAccountFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,16 +17,8 @@ class Gilde extends Authenticatable
     use Notifiable;
 
     static function updateAccount(Gilde $gilde, $onderdeel, $antwoord){
-        if (Schema::hasColumn('gilde', $onderdeel)){
-
-            $gilde->$onderdeel = $antwoord;
-            $gilde->save();
-            return true;
-
-        } else {
-            Log::warning('A user tried to update his personal info, but somehow the application wanted to update an non existing column. Look into the App/Gilde.php model @updateAccount funtion');
-            return false;
-        }
+       $update = new UpdateAccountFactory;
+        $update->updateAccount($gilde, $onderdeel, $antwoord);
     }
 
     //Relations

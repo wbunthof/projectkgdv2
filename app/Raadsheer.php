@@ -13,10 +13,10 @@ class Raadsheer extends Authenticatable
 {
     use Notifiable;
 
-     public function rechten()
-     {
-       return $this->hasMany('App\Raadsheerrechten');
-     }
+    public function rechten()
+    {
+        return $this->hasMany('App\Raadsheerrechten');
+    }
 
     protected $guard = 'raadsheer';
 
