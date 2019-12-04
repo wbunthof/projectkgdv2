@@ -15,8 +15,8 @@
 				{!! Form::token() !!}
 
 				{!! Form::label('voornaam', 'Vul hier de gegevens van de junioren in', []) !!}
-				{!! Form::text('voornaam', '', ['autocomplete' => str_random(55), 'id' => 'voornaam', 'class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Voornaam']) !!}
-				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => str_random(55), 'placeholder' => 'Achternaam']) !!}
+				{!! Form::text('voornaam', '', ['autocomplete' => Str::random(55), 'id' => 'voornaam', 'class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Voornaam']) !!}
+				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => Str::random(55), 'placeholder' => 'Achternaam']) !!}
 				{!! Form::label('geboortedatum', 'Vul hier de geboortedatum in (ouder dan: ' . date('Y-m-d', mktime(0,0,0,1,1, date('Y')-15)) . ' is senior)', []) !!}
 				{!! Form::date('geboortedatum', '', ['class' => 'form-control mb-2 mr-sm-2']) !!}
 				@foreach ($klasse as $klas)

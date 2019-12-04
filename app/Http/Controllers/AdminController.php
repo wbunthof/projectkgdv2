@@ -6,16 +6,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Kyslik\ColumnSortable\Sortable;
-use App\Http\Controllers\Controller;
 use App\Admin;
 use App\Gilde;
 use App\Raadsheer;
 use App\Organiser;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use App\Mail\NieuwGilde;
 
 class AdminController extends Controller
@@ -50,7 +49,7 @@ class AdminController extends Controller
   public function gildenOpslaanNieuw(Request $request)
   {
 
-    $request->password = str_random(8);
+    $request->password = Str::random(8);
     $this->validate($request, [
       'email'   => 'required|email|unique:Gilde',
       'nummer'  => 'required|numeric|unique:Gilde,id',
@@ -189,7 +188,7 @@ class AdminController extends Controller
 
   static function gildeNieuwWachtwoord($id)
   {
-    $password = str_random(8);
+    $password = Str::random(8);
     $gilde = Gilde::where('id', $id)->first();
     $gilde->password = Hash::make($password);
     $gilde->save();
