@@ -159,7 +159,7 @@
 			</span>
 		</div>
 		</label>
-		{!! Form::text($vraag->id, $antwoord, ['readonly', 'data-fout' => 'false', 'autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'min' => $vraag->minimumValue, 'max' => $vraag->maximumValue,'onkeyup' => 'nummerChecker(this)', 'onblur' => 'vraagOpslaanNummer(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
+		{!! Form::text($vraag->id, $antwoord, ['data-fout' => 'false', 'autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'min' => $vraag->minimumValue, 'max' => $vraag->maximumValue,'onkeyup' => 'nummerChecker(this)', 'onblur' => 'vraagOpslaanNummer(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
 
 	@elseif ($vraag->type === 'T') <!-- Vraag met een tekst type -->
 		<label for="{{$vraag->id}}">{{$vraag->tekst}}
@@ -167,7 +167,7 @@
 				<span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"></span> {{-- Info button met extra uitleg --}}
 			@endif
 		</label>
-		{!! Form::text($vraag->id, $antwoord, ['readonly', 'autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'minlength' => $vraag->minimumValue, 'maxlength' => $vraag->maximumValue, 'onblur' => 'vraagOpslaanText(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
+		{!! Form::text($vraag->id, $antwoord, ['autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'minlength' => $vraag->minimumValue, 'maxlength' => $vraag->maximumValue, 'onblur' => 'vraagOpslaanText(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
 
 	@elseif ($vraag->type === 'TA') <!-- Vraag met een tekstarea type -->
 		<label for="{{$vraag->id}}">{{$vraag->tekst}}
@@ -175,7 +175,7 @@
 				<span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"> </span> {{-- Info button met extra uitleg --}}
 			@endif
 		</label>
-		{!! Form::textarea($vraag->id, $antwoord, ['readonly', 'autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'minlength' => $vraag->minimumValue, 'maxlength' => $vraag->maximumValue, 'onblur' => 'vraagOpslaanText(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
+		{!! Form::textarea($vraag->id, $antwoord, ['autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'minlength' => $vraag->minimumValue, 'maxlength' => $vraag->maximumValue, 'onblur' => 'vraagOpslaanText(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
 
 
 
