@@ -20,7 +20,7 @@ class GildeLoginController extends Controller
       //Validate data
       $this->validate($request, [
         'email' => 'required|email',
-        'password' => 'required|min:6'
+        'password' => 'required|min:8'
       ]);
 
       //Attempt to log in

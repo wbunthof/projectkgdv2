@@ -178,9 +178,6 @@ return [
         //Laravelcollective for automatic form generation https://laravelcollective.com/docs/5.4/html
         Collective\Html\HtmlServiceProvider::class,
 
-        //https://github.com/Kyslik/column-sortable
-        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
-
     ],
 
     /*
@@ -231,6 +228,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Str' => Illuminate\Support\Str::class,
+        'Arr' => Illuminate\Support\Arr::class,
+
 
     ],
 
