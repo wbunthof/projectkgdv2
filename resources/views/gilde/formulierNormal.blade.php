@@ -12,6 +12,8 @@
 	} elseif ($onderdeel == 'junioren') {
 		$onderdeel = 'Junioren & leden zonder pas';
 	}
+
+    $readonly = false;
 @endphp
 
 	<!-- alert wordt gevuld zodra er op ja/nee is gedrukt-->

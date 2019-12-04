@@ -15,16 +15,16 @@
 
 				<p><u>Leden die niet gevonden kunnen worden moeten bij het onderdeel "Junioren & leden zonder pas" toegevoegd worden</u></p>
 
-				{!! Form::open(['class' => 'form', 'url' => $route, 'method' => 'POST', 'autocomplete' => str_random(55)]) !!}
+				{!! Form::open(['class' => 'form', 'url' => $route, 'method' => 'POST', 'autocomplete' => Str::random(55)]) !!}
 
 				{!! Form::hidden('_method', 'put') !!}
 				{!! Form::token() !!}
 				{!! Form::hidden('onderdeel', $onderdeel, []) !!}
 
 				{!! Form::label('Nummer', 'Als u het nummer/voornaam/achternaam intypt wordt er automatisch een lid voorgesteld graag deze gebruiken en er zelf geen aan toevoegen.', []) !!}
-				{!! Form::number('nummer', '', ['autocomplete' => str_random(55), 'id' => 'id', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(0, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Nummer']) !!}
-				{!! Form::text('voornaam', '', ['autocomplete' => str_random(55), 'id' => 'voornaam', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(1, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Voornaam']) !!}
-				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => str_random(55), 'onkeyup' => 'LidOpzoeken(2, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Achternaam']) !!}
+				{!! Form::number('nummer', '', ['autocomplete' => Str::random(55), 'id' => 'id', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(0, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Nummer']) !!}
+				{!! Form::text('voornaam', '', ['autocomplete' => Str::random(55), 'id' => 'voornaam', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(1, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Voornaam']) !!}
+				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => Str::random(55), 'onkeyup' => 'LidOpzoeken(2, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Achternaam']) !!}
 				<div class="container" id='tabelVoorLeden'></div>
 				@foreach ($KolommenDieKunnenVeranderenMetSpatie as $kolomveranderd1)
 					<div class="form-check">
