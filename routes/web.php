@@ -13,6 +13,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('export', 'MyController@export')->name('export');
 
 Auth::routes();
 
