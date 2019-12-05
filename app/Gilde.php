@@ -6,11 +6,14 @@
 namespace App;
 
 use App\Factory\UpdateAccountFactory;
+use App\Http\Controllers\AdminController;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class Gilde extends Authenticatable
 {
@@ -27,44 +30,9 @@ class Gilde extends Authenticatable
       return $this->hasMany('App\Antwoord', 'NBFS');
     }
 
-    public function deelname()
-    {
-      return $this->hasMany('App\Deelname');
-    }
-
-    public function gildemis()
-    {
-      return $this->hasMany('App\Gildemis');
-    }
-
-    public function optocht()
-    {
-      return $this->hasMany('App\Optocht');
-    }
-
-    public function tentoonstelling()
-    {
-      return $this->hasMany('App\Tentonstelling');
-    }
-
     public function bazuinblazen()
     {
       return $this->hasMany('App\Bazuinblazen', 'NBFS_id');
-    }
-
-    public function geweer()
-    {
-      return $this->hasMany('App\Geweer');
-    }
-
-    public function kruishandboog()
-    {
-      return $this->hasMany('App\Kruishandboog');
-    }
-
-    public function standaardrijden()
-    {
-      return $this->hasMany('App\Standaardrijden');
     }
 
     public function trommen()
@@ -90,7 +58,7 @@ class Gilde extends Authenticatable
     protected $guard = 'gilde';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'id', 'name', 'email', 'password', 'locatie',
     ];
 
     protected $hidden = [
