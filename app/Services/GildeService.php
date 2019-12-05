@@ -5,6 +5,8 @@ namespace App\Services;
 
 use App\Repositories\GildeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class GildeService
 {
@@ -20,7 +22,9 @@ class GildeService
 
     public function create(Request $request)
     {
+
         $attributes = $request->all();
+        $attributes["password"] = Hash::make(Str::random(8));
 
         return $this->gilde->create($attributes);
     }
@@ -39,6 +43,16 @@ class GildeService
 
     public function delete($id)
     {
+        //Deze tabllen hebben leden dus moet er verwijderd worden in de pivot tables
+
+        $this->gilde->deleteLeden($id);
+        $this->gilde->deleteAntwoorden($id);
+
         return $this->gilde->delete($id);
+    }
+
+    public function newPassword($id)
+    {
+        return $this->gilde->update($id, ['password' => Hash::make(Str::random(8))]);
     }
 }

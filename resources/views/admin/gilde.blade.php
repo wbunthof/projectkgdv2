@@ -28,10 +28,10 @@
         {!! Form::hidden('_method', 'put') !!}
         {!! Form::token() !!}
 
-        {!! Form::number('NBFS nummer', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'nummer', 'placeholder' => 'NBFS']) !!}
-        {!! Form::text('Gildenaam', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'naam', 'placeholder' => 'Naam van het gilde']) !!}
-        {!! Form::text('E-mailadres', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de secretaris']) !!}
-        {!! Form::text('Locatie', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'locatie', 'placeholder' => 'Locatie waar het gilde gevestigd is']) !!}
+        {!! Form::number('NBFS nummer', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'id', 'placeholder' => 'NBFS', 'required']) !!}
+        {!! Form::text('Gildenaam', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'name', 'placeholder' => 'Naam van het gilde', 'required']) !!}
+        {!! Form::text('E-mailadres', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de secretaris', 'required']) !!}
+        {!! Form::text('Locatie', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'locatie', 'placeholder' => 'Locatie waar het gilde gevestigd is', 'required']) !!}
 
         {!! Form::submit('Toevoegen', ['class' => 'btn btn-primary mb-2']) !!}
 

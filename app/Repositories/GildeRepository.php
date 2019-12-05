@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Gilde;
+use Illuminate\Support\Facades\DB;
 
 class GildeRepository
 {
@@ -37,5 +38,26 @@ class GildeRepository
     public function delete($id)
     {
         return $this->gilde->find($id)->delete();
+    }
+
+    public function deleteAntwoorden($id)
+    {
+        return $this->gilde->find($id)->antwoorden()->delete();
+    }
+
+    public function deleteLeden($id)
+    {
+        $tablesVerwijderenNBFS_id = array(
+            'bazuinblazen',
+            'DeelnameMeerdereWedstrijden',
+            'junioren',
+            'trommen',
+            'vendelen');
+
+
+        foreach ($tablesVerwijderenNBFS_id as $tabel) {
+            DB::table($tabel)->where('NBFS_id', $id)->delete();
+        }
+        return true;
     }
 }
