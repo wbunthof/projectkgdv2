@@ -5,52 +5,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AdminService;
 use App\Services\GildeService;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use Kyslik\ColumnSortable\Sortable;
-use App\Admin;
-use App\Gilde;
-use App\Raadsheer;
-use App\Organiser;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use App\Mail\NieuwGilde;
+use Illuminate\Support\Facades\Auth;
+
+//use App\Admin;
+//use App\Mail\NieuwGilde;
 
 class AdminController extends Controller
 {
     protected $gildeservice;
+    protected $adminService;
 
-    public function __construct(GildeService $gildeservice)
+    public function __construct(GildeService $gildeservice, AdminService $adminService)
     {
         $this->gildeservice = $gildeservice;
+        $this->adminService = $adminService;
     }
 
     public function index()
-  {
-      return view('admin.dashboard');
-  }
+    {
+        return view('admin.dashboard');
+    }
 
     public function account()
     {
-    return view('admin.account');
+        return view('admin.account');
     }
 
     public function accountUpdate(Request $request)
     {
-    //update gebruikergegevens
-    $user = Admin::find($request->id);
-    $tempOnderdeel = $request->onderdeel;
-    $user->$tempOnderdeel = $request->waarde;
-    $user->save();
+        try {
+            $this->adminService->update($request, Auth::id());
+        } catch (Exception $e) {
+            return back()->with('error' , 'Niet opgeslagen, probeer opnieuw!, Error: ' .  $e->getMessage());
+        }
 
-    return redirect('admin/account')->with('success', 'Gegevens opgeslagen');
+        return redirect(route('admin.account'))->with('succes', 'Gegevens geüpdate');
     }
 
     public function gildenWeergeven()
     {
-      return view('admin.gilde')->with('gilden',$this->gildeservice->index());
+      return view('admin.gilde')->with('gilden', $this->gildeservice->index());
     }
 
     public function gildenOpslaanNieuw(Request $request)
@@ -73,7 +71,7 @@ class AdminController extends Controller
       </h3>
       <p>U bent aangemeld voor het nieuwe inscrhijffomulier voor de kringgildedag van Kring Kempenland op 2 juni. <a href="https://www.pure-air.nl/gilde/login">Klik hier om naar het inschrijformulier te gaan.</a><br> Daar kunt u inloggen met: <br>E-mailadres: ' . $gilde->email . '<br> Wachtwoord: ' . $request->password . '<br>
         <u>Tip kopieer het wachtwoord!</u></p>
-    
+
       <h3>
         Stappenplan
       </h3>
@@ -91,21 +89,21 @@ class AdminController extends Controller
         Door het formulier stap voor stap in te vullen doorloopt u het hele inschrijfformulier. Nadat u iets ingevuld heeft wordt het automatisch opgeslagen. Op het einde keert u terug naar het hoofdscherm. Door iets naar beneden te scrollen kunt u op het "Hoofdscherm"
         per onderdeel zien wat u heeft ingevuld. Door op de vraag te klikken gaat u direct naar de vraag toe.
       </p>
-    
+
       <h3>
         Hoofdscherm
       </h3>
       <p>
         Klik boven aan de pagina op "Hoofdscherm" als u naar het hoofdscherm wilt navigeren. <br> Onderaan het hoofdscherm zijn uw antwoorden bondig weergegeven. U kunt een vraag wijzigen door op de vraag zelf te klikken.
       </p>
-    
+
       <h3>
         Account
       </h3>
       <p>
         Klik boven aan de pagina op "Account" als u uw persoonlijk/gildegegevens wilt wijzingen.
       </p>
-    
+
       <h3>
         Inschrijfformulier
       </h3>
@@ -127,12 +125,12 @@ class AdminController extends Controller
         </ul>
         Ga dan boven op de pagina met uw muis op "Inschrijfformulier" staan en klik vervolgens op het onderdeel.
       </p>
-    
-    
+
+
       <h3> Indien u hulp nodig heeft mail dan naar onderstaand adres, met uw naam en telefoonnummer. Wij zullen spoedig contact opnemen.<br>
       Disclaimer:<br> Door in te loggen en invullen van de digitale inschrijf omgeving verklaard het deelnemend gilde akkoord te gaan met het gebruik van haar gegevens en die van haar leden door het Heilig Kruisgilde Gerwen voor de organisatie van de
       Kringgildedag 2019 te Gerwen.</h3>
-    
+
       <br><br>
       <p>Met vriendelijke groet,<br>Wouter Bunthof,<br>Webmaster,<br>inschrijvenkgd2019@gmail.com</p>
       ');
@@ -152,7 +150,7 @@ class AdminController extends Controller
             '<p> Beste ' . $gilde->name . ',</p>
                     <p>U bent verwijderd van het inschrijfformulier voor de kringgildedag.
                     U kun daardoor niet meer inloggen in de digitale omgeving.</p>
-                    
+
                     <p>Dank voor uw deelname, <br>Wouter Bunthof,<br>Webdeveloper,<br>inschrijvenkgd2019@gmail.com</p>');
         }
 
