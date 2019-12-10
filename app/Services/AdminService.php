@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 
 class AdminService
 {
+    protected $admin;
+
     public function __construct(AdminRepository $admin)
     {
         $this->admin = $admin ;
