@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Services\GildeService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Gilde;
@@ -10,6 +11,13 @@ use App\Http\Controllers\AdminController;
 
 class GildeLoginController extends Controller
 {
+    protected $gildeservice;
+
+    public function __construct(GildeService $gildeservice)
+    {
+        $this->gildeservice = $gildeservice;
+    }
+
     public function showLoginForm()
     {
       return view('auth.gilde-login');
@@ -49,6 +57,6 @@ class GildeLoginController extends Controller
 
       $gilde = Gilde::where('email', $request->email)->first();
 
-      return AdminController::gildeNieuwWachtwoord($gilde->id);
+      return $this->gildeservice-> newPassword($gilde->id);
     }
 }
