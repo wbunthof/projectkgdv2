@@ -22,7 +22,6 @@ class QuestionService
 
     public function create(Request $request)
     {
-
         $attributes = $request->all();
 
         return $this->question->create($attributes);
