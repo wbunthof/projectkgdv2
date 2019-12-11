@@ -18,6 +18,10 @@ class Raadsheer extends Authenticatable
         return $this->hasMany('App\Raadsheerrechten');
     }
 
+    public function formOnderdelen() {
+        return $this->belongsToMany('App\Formonderdeel');
+    }
+
     protected $guard = 'raadsheer';
 
     protected $table = 'raadsheer';

@@ -6,7 +6,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class vraag extends Model
 {
@@ -20,38 +19,8 @@ class vraag extends Model
       return $this->hasMany('App\Antwoord');
     }
 
-    public function deelname()
-    {
-      return $this->hasMany('App\Deelname');
-    }
-
-    function gildemis()
-    {
-      return $this->hasMany('App\Gildemis');
-    }
-
-    function optocht()
-    {
-      return $this->hasMany('App\Optocht');
-    }
-
-    function tentoonstelling()
-    {
-      return $this->hasMany('App\Tentoonstelling');
-    }
-    function geweer()
-    {
-      return $this->hasMany('App\Geweer');
-    }
-
-    function kruishandboog()
-    {
-      return $this->hasMany('App\Kruishandboog');
-    }
-
-    function standaardrijden()
-    {
-      return $this->hasMany('App\Standaardrijden');
+    public function formOnderdeel() {
+        return $this->belongsTo('App\Formonderdeel');
     }
 
     protected $table = 'vraag';

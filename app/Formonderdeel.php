@@ -12,6 +12,11 @@ class Formonderdeel extends Model
       return $this->hasMany('App\Vraag', 'formonderdeel_id');
     }
 
+    public function raadsheren()
+    {
+        return $this->belongsToMany('App\Raadsheer');
+    }
+
     //Atributes
     protected $table = 'formOnderdelen';
     protected $fillable = [
