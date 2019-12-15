@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    {!! Str::random(8) !!}
     <div class="row justify-content-center">
       <h1>Inschrijfformulier voor de Kringgildedag</h1>
         <div class="col-md-8">
