@@ -6,18 +6,18 @@
 @extends('admin.layouts.app')
 
 @section('content')
-  <div class='container'> <!-- trigger modal voor het toeveogen van gilden-->
+  <div class='container'> <!-- trigger modal voor het toevoegen van raadsheren-->
 	<button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#exampleModal">
 	  Raadsheer toevoegen
 	</button>
 </div>
 <br>
-<!-- Modal voor het toevoegen van gilden -->
+<!-- Modal voor het toevoegen van raadsheren -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Gilden toevoegen</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Raadsheer toevoegen</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -30,10 +30,10 @@
 
         {!! Form::text('Naam', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'name', 'placeholder' => 'Naam', 'required']) !!}
         {!! Form::email('E-mailadres', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de Raadsheer', 'required']) !!}
-{{--        {!! Form::text('Locatie', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'locatie', 'placeholder' => 'Locatie waar het gilde gevestigd is', 'required']) !!}--}}
         @foreach($onderdelen as $onderdeel)
               {!! Form::checkbox($onderdeel->onderdeel, 1) !!}
               {{ucfirst($onderdeel->onderdeel)}}
+            <br>
         @endforeach
         {!! Form::submit('Toevoegen', ['class' => 'btn btn-primary mb-2']) !!}
 
@@ -49,10 +49,10 @@
 	 <table class="table table-bordered table-hover">
 	   <thead>
 	     <tr>
-				 <th scope="col" id="tableNBFS"><button type="button" class="btn" onclick="sortNBFS()">NBFS</button></th>
-	       <th scope="col" id="tableNaam"><button type="button" class="btn" onclick="sortNaam()">Gildenaam</button></th>
+				 <th scope="col" id="tableNBFS"><button type="button" class="btn" onclick="sortNBFS()">Id</button></th>
+	       <th scope="col" id="tableNaam"><button type="button" class="btn" onclick="sortNaam()">Raadsheernaam</button></th>
 	       <th scope="col" id="tableEmail"><button type="button" class="btn" onclick="sortEmail()">E-mailadres</button></th>
-				 <th scope="col" id="tableLocatie"><button type="button" class="btn" onclick="sortLocatie()">Locatie</button></th>
+				 <th scope="col" id="tableLocatie"><button type="button" class="btn" onclick="sortLocatie()">Onderdelen</button></th>
 				 <th scope="col">Acties</th>
 	     </tr>
 	   </thead>
@@ -62,78 +62,70 @@
   @endphp
   @foreach ($raadsheren as $raadsheer)
     <tr> <!-- rij 2-->
-			        <th scope='row'>{{$raadsheer->id}}</th>
-			        <td>{{$raadsheer->name}}</td>
-			        <td>{{$raadsheer->email}}</td>
-                        <td>
-{{--                            @dump($raadsheer->formOnderdelen()->get())--}}
-                            @foreach($raadsheer->formOnderdelen()->orderBy('id')->get() as $onderdeel)
-                                {{ ucfirst($onderdeel->onderdeel) }}
-                                <br>
-                            @endforeach
-                        </td>
-			 			 <td>
-			 				 <div class='btn-group dropleft'>
-			 			  		 	<button type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-			 			    			Actie
-			 			  			</button>
-			 			  			<div class='dropdown-menu'>
-			 								<a class='dropdown-item' href='#ModalChangeMail{{$raadsheer->id}}' data-toggle='modal'>E-mailadres bewerken</a>
-                      {!! Form::open(['url' => route('admin.gilde.nieuwWachtwoord'), 'method' => 'POST']) !!}
+        <th scope='row'>{{$raadsheer->id}}</th>
+        <td>{{$raadsheer->name}}</td>
+        <td>{{$raadsheer->email}}</td>
+        <td>
+        {{-- @dump($raadsheer->formOnderdelen()->get()) --}}
+            @foreach($raadsheer->formOnderdelen()->orderBy('id')->get() as $onderdeel)
+                {{ ucfirst($onderdeel->onderdeel) }}
+                <br>
+            @endforeach
+        </td>
+        <td>
+        <div class='btn-group dropleft'>
+            <button type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> Actie </button>
+            <div class='dropdown-menu'>
+                <a class='dropdown-item' href='#ModalChange{{$raadsheer->id}}' data-toggle='modal'>Bewerken</a>
+                {!! Form::open(['url' => route('admin.raadsheer.password', ['id' => $raadsheer->id]), 'method' => 'POST']) !!}
 
-                      {!! Form::hidden('_method', 'put') !!}
-                      {!! Form::hidden('id', $raadsheer->id) !!}
-                      {!! Form::token() !!}
+                {!! Form::hidden('_method', 'put') !!}
+                {!! Form::token() !!}
 
-                      {!! Form::submit('Nieuw wachtwoord', ['class' => 'dropdown-item']) !!}
+                {!! Form::submit('Nieuw wachtwoord', ['class' => 'dropdown-item']) !!}
 
-                      {!! Form::close() !!}
+                {!! Form::close() !!}
 
-                      {!! Form::open(['url' => route('admin.gilde.verwijderen'), 'method' => 'POST']) !!}
+                {!! Form::open(['url' => route('admin.raadsheer.delete', ['id' => $raadsheer->id]), 'method' => 'POST']) !!}
 
-                      {!! Form::hidden('_method', 'delete') !!}
-                      {!! Form::hidden('id', $raadsheer->id) !!}
-                      {!! Form::token() !!}
+                {!! Form::hidden('_method', 'delete') !!}
+                {!! Form::hidden('id', $raadsheer->id) !!}
+                {!! Form::token() !!}
 
-                      {!! Form::submit('Verwijderen', ['class' => 'dropdown-item']) !!}
+                {!! Form::submit('Verwijderen', ['class' => 'dropdown-item']) !!}
 
-                      {!! Form::close() !!}
-                      <!--<a class='dropdown-item' href='http://localhost/admin/gilde/verwijderen/{{$raadsheer->id}}'>Verwijderen</a>-->
+                {!! Form::close() !!}
+            </div>
+        </div>
+        <div class='modal fade' id='ModalChange{{$raadsheer->id}}' data-target='#ModalChange' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLabel'>Gegevens veranderen van {{ $raadsheer->name }}</h5>
+                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>
+                    <div class='modal-body'>
+                        {!! Form::open(['class' => 'form', 'url' => route('admin.raadsheer.update', ['id' => $raadsheer->id]), 'method' => 'POST']) !!}
 
+                        {!! Form::hidden('_method', 'patch') !!}
+                        {!! Form::token() !!}
 
-			 			  			</div>
-			 						</div>
-									</div>
-									<div class='modal fade' id='ModalChangeMail{{$raadsheer->id}}'data-target='#ModalChangeMail' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-									  <div class='modal-dialog' role='document'>
-									    <div class='modal-content'>
-									      <div class='modal-header'>
-									        <h5 class='modal-title' id='exampleModalLabel'>Verander e-mailadres</h5>
-									        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-									          <span aria-hidden='true'>&times;</span>
-									        </button>
-									      </div>
-									      <div class='modal-body'>
-													<form class='form-inline'action='includes.gilde/changemail.php?changemail={{$raadsheer->id}}' method='POST'>
-														<div class='form-group'>
-									 					 <label class='sr-only' for='inlineFormInputEmail'>Nieuw e-mailadres</label>
-									 				   <input name='email' type='email' class='form-control mr-sm-2' id='email' placeholder='E-mailadres'>
-									 				 </div>
+                        {!! Form::text('E-mailadres', $raadsheer->email, ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de Raadsheer', 'required']) !!}
+                        @foreach($onderdelen as $onderdeel)
+                            {!! Form::checkbox($onderdeel->onderdeel, 1, $raadsheer->formOnderdelen()->where('formonderdeel_id', $onderdeel->id)->count() ? true : false) !!}
+                            {{ucfirst($onderdeel->onderdeel)}}
+                            <br>
+                        @endforeach
+                        {!! Form::submit('Toevoegen', ['class' => 'btn btn-primary mb-2']) !!}
 
-													  <!-- <a href='bewerken.gilde.php?changemail=1'> -->
-														 <button type='submit' name='submit' class='btn btn-primary'>Opslaan</button>
-													  <!--</a> -->
-														<!--<button type='button' class='btn btn-secondary' data-dismiss='modal'>Annuleren</button> -->
-
-													</form>
-												</div>
-									    </div>
-									  </div>
-									</div>
-									</div
-			 				 </div>
-			 		 	 </td>
-			      </tr
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tr>
 
     @php
       $i++;

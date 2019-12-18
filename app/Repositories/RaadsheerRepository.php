@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Raadsheer;
+use Exception;
 
 class RaadsheerRepository
 {
@@ -35,8 +36,23 @@ class RaadsheerRepository
         return $this->raadsheer->find($id)->update($attributes);
     }
 
+    public function updateFormonderdelen($id, array $onderdelen)
+    {
+        $this->raadsheer->find($id)->formOnderdelen()->sync($onderdelen);
+    }
+
+    /**
+     * @param $id
+     * @return bool|Exception|null
+     */
     public function delete($id)
     {
-        return $this->raadsheer->find($id)->delete();
+        $this->raadsheer->find($id)->formOnderdelen()->detach();
+        try {
+            return $this->raadsheer->find($id)->delete();
+        } catch (Exception $e) {
+            return $e;
+        }
+
     }
 }

@@ -15,18 +15,18 @@ use Str;
 class RaadsheerService
 {
 
-    protected $raadsheerService;
+    protected $raadsheerRepository;
     protected $raadsheer;
 
-    public function __construct(RaadsheerRepository $raadsheerService)
+    public function __construct(RaadsheerRepository $Repositoryraadsheer)
     {
-        $this->raadsheerService = $raadsheerService;
+        $this->raadsheerRepository = $Repositoryraadsheer;
         $this->raadsheer = new Raadsheer();
     }
 
     public function index()
     {
-        return $this->raadsheerService->all();
+        return $this->raadsheerRepository->all();
     }
 
     public function create(Request $request)
@@ -35,38 +35,49 @@ class RaadsheerService
         $attributes = $request->all();
         $attributes['password'] = Hash::make(Str::random(8));
 
-        $raadsheer = $this->raadsheerService->create($attributes);
+        $raadsheer = $this->raadsheerRepository->create($attributes);
 
         foreach (Formonderdeel::all() as $onderdeel) {
-            if($request->input($onderdeel, 0)){
-                $this->raadsheerService->formOnderdelen()->attach(Formonderdeel::where('onderdeel', $onderdeel)->first(), $raadsheer->id);
+            if($request->input($onderdeel->onderdeel)){
+                $raadsheer->formOnderdelen()->attach($onderdeel->id);
             }
         }
-        dump($request->all());
-        dump($attributes);
-        dump($raadsheer);
 
+        return $raadsheer;
     }
 
     public function delete($id)
     {
-        $this->raadsheerService->delete($id);
+        return $this->raadsheerRepository->delete($id);
     }
 
     public function read($id)
     {
-        return $this->raadsheerService->find($id);
+        return $this->raadsheerRepository->find($id);
     }
 
     public function update(Request $request, $id)
     {
-        $attributes = $request->all();
+        $attributes['email'] = $request->input('email');
+        $onderdelen = [];
 
-        return $this->raadsheerService->update($id, $attributes);
+        foreach (Formonderdeel::all() as $onderdeel) {
+            if($request->input($onderdeel->onderdeel)){
+                array_push($onderdelen, $onderdeel->id);
+            }
+        }
+
+        $this->raadsheerRepository->updateFormonderdelen($id, $onderdelen);
+        return $this->raadsheerRepository->update($id, $attributes);
     }
 
-    public function delete($id)
+    public function newPassword($id)
     {
-        return $this->raadsheerService->delete($id);
+        $password = Str::random(8);
+
+        $attributes = ['password' => Hash::make($password)];
+        $this->raadsheerRepository->update($id, $attributes);
+
+        return $password;
     }
 }
