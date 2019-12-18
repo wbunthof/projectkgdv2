@@ -44,6 +44,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/raadsheer', 'AdminRaadsheerController@index')->name('admin.raadsheer.weergeven');
     Route::put('/raadsheer','AdminRaadsheerController@create')->name('admin.raadsheer.create');
+    Route::patch('/raadsheer/{id}', 'AdminRaadsheerController@update')->name('admin.raadsheer.update');
+    Route::delete('/raadsheer/{id}', 'AdminRaadsheerController@delete')->name('admin.raadsheer.delete');
+    Route::put('/raadsheer/{id}/password','AdminRaadsheerController@newPassword')->name('admin.raadsheer.password');
   });
 });
 
