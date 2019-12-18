@@ -7,7 +7,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vraag extends Model
+class Vraag extends Model
 {
     static function perOnderdeel(Formonderdeel $onderdeel) {
         return Vraag::where('formonderdeel_id', $onderdeel->id)->get();
@@ -16,11 +16,33 @@ class vraag extends Model
     //Relations
     public function antwoord()
     {
-      return $this->hasMany('App\Antwoord');
+        return $this->hasMany('App\Antwoord');
     }
 
     public function formOnderdeel() {
         return $this->belongsTo('App\Formonderdeel');
+    }
+
+    public function getTypeAttribute($value)
+    {
+        switch ($value) {
+        case 'B':
+                return 'boolean';
+                break;
+            case 'T':
+                return'text';
+                break;
+            case 'TA':
+                return'textarea';
+                break;
+            case 'N':
+                return'number';
+                break;
+            default:
+                return $value;
+                break;
+
+        }
     }
 
     protected $table = 'vraag';

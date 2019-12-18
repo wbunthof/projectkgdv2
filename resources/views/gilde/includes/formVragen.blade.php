@@ -24,7 +24,7 @@
 	@php $antwoord = "";	@endphp
 	@php if(array_key_exists($vraag->id, $antwoorden)){$antwoord = $antwoorden[$vraag->id];} @endphp
 	<div class="form-group" id="{{$vraag->id}}">
-	@if ($vraag->type === 'B') <!-- Vraag met een boolean type -> ja/nee -->
+	@if ($vraag->type === 'boolean') <!-- Vraag met een boolean type -> ja/nee -->
 		@php
 		switch ($antwoord) {
 			case '1':
@@ -75,34 +75,27 @@
 			</label>
 		</div>
 
-	@elseif ($vraag->type === 'Koningschieten') <!-- Vraag met een boolean type -> Geweer/Kruisboog/nee -->
+	@elseif ($vraag->type === 'koningschieten') <!-- Vraag met een boolean type -> Geweer/Kruisboog/nee -->
 			@php
-			// 1
-			switch ($antwoord) {
-				case 'Geweerschieten':
-					$antwoord2 = false;
-					$antwoord1 = true;
-					$antwoord0 = false;
-					break;
+                $antwoordKruisboogschieten = false;
+                $antwoordGeweerschieten = false;
+                $antwoordNee = false;
 
-				case 'Kruisboogschieten':
-					$antwoord2 = false;
-					$antwoord1 = false;
-					$antwoord0 = true;
-					break;
+                switch ($antwoord) {
+                    case 'Geweerschieten':
+                        $antwoordGeweerschieten = true;
+                        break;
 
-				case 'Nee':
-					$antwoord2 = true;
-					$antwoord1 = false;
-					$antwoord0 = false;
-					break;
+                    case 'Kruisboogschieten':
+                        $antwoordKruisboogschieten = true;
+                        break;
 
-				default:
-					$antwoord2 = false;
-					$antwoord1 = false;
-					$antwoord0 = false;
-					break;
-			} @endphp
+                    case 'Nee':
+                        $antwoordNee = true;
+                        break;
+                }
+
+            @endphp
 			<label for="{{$vraag->id}}">{{$vraag->tekst}}
 				@if ($vraag->extraInfo)
 					<span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"> </span> {{-- Info button met extra uitleg --}}
@@ -110,7 +103,7 @@
 			</label>
 			<br>
 			<div class="form-group btn-group btn-group-toggle" data-toggle="buttons" name="{{$vraag->id}}">
-				<label class="btn btn-secondary @if ($antwoord0)bg-success @endif"  @if (!$readonly)onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[1].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[2].classList.remove('bg-success');"@endif>
+				<label class="btn btn-secondary @if ($antwoordKruisboogschieten)bg-success @endif"  @if (!$readonly)onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[1].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[2].classList.remove('bg-success');"@endif>
 					<input 	type="radio"
 									name="{{$vraag->id}}"
 									value="Kruisboogschieten"
@@ -122,7 +115,7 @@
 									>Kruisboogschieten
 					</input>
 				</label>
-				<label class="btn btn-secondary @if ($antwoord1)bg-success @endif" @if (!$readonly) onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[0].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[2].classList.remove('bg-success');"@endif>
+				<label class="btn btn-secondary @if ($antwoordGeweerschieten)bg-success @endif" @if (!$readonly) onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[0].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[2].classList.remove('bg-success');"@endif>
 					<input 	type="radio"
 									name="{{$vraag->id}}"
 									value="Geweerschieten"
@@ -133,9 +126,8 @@
 									@endif
 									>Geweerschieten
 					</input>
-					{{-- {!! Form::radio($vraag->id, 1, $antwoord1, ['required']) !!} Ja --}}
 				</label>
-				<label class="btn btn-secondary @if ($antwoord2)bg-success @endif"  @if (!$readonly)onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[0].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[1].classList.remove('bg-success');"@endif>
+				<label class="btn btn-secondary @if ($antwoordNee)bg-success @endif"  @if (!$readonly)onclick="this.classList.add('bg-success'); this.parentNode.getElementsByTagName('label')[0].classList.remove('bg-success'); this.parentNode.getElementsByTagName('label')[1].classList.remove('bg-success');"@endif>
 					<input 	type="radio"
 									name="{{$vraag->id}}"
 									value="Nee"
@@ -146,11 +138,10 @@
 									@endif
 									>Nee
 									</input>
-					{{-- {!! Form::radio($vraag->id, 1, $antwoord1, ['required']) !!} Ja --}}
 				</label>
 			</div>
 
-	@elseif ($vraag->type === 'N') <!-- Vraag met een nummer type -->
+	@elseif ($vraag->type === 'number') <!-- Vraag met een nummer type -->
 		<div >{{$vraag->tekst}}
 			@if ($vraag->extraInfo) <span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"></span> {{-- Info button met extra uitleg --}}	@endif
 			<span style="float: right" >
@@ -161,7 +152,7 @@
 		</label>
 		{!! Form::text($vraag->id, $antwoord, ['data-fout' => 'false', 'autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'min' => $vraag->minimumValue, 'max' => $vraag->maximumValue,'onkeyup' => 'nummerChecker(this)', 'onblur' => 'vraagOpslaanNummer(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
 
-	@elseif ($vraag->type === 'T') <!-- Vraag met een tekst type -->
+	@elseif ($vraag->type === 'text') <!-- Vraag met een tekst type -->
 		<label for="{{$vraag->id}}">{{$vraag->tekst}}
 			@if ($vraag->extraInfo)
 				<span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"></span> {{-- Info button met extra uitleg --}}
@@ -169,7 +160,7 @@
 		</label>
 		{!! Form::text($vraag->id, $antwoord, ['autocomplete' => 'off', 'class' => 'form-control', 'placeholder' => $vraag->placeholder, 'minlength' => $vraag->minimumValue, 'maxlength' => $vraag->maximumValue, 'onblur' => 'vraagOpslaanText(this, "'. $urlVraagOpslaan .'", "' . csrf_token() . '")']) !!}
 
-	@elseif ($vraag->type === 'TA') <!-- Vraag met een tekstarea type -->
+	@elseif ($vraag->type === 'textarea') <!-- Vraag met een tekstarea type -->
 		<label for="{{$vraag->id}}">{{$vraag->tekst}}
 			@if ($vraag->extraInfo)
 				<span class="fas fa-info-circle" data-toggle="modal" data-target="#modal{{$vraag->id}}"> </span> {{-- Info button met extra uitleg --}}

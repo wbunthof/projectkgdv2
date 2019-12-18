@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="Made the raadsheer/formonderdeel relation, and removed the table that was planned for it (&quot;raadsheerrechten&quot;), and made table which complies to the naming convention.">
-      <change afterPath="$PROJECT_DIR$/app/Repositories/AnswerRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/AnswerService.php" afterDir="false" />
+    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminRaadsheerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/raadsheer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/GildeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/GildeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/RaasheerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/RaadsheerService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Vraag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vraag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gilde/includes/formVragen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gilde/includes/formVragen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
+    <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/projectkgdv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectkgdv2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <list id="56d3c248-085e-4db0-978d-fb10e4d2cbc5" name="Admin" comment="">
       <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/AdminService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AdminService.php" afterDir="false" />
@@ -177,7 +190,12 @@
       <workItem from="1575974588448" duration="1681000" />
       <workItem from="1575978503788" duration="1084000" />
       <workItem from="1576060339697" duration="622000" />
-      <workItem from="1576061424994" duration="2888000" />
+      <workItem from="1576061424994" duration="6582000" />
+      <workItem from="1576162065193" duration="599000" />
+      <workItem from="1576166510728" duration="451000" />
+      <workItem from="1576414459965" duration="2081000" />
+      <workItem from="1576426937986" duration="6984000" />
+      <workItem from="1576665418166" duration="2103000" />
     </task>
     <task id="LOCAL-00001" summary="Created files for admin service/repository">
       <created>1575969512489</created>

@@ -27,7 +27,7 @@ Route::get('/nietIngevuld', 'IndexController@nietIngevuld')->name('nietIngevuld'
 //admin
 Route::prefix('admin')->group(function () {
   // Inlog gedeelte van de admin
-  Route::middleware('guest', 'throttle:30,1')->group(function () {
+  Route::middleware(['guest', 'throttle:30,1'])->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
@@ -42,6 +42,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('/gilde/verwijderen/', 'AdminController@gildenVerwijderen')->name('admin.gilde.verwijderen');
     Route::put('/gilde/nieuwWachtwoord/', 'AdminController@gildeNieuwWachtwoordAdmin')->name('admin.gilde.nieuwWachtwoord');
 
+    Route::get('/raadsheer', 'AdminRaadsheerController@index')->name('admin.raadsheer.weergeven');
+    Route::put('/raadsheer','AdminRaadsheerController@create')->name('admin.raadsheer.create');
   });
 });
 
@@ -49,7 +51,7 @@ Route::prefix('admin')->group(function () {
 //organiserend gilde
 Route::prefix('organiser')->group(function () {
   // Inlog gedeelte van het organiserend gilde
-  Route::middleware('guest', 'throttle:30,1')->group(function () {
+  Route::middleware(['guest', 'throttle:30,1'])->group(function () {
     Route::get('/login', 'Auth\OrganiserLoginController@showLoginForm')->name('organiser.login');
     Route::post('/login', 'Auth\OrganiserLoginController@login')->name('organiser.login.submit');
   });
@@ -76,20 +78,21 @@ Route::prefix('organiser')->group(function () {
 //raadsheer
 Route::prefix('raadsheer')->group(function () {
   // Inlog gedeelte van de raadsheer
-  Route::middleware('guest', 'throttle:30,1')->group(function () {
+  Route::middleware(['guest', 'throttle:30,1'])->group(function () {
     Route::get('/login', 'Auth\RaadsheerLoginController@showLoginForm')->name('raadsheer.login');
     Route::post('/login', 'Auth\RaadsheerLoginController@login')->name('raadsheer.login.submit');
   });
 
   Route::middleware('auth:raadsheer')->group(function () {
     Route::get('/dashboard', 'RaadsheerController@index')->name('raadsheer.dashboard');
+    Route::get('/onderdeel/{id}', 'RaadsheerController@onderdeel')->name('raadsheer.onderdeel');
   });
 });
 
 //gilde
 Route::prefix('gilde')->group(function () {
   // Inlog gedeelte van het gilde
-  Route::middleware('guest', 'throttle:30,1')->group(function () {
+  Route::middleware(['guest', 'throttle:30,1'])->group(function () {
     Route::get('/login', 'Auth\GildeLoginController@showLoginForm')->name('gilde.login');
     Route::post('/login', 'Auth\GildeLoginController@login')->name('gilde.login.submit');
     Route::get('/NieuwWachtwoordGilde', 'Auth\GildeLoginController@FormNieuwWachtwoordGildeEmail')->name('NieuwWachtwoordGildeGET');

@@ -14,8 +14,8 @@
   			<a class="nav-link" href="{{route('admin.gilde.weergeven')}}">Gildes bewerken</a>
   		</li>
 
-  		<li class="nav-item {{ Route::currentRouteNamed('admin.raadsheer.bewerken') ? 'active' : '' }}">
-  			<a class="nav-link disabled" href="{{'#' /*route('admin.raadsheer.weergeven')*/}}">Raadsheren bewerken</a>
+  		<li class="nav-item {{ Route::currentRouteNamed('admin.raadsheer.weergeven') ? 'active' : '' }}">
+  			<a class="nav-link disabled" href="{{route('admin.raadsheer.weergeven')}}">Raadsheren bewerken</a>
   		</li>
 
   		<li class="nav-item {{ Route::currentRouteNamed('admin.organiser.bewerken') ? 'active' : '' }}">

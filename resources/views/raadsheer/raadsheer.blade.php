@@ -19,7 +19,14 @@
                         </div>
                     @endif
 
-                    You are logged in as Raadsheer!
+                    You are logged in as Raadsheer! <br>
+                    Dit zijn de onderdelen die jij kunt beheren:<br>
+                    @foreach($onderdelen as $onderdeel)
+                        <br>
+                        <a href="{{ route('raadsheer.onderdeel', ['id' => $onderdeel->id]) }}">
+                            {{ ucfirst($onderdeel->onderdeel) }}
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
