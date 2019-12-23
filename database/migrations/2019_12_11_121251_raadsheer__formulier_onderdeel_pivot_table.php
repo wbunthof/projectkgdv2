@@ -15,7 +15,7 @@ class RaadsheerFormulierOnderdeelPivotTable extends Migration
     {
         Schema::create('formonderdeel_raadsheer', function (Blueprint $table) {
             $table->integer('formonderdeel_id')->unsigned()->index();
-            $table->foreign('formonderdeel_id')->references('id')->on('formoOnderdelen')->onDelete('cascade');
+            $table->foreign('formonderdeel_id')->references('id')->on('formOnderdelen')->onDelete('cascade');
 
             $table->integer('raadsheer_id')->unsigned()->index();
             $table->foreign('raadsheer_id')->references('id')->on('raadsheer')->onDelete('cascade');
