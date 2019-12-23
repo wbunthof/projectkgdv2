@@ -13,7 +13,7 @@ class AddVraagAndLedenTrueOrFalseToFormonderdelen extends Migration
      */
     public function up()
     {
-        Schema::table('formonderdelen', function (Blueprint $table) {
+        Schema::table('formOnderdelen', function (Blueprint $table) {
             $table->tinyInteger('vragen');
             $table->tinyInteger('leden');
         });

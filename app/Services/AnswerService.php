@@ -42,4 +42,9 @@ class AnswerService
     {
         return $this->answer->delete($id);
     }
+
+    public function deleteFromVraag($id)
+    {
+        return $this->answer->deleteFromVraag($id);
+    }
 }

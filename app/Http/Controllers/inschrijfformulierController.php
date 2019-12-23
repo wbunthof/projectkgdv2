@@ -25,7 +25,7 @@ class  inschrijfformulierController extends Controller
       if ($formonderdeel == 'deelname' || $formonderdeel == 'gildemis' || $formonderdeel == 'optocht' || $formonderdeel == 'tentoonstelling' || $formonderdeel == 'geweer' || $formonderdeel == 'kruis-handboog' || $formonderdeel == 'standaardrijden') {
         $formonderdeel = str_replace('-', '', $formonderdeel);
 
-        $vragen = Vraag::where('formonderdeel', $formonderdeel)->get();
+        $vragen = Vraag::where('formonderdeel_id', Formonderdeel::where('onderdeel', $formonderdeel)->first()->id)->get();
 
         $vragenIds = array();
 

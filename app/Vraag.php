@@ -23,6 +23,28 @@ class Vraag extends Model
         return $this->belongsTo('App\Formonderdeel');
     }
 
+    public function setTypeAttribute($value)
+    {
+        switch ($value) {
+            case 'B':
+                $this->attributes['type'] = 'boolean';
+                break;
+            case 'T':
+                $this->attributes['type'] = 'text';
+                break;
+            case 'TA':
+                $this->attributes['type'] = 'textarea';
+                break;
+            case 'N':
+                $this->attributes['type'] = 'number';
+                break;
+            default:
+                $this->attributes['type'] =  $value;
+                break;
+
+        }
+    }
+
     public function getTypeAttribute($value)
     {
         switch ($value) {
@@ -47,7 +69,7 @@ class Vraag extends Model
 
     protected $table = 'vraag';
     protected $fillable = [
-        'tekst', 'formonderdeel', 'type', 'minimumValue', 'maximumValue', 'placeholder',
+        'tekst', 'formonderdeel', 'type', 'minimumValue', 'maximumValue', 'placeholder', 'formonderdeel_id'
     ];
 }
 

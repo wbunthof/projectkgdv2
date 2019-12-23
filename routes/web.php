@@ -89,6 +89,12 @@ Route::prefix('raadsheer')->group(function () {
   Route::middleware('auth:raadsheer')->group(function () {
     Route::get('/dashboard', 'RaadsheerController@index')->name('raadsheer.dashboard');
     Route::get('/onderdeel/{id}', 'RaadsheerController@onderdeel')->name('raadsheer.onderdeel');
+
+    Route::prefix('vraag')->group(function (){
+        Route::put('/create', 'RaadsheerVraagController@create')->name('raadsheer.vraag.create');
+        Route::delete('{id}/destroy', 'RaadsheerVraagController@destroy')->name('raadsheer.vraag.destroy');
+        Route::patch('{id}/update', 'RaadsheerVraagController@update')->name('raadsheer.vraag.update');
+    });
   });
 });
 

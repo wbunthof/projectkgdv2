@@ -3,7 +3,7 @@
 
 namespace App\Repositories;
 
-use App\Vraag;
+use App\Antwoord;
 
 class AnswerRepository
 {
@@ -37,5 +37,10 @@ class AnswerRepository
     public function delete($id)
     {
         return $this->answer->find($id)->delete();
+    }
+
+    public function deleteFromVraag($id)
+    {
+        return $this->answer->where('vraag_id', $id)->delete();
     }
 }
