@@ -12,8 +12,8 @@ class RaadsheerController extends Controller
 {
     public function index()
     {
-        dd(exec('whoami'));
-//        return view('raadsheer.raadsheer')->with(['onderdelen' => Auth::user()->formOnderdelen()->get()]);
+//        dd(exec('whoami'));
+        return view('raadsheer.raadsheer')->with(['onderdelen' => Auth::user()->formOnderdelen()->get()]);
     }
 
     public function onderdeel(Formonderdeel $id)
