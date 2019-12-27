@@ -9,6 +9,7 @@ use App\Services\AnswerService;
 use App\Services\QuestionService;
 use Auth;
 use Exception;
+use Gate;
 use Illuminate\Http\Request;
 use Redirect;
 use Validator;
@@ -45,6 +46,9 @@ class RaadsheerVraagController extends Controller
      */
     public function create(Request $request)
     {
+        if (Gate::denies('raadsheer-onderdeel', Formonderdeel::findOrFail($request->formonderdeel_id))){
+            abort(403);
+        }
 
         $vaildation = $request->validate([
             'formonderdeel_id' => 'required|integer|exists:formonderdelen,id',
@@ -55,11 +59,6 @@ class RaadsheerVraagController extends Controller
             'maximumValue' => 'integer|nullable',
             'placeholder' => 'string|nullable'
         ]);
-
-        if (!$this->can(Auth::user(), Formonderdeel::find($request->formonderdeel_id)))
-        {
-            return redirect()->back()->with(['error' => 'Not allowed, ask administrator for the needed rights.']);
-        }
 
         try {
             $this->vraagService->create($request);
@@ -82,38 +81,33 @@ class RaadsheerVraagController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Show the form for editing the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function edit($id)
-//    {
-//        //
-//    }
-//
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showData($id)
+    {
+        if (Gate::denies('raadsheer-onderdeel', Vraag::findOrFail($id)->formOnderdeel)){
+            abort(403);
+        }
+
+//        return
+    }
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        dd($request, $id);
+        if (Gate::denies('raadsheer-onderdeel', Vraag::findOrFail($id)->formOnderdeel)){
+            abort(403);
+        }
 
         $vaildation = $request->validate([
             'tekst' . $id => 'required|string',
@@ -124,13 +118,10 @@ class RaadsheerVraagController extends Controller
             'placeholder' . $id => 'string|nullable'
         ]);
 
-        if (!$this->can(Auth::user(), Formonderdeel::find(Vraag::find($id)->formonderdeel_id)))
-        {
-            return back()->with(['error' => 'Not allowed, ask administrator for the needed rights.']);
-        }
+        if ($this)
 
         try {
-//            $this->vraagService->create($request);
+            $this->vraagService->update($request, $id);
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
         }
@@ -146,15 +137,9 @@ class RaadsheerVraagController extends Controller
      */
     public function destroy($id)
     {
-        $validation = Validator::make(['id' => $id], ['id' => 'required|integer|exists:vraag,id']);
-        if ($validation->fails())
+        if (Gate::denies('raadsheer-onderdeel', Vraag::findOrFail($id)->formOnderdeel))
         {
-            return redirect()->back()->with(['error' => 'Vraag niet gevonden']);
-        }
-
-        if (!$this->can(Auth::user(), Formonderdeel::find(Vraag::find($id)->formonderdeel_id)))
-        {
-            return redirect()->back()->with(['error' => 'Not allowed, ask administrator for the needed rights.']);
+            abort(403);
         }
 
         try {
@@ -165,11 +150,5 @@ class RaadsheerVraagController extends Controller
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol!']);
-    }
-
-
-    protected function can(Raadsheer $raadsheer, Formonderdeel $formonderdeel)
-    {
-        return $raadsheer->formOnderdelen->contains($formonderdeel);
     }
 }

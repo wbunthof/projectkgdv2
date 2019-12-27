@@ -20,7 +20,7 @@ class Vraag extends Model
     }
 
     public function formOnderdeel() {
-        return $this->belongsTo('App\Formonderdeel');
+        return $this->belongsTo('App\Formonderdeel', 'formonderdeel_id', 'id');
     }
 
     public function setTypeAttribute($value)
@@ -69,7 +69,7 @@ class Vraag extends Model
 
     protected $table = 'vraag';
     protected $fillable = [
-        'tekst', 'formonderdeel', 'type', 'minimumValue', 'maximumValue', 'placeholder', 'formonderdeel_id'
+        'tekst', 'type', 'minimumValue', 'maximumValue', 'placeholder', 'formonderdeel_id'
     ];
 }
 

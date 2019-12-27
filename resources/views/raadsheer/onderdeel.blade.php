@@ -25,7 +25,7 @@
                     {!! Form::text('tekst', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de vraag in', 'required']) !!}
 
                     {!! Form::label('extrainfo', 'Vul hier de extra info in, voor als de vraag niet helemaal duidelijk is voor de secretarissen.') !!}
-                    {!! Form::textarea('extrainfo', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.', 'required']) !!}
+                    {!! Form::textarea('extrainfo', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.']) !!}
                     <br>
                     Type:
                     <br>
@@ -79,7 +79,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {!! Form::open(['class' => 'form', 'url' => route('raadsheer.vraag.update', ['id' => $vraag->id]), 'method' => 'POST']) !!}
+                        {!! Form::open(['class' => 'form', 'url' => route('raadsheer.vraag.update', ['id' => $vraag->id + 1]), 'method' => 'POST']) !!}
 
                         {!! Form::hidden('_method', 'patch') !!}
                         {!! Form::token() !!}
@@ -88,10 +88,13 @@
                         {!! Form::text('tekst' . $vraag->id, $vraag->tekst, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de vraag in', 'required']) !!}
 
                         {!! Form::label('extrainfo' . $vraag->id, 'Vul hier de extra info in, voor als de vraag niet helemaal duidelijk is voor de secretarissen.') !!}
-                        {!! Form::textarea('extrainfo' . $vraag->id, $vraag->extrainfo, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.', 'required']) !!}
+                        {!! Form::textarea('extrainfo' . $vraag->id, $vraag->extrainfo, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.']) !!}
                         <br>
-                        Type:
-                        <br>
+
+{{--                        {!! Form::label('type' . $vraag->id, 'Type: Als je dit aanpast worden de ingevulde antwoorden gewist! Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het wordt alleen ingekort indien nodig. ') !!}--}}
+                        <label for="type{{ $vraag->id }}">Type:
+                                                        <br> Als je dit aanpast worden de ingevulde antwoorden gewist!
+                                                        <br>Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het wordt alleen ingekort indien nodig. </label>
                         @php($data =
                                     [['name' => 'Ja/Nee vraag', 'type' => 'B', 'extra' => []],
                                     ['name' => 'Nummer vraag', 'type' => 'N', 'extra' => ['minimum', 'maximum', 'placeholder']],
@@ -124,7 +127,7 @@
                             {!! Form::text('placeholder' . $vraag->id, null, ['class' => 'form-control', 'placeholder' => 'Dit is dus de tekst']) !!}
                             <br>
                         </div>
-                        {!! Form::submit('Toevoegen', ['class' => 'btn btn-primary mb-2']) !!}
+                        {!! Form::submit('Opslaan', ['class' => 'btn btn-primary mb-2']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -137,8 +140,8 @@
         <div class="btn btn-group float-right">
             <button class="btn btn-secondary" type="submit">Data</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateVraag{{$vraag->id}}Modal">Bewerken</button>
-            <a class="btn btn-danger" href="{{ route('raadsheer.vraag.destroy', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('form-logout-{{$vraag->id}}').submit();">Verwijderen</a>
-            {!! Form::open(['id' => 'form-logout-' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.destroy', ['id' => $vraag->id]), 'method' => 'POST']) !!}
+            <a class="btn btn-danger" href="{{ route('raadsheer.vraag.destroy', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-{{$vraag->id}}').submit();">Verwijderen</a>
+            {!! Form::open(['id' => 'delete-' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.destroy', ['id' => $vraag->id]), 'method' => 'POST']) !!}
             {!! Form::hidden('_method', 'DELETE') !!}
             {!! Form::close() !!}
         </div>

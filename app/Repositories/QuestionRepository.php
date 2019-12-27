@@ -31,7 +31,8 @@ class QuestionRepository
 
     public function update($id, array $attributes)
     {
-        return $this->question->find($id)->update($attributes);
+//        return dd($attributes, $id);
+           return $this->question->find($id)->update($attributes);
     }
 
     public function delete($id)

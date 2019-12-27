@@ -193,7 +193,8 @@ class  inschrijfformulierController extends Controller
         list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen($formonderdeel);
 
         // Vragen
-        $vragen = Vraag::where('formonderdeel', $formonderdeel)->get();
+//        $vragen = Vraag::where('formonderdeel', $formonderdeel)->get();
+        $vragen = Formonderdeel::where('onderdeel', $formonderdeel)->first()->vraag()->get();
 
         $vragenIds = [];
         foreach ($vragen as $vraag) {

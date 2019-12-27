@@ -9,7 +9,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				{!! Form::open(['class' => 'form', 'url' => route('gilde.inschrijffomulier.juniorToevoegen'), 'method' => 'POST', 'autocomplete' => str_random(55)]) !!}
+				{!! Form::open(['class' => 'form', 'url' => route('gilde.inschrijffomulier.juniorToevoegen'), 'method' => 'POST', 'autocomplete' => Str::random(55)]) !!}
 
 				{!! Form::hidden('_method', 'put') !!}
 				{!! Form::token() !!}

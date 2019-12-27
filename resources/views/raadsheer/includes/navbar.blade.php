@@ -11,33 +11,24 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('raadsheer.dashboard') }}">Home</a>
-        </li>
-        @guest
-        @else
-          <li class="nav-item dropdown">
-              <a id="navbarDropdownInschrijfformulier" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                Inschrijffomrulier <span class="caret"></span>
-              </a>
-
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                  <a class="dropdown-item" href="/posts/create">Create Post</a>
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                  </form>
-              </div>
-          </li>
-        @endguest
-      </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('raadsheer.dashboard') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('raadsheer.dashboard') }}">Dashboard</a>
+            </li>
+                <li class="nav-item dropdown">
+                <a id="navbarDropdownInschrijfformulier" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  Inschrijffomrulier <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @foreach($volgordePagina as $onderdeel)
+                        <a class="dropdown-item" href="{{ route() }}">{{ ucfirst($onderdeel) }}</a>
+                    @endforeach
+                </div>
+            </li>
+        </ul>
       <!-- Rechterkant van de Navbar -->
       <ul class="navbar-nav navbar-right">
           <!-- Authentication Links -->

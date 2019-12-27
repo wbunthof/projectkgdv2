@@ -4,6 +4,7 @@
 //
 namespace App\Http\Controllers;
 
+use App\Raadsheer;
 use App\Services\GildeService;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use App\Gilde;
 
 // formulieronderdelen
+use App\Formonderdeel;
 use App\Junioren;
 use App\Deelnamemeerderewedstrijden;
 use App\Vraag;
@@ -50,44 +52,54 @@ class GildeController extends Controller
         $dataJunioren = array();
         $dataDeelnameMeedereWedstrijden = array();
         $vragen = array();
-        $formonderdelenVragen = DB::table('vraag')->select('formonderdeel')->distinct()->get();
+        $formonderdelenVragen = Formonderdeel::all('onderdeel');
+
         // $antwoordenId = array();
 
 
         $modelsVragen = array(
-            'deelname',
-            'gildemis',
-            'optocht',
-            'tentoonstelling',
-            'geweer',
-            'kruis-handboog',
-            'standaardrijden');
+            '1' => 'deelname',
+            '2' => 'gildemis',
+            '3' => 'optocht',
+            '4' => 'tentoonstelling',
+            '7' => 'geweer',
+            '8' => 'kruis-handboog',
+            '9' => 'standaardrijden');
         $modelsLeden = array(
-            'bazuinblazen',
-            'trommen',
-            'vendelen');
+            '6' => 'bazuinblazen',
+            '10' => 'trommen',
+            '11' => 'vendelen');
         $modelsAnders = array(
-            'Junioren',
-            'Deelnamemeerderewedstrijden');
+            '13' => 'Junioren',
+            '12' => 'Deelnamemeerderewedstrijden');
 
         $vragen = Vraag::get();
 
-        for ($i=0; $i < count($modelsVragen); $i++) {
+//        $id = 1;
+//        dd(Auth::user()->antwoorden()->whereHas('vraag',function ($query) use ($id) {
+//                $query->where('formonderdeel_id', $id);
+//                            })->get());
+
+//        for ($i=0; $i < count($modelsVragen); $i++) {
+        foreach ($modelsVragen as $id => $modelvraag) {
             array_push($dataVragen,
-                array($modelsVragen[$i],
-                    Antwoord::where('NBFS', Auth::user()->id)
-                            ->whereHas('vraag',function ($query) use ($modelsVragen, $i) {
-                                $query->where('formonderdeel', '=', str_replace('-', '', $modelsVragen[$i]));
-                            })->get()));
+                array($modelvraag,
+                    Auth::user()->antwoorden()->whereHas('vraag', function ($query) use ($id) {
+                        $query->where('formonderdeel_id', $id);
+                    })->get()));
 //Antwoord::where('formonderdeel', $modelsVragen[$i])->get()));
         }
 
         $dataGroepen =  [];
-        foreach ($modelsLeden as $model) {
-            array_push($dataGroepen, [$model, Antwoord::where('NBFS', Auth::user()->id)
-                                                      ->whereHas('vraag',function ($query) use ($model) {
-                                                          $query->where('formonderdeel', '=', str_replace('-', '', $model));
-                                                      })->get()]);
+        foreach ($modelsLeden as $id => $model) {
+            array_push($dataGroepen, [$model,
+                Auth::user()->antwoorden()->whereHas('vraag', function ($query) use ($id) {
+                    $query->where('formonderdeel_id', $id);
+                })->get()]);
+//                Antwoord::where('NBFS', Auth::user()->id)
+//                                                      ->whereHas('vraag',function ($query) use ($model) {
+//                                                          $query->where('formonderdeel', '=', str_replace('-', '', $model));
+//                                                      })->get()]);
         }
 
 
