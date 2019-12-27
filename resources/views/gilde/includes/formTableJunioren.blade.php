@@ -64,27 +64,29 @@
 		  </thead>
 		  <tbody>
 				@foreach ($junioren as $lid)
-		    <tr>
+		        <tr>
 					{{-- Gebruikergegevens --}}
 					<td>{{{$lid->voornaam}}}</td>
 					<td>{{{$lid->achternaam}}}</td>
 					<td>{{{$lid->geboortedatum}}}</td>
 					<td>{{{$lid->JuniorenDiscipline->klasse}}}</td>
 					{{-- Verwijder button verwerkt in form --}}
-					<td>@php $route = 'gilde/inschrijffomulier/'.$onderdeel.'/lidVerwijderen';	@endphp
-					{!! Form::open(['url' => route('gilde.inschrijffomulier.juniorVerwijderen', ['formonderdeel' => $onderdeel]), 'method' => 'POST']) !!}
+					<td>
+                        @php $route = 'gilde/inschrijffomulier/'.$onderdeel.'/lidVerwijderen';	@endphp
+                        {!! Form::open(['url' => route('gilde.inschrijffomulier.juniorVerwijderen', ['formonderdeel' => $onderdeel]), 'method' => 'POST']) !!}
 
-					{!! Form::hidden('_method', 'delete') !!}
-					{!! Form::hidden('id', $lid->id) !!}
-					{!! Form::token() !!}
+                        {!! Form::hidden('_method', 'delete') !!}
+                        {!! Form::hidden('id', $lid->id) !!}
+                        {!! Form::token() !!}
 
-					{!! Form::submit('Afmelden', ['class' => 'btn btn-secondary']) !!}
+                        {!! Form::submit('Afmelden', ['class' => 'btn btn-secondary']) !!}
 
-					{!! Form::close() !!}
+                        {!! Form::close() !!}
 
-						 </div></td>
-		    </tr>
-				@endforeach
-		  </tbody>
+                    </td>
+		        </tr>
+            @endforeach
+    </tbody>
 			@endif
-		</table>
+    </table>
+</div>
