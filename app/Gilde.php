@@ -27,7 +27,7 @@ class Gilde extends Authenticatable
     //Relations
     public function antwoorden()
     {
-      return $this->hasMany('App\Antwoord', 'NBFS');
+      return $this->hasMany('App\Antwoord', 'NBFS', 'id');
     }
 
     public function bazuinblazen()
