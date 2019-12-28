@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Antwoord;
+use Exception;
 
 class AnswerRepository
 {
@@ -36,11 +37,24 @@ class AnswerRepository
 
     public function delete($id)
     {
-        return $this->answer->find($id)->delete();
+        try {
+            return $this->answer->find($id)->delete();
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     public function deleteFromVraag($id)
     {
-        return $this->answer->where('vraag_id', $id)->delete();
+        try {
+            return $this->answer->where('vraag_id', $id)->delete();
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
+    public function undelete($id)
+    {
+        return $this->answer->withTrashed()->find($id)->restore();
     }
 }

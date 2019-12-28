@@ -49,4 +49,16 @@ class QuestionService
     {
         return $this->question->delete($id);
     }
+
+    public function undelete($ids)
+    {
+        if (is_array($ids)){
+            foreach ($ids as $id)
+            {
+                $this->question->undelete($id);
+            }
+        } else {
+            $this->question->undelete($ids);
+        }
+    }
 }

@@ -148,6 +148,28 @@
         <hr>
         <br>
     @endforeach
+    @if($deleted->count())
+    <hr>
+    <h2>Verwijderde vragen</h2>
+
+    @foreach($deleted as $vraag)
+        {{ $vraag->tekst }}
+        {{--            {{ $vraag->setTypeAttribute($vraag->type) }}--}}
+        {{ ucfirst($vraag->type) }}
+        <div class="btn btn-group float-right">
+            <a class="btn btn-warning" href="{{ route('raadsheer.vraag.undelete', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('undelete-{{$vraag->id}}').submit();">Terugzetten</a>
+            {!! Form::open(['id' => 'undelete-' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.undelete', ['id' => $vraag->id]), 'method' => 'POST']) !!}
+            {!! Form::hidden('_method', 'PATCH') !!}
+            {!! Form::close() !!}
+            <a class="btn btn-danger" href="{{ route('raadsheer.vraag.permanentDelete', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('permanentdelete-{{$vraag->id}}').submit();">Permanent verwijderen!</a>
+            {!! Form::open(['id' => 'permanentdelete-' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.permanentDelete', ['id' => $vraag->id]), 'method' => 'POST']) !!}
+            {!! Form::hidden('_method', 'DELETE') !!}
+            {!! Form::close() !!}
+        </div>
+        <hr>
+        <br>
+    @endforeach
+    @endif
 @endsection
 
 

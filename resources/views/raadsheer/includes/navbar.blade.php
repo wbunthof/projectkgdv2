@@ -24,7 +24,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     @foreach($volgordePagina as $onderdeel)
-                        <a class="dropdown-item" href="{{ route() }}">{{ ucfirst($onderdeel) }}</a>
+                        <a class="dropdown-item" href="{{ route('raadsheer.dashboard') }}">{{ ucfirst($onderdeel) }}</a>
                     @endforeach
                 </div>
             </li>

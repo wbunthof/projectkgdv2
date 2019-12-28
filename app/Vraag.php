@@ -6,9 +6,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vraag extends Model
 {
+    use SoftDeletes;
+
     static function perOnderdeel(Formonderdeel $onderdeel) {
         return Vraag::where('formonderdeel_id', $onderdeel->id)->get();
     }

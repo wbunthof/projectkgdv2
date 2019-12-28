@@ -23,7 +23,7 @@ class RaadsheerController extends Controller
             return abort(403);
         }
 
-        return view('raadsheer.onderdeel')->with(['onderdelen' => $id->vraag()->get(), 'formonderdeel' => $id]);
+        return view('raadsheer.onderdeel')->with(['onderdelen' => $id->vraag()->get(), 'formonderdeel' => $id, 'deleted' => $id->vraag()->onlyTrashed()->get()]);
     }
 }
 

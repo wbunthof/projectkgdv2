@@ -39,4 +39,9 @@ class QuestionRepository
     {
         return $this->question->find($id)->delete();
     }
+
+    public function undelete($id)
+    {
+        return $this->question->withTrashed()->find($id)->restore();
+    }
 }

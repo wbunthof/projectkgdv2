@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Antwoord extends Model
 {
+    use SoftDeletes;
+
     static function perOnderdeelPerGilde($NBFS) {
         $vragenPerOnderdeel = array();
         foreach (Formonderdeel::all() as $onderdeel) {

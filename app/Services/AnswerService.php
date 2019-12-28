@@ -38,13 +38,32 @@ class AnswerService
         return $this->answer->update($id, $attributes);
     }
 
-    public function delete($id)
+    public function delete($ids)
     {
-        return $this->answer->delete($id);
+        if (is_a($ids, 'Illuminate\Support\Collection')){
+            foreach ($ids as $id)
+            {
+                $this->answer->delete($id->id);
+            }
+        } else {
+            $this->answer->delete($ids);
+        }
     }
 
     public function deleteFromVraag($id)
     {
         return $this->answer->deleteFromVraag($id);
+    }
+
+    public function undelete($ids)
+    {
+        if (is_a($ids, 'Illuminate\Support\Collection')){
+            foreach ($ids as $id)
+            {
+                $this->answer->undelete($id->id);
+            }
+        } else {
+            $this->answer->undelete($ids);
+        }
     }
 }

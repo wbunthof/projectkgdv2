@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Antwoord;
 use App\Formonderdeel;
 use App\Raadsheer;
 use App\Vraag;
@@ -32,12 +33,12 @@ class RaadsheerVraagController extends Controller
      */
     public function index()
     {
-        $vragen = Vraag::all();
-
-        foreach ($vragen as $vraag){
-            $vraag->type = $vraag->type;
-            $vraag->save();
-        }
+//        $vragen = Vraag::all();
+//
+//        foreach ($vragen as $vraag){
+//            $vraag->type = $vraag->type;
+//            $vraag->save();
+//        }
     }
 
     /**
@@ -142,13 +143,36 @@ class RaadsheerVraagController extends Controller
             abort(403);
         }
 
+        $this->vraagService->delete($id);
+        $this->antwoordService->deleteFromVraag($id);
         try {
-            $this->antwoordService->deleteFromVraag($id);
-            $this->vraagService->delete($id);
+            $a = 4+4;
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
         }
 
-        return redirect()->back()->with(['succes' => 'Succesvol!']);
+        return redirect()->back()->with(['succes' => 'Succesvol verwijderd!']);
+    }
+
+    public function undelete($id)
+    {
+        if (Gate::denies('raadsheer-onderdeel', Vraag::onlyTrashed()->findOrFail($id)->formOnderdeel))
+        {
+            abort(403);
+        }
+
+        try {
+            $this->vraagService->undelete($id);
+            $this->antwoordService->undelete(Antwoord::onlyTrashed()->where('vraag_id', $id)->get());
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+        }
+
+        return redirect()->back()->with(['succes' => 'Succesvol teruggezet!']);
+    }
+
+    public function permanentDelete()
+    {
+        return true;
     }
 }
