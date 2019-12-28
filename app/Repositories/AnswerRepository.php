@@ -57,4 +57,9 @@ class AnswerRepository
     {
         return $this->answer->withTrashed()->find($id)->restore();
     }
+
+    public function permanentDelete($id)
+    {
+        return $this->answer->withTrashed()->find($id)->forceDelete();
+    }
 }

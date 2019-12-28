@@ -95,7 +95,7 @@ Route::prefix('raadsheer')->group(function () {
         Route::delete('{id}/destroy', 'RaadsheerVraagController@destroy')->name('raadsheer.vraag.destroy');
         Route::patch('{id}/update', 'RaadsheerVraagController@update')->name('raadsheer.vraag.update');
         Route::patch('{id}/undelete', 'RaadsheerVraagController@undelete')->name('raadsheer.vraag.undelete');
-        Route::patch('{id}/permanentdelete', 'RaadsheerVraagController@permanentDelete')->name('raadsheer.vraag.permanentDelete');
+        Route::delete('{id}/permanentdelete', 'RaadsheerVraagController@permanentDelete')->name('raadsheer.vraag.permanentDelete');
     });
   });
 });

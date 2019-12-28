@@ -44,4 +44,9 @@ class QuestionRepository
     {
         return $this->question->withTrashed()->find($id)->restore();
     }
+
+    public function permanentDelete($id)
+    {
+        return $this->question->withTrashed()->find($id)->forceDelete();
+    }
 }

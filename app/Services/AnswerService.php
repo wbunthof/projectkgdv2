@@ -66,4 +66,16 @@ class AnswerService
             $this->answer->undelete($ids);
         }
     }
+
+    public function permanentDelete($ids)
+    {
+        if (is_a($ids, 'Illuminate\Support\Collection')){
+            foreach ($ids as $id)
+            {
+                $this->answer->permanentDelete($id->id);
+            }
+        } else {
+            $this->answer->permanentDelete($ids);
+        }
+    }
 }

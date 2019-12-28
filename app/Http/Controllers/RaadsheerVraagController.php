@@ -171,8 +171,19 @@ class RaadsheerVraagController extends Controller
         return redirect()->back()->with(['succes' => 'Succesvol teruggezet!']);
     }
 
-    public function permanentDelete()
+    public function permanentDelete($id)
     {
-        return true;
-    }
+        if (Gate::denies('raadsheer-onderdeel', Vraag::withTrashed()->findOrFail($id)->formOnderdeel))
+        {
+            abort(403);
+        }
+
+        try {
+            $this->antwoordService->permanentDelete(Antwoord::onlyTrashed()->where('vraag_id', $id)->get());
+            $this->vraagService->permanentDelete($id);
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+        }
+
+        return redirect()->back()->with(['error' => 'Succesvol permanent verwijderd!']);    }
 }

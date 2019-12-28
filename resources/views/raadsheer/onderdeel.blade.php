@@ -38,8 +38,8 @@
 {{--                        TODO 'speciaal niet aanpassen' => onmogelijk maken voor de gebruiker--}}
                     {!! Form::select('type', [  'boolean' => 'Ja/Nee Vraag',
                                                 'number' => 'Nummer vraag',
-                                                'tekst' => 'Tekst vraag (kort antwoord)',
-                                                'tekstarea' => 'Tekst vraag (lang antwoord)',
+                                                'text' => 'Tekst vraag (kort antwoord)',
+                                                'textarea' => 'Tekst vraag (lang antwoord)',
                                                 'Special' => 'Speciaal, niet aanpassen!!!'], null, ['class' => 'form-control',
                                                 'oninput' => 'if(this.value == "B" || this.value == "Special") {
                                                 document.getElementById("vragen").style.display = "none";
@@ -104,8 +104,8 @@
                         {{--                        TODO 'speciaal niet aanpassen' => onmogelijk maken voor de gebruiker--}}
                         {!! Form::select('type' . $vraag->id, [ 'boolean' => 'Ja/Nee Vraag',
                                                                 'number' => 'Nummer vraag',
-                                                                'tekst' => 'Tekst vraag (kort antwoord)',
-                                                                'tekstarea' => 'Tekst vraag (lang antwoord)',
+                                                                'text' => 'Tekst vraag (kort antwoord)',
+                                                                'textarea' => 'Tekst vraag (lang antwoord)',
                                                                 'special' => 'Speciaal, niet aanpassen!!!'],
                                                                 $vraag->type,
                                                                 ['class' => 'form-control',

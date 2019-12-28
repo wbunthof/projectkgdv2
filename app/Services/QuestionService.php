@@ -61,4 +61,16 @@ class QuestionService
             $this->question->undelete($ids);
         }
     }
+
+    public function permanentDelete($ids)
+    {
+        if (is_array($ids)){
+            foreach ($ids as $id)
+            {
+                $this->question->permanentDelete($id);
+            }
+        } else {
+            $this->question->permanentDelete($ids);
+        }
+    }
 }
