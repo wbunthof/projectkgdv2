@@ -91,12 +91,25 @@ Route::prefix('raadsheer')->group(function () {
     Route::get('/onderdeel/{id}', 'RaadsheerController@onderdeel')->name('raadsheer.onderdeel');
 
     Route::prefix('vraag')->group(function (){
+        Route::get('/index', 'RaadsheerVraagController@index')->name('raadsheer.vraag.index');
         Route::put('/create', 'RaadsheerVraagController@create')->name('raadsheer.vraag.create');
         Route::delete('{id}/destroy', 'RaadsheerVraagController@destroy')->name('raadsheer.vraag.destroy');
         Route::patch('{id}/update', 'RaadsheerVraagController@update')->name('raadsheer.vraag.update');
         Route::patch('{id}/undelete', 'RaadsheerVraagController@undelete')->name('raadsheer.vraag.undelete');
         Route::delete('{id}/permanentdelete', 'RaadsheerVraagController@permanentDelete')->name('raadsheer.vraag.permanentDelete');
     });
+
+  Route::prefix('discipline')->group(function (){
+      Route::put('/create', 'RaadsheerDisciplineController@create')->name('raadsheer.discipline.create');
+      Route::delete('{id}/destroy', 'RaadsheerDisciplineController@destroy')->name('raadsheer.discipline.destroy');
+      Route::patch('{id}/update', 'RaadsheerDisciplineController@update')->name('raadsheer.discipline.update');
+  });
+
+  Route::prefix('leden')->group(function (){
+      Route::put('/create', 'RaadsheerLedenController@create')->name('raadsheer.leden.create');
+      Route::delete('{id}/destroy', 'RaadsheerLedenController@destroy')->name('raadsheer.leden.destroy');
+      Route::patch('{id}/update', 'RaadsheerLedenController@update')->name('raadsheer.leden.update');
+  });
   });
 });
 

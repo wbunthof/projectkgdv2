@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Antwoord;
+use App\Bazuinblazen;
 use App\Formonderdeel;
-use App\Raadsheer;
+use App\Formonderdelendiscipline;
+use App\Leden;
+use App\Trommen;
+use App\Vendelen;
 use App\Vraag;
 use App\Services\AnswerService;
 use App\Services\QuestionService;
-use Auth;
 use Exception;
 use Gate;
 use Illuminate\Http\Request;
-use Redirect;
-use Validator;
 
 class RaadsheerVraagController extends Controller
 {
@@ -33,6 +34,129 @@ class RaadsheerVraagController extends Controller
      */
     public function index()
     {
+//        dump($tmp = Formonderdelendiscipline::with('leden', 'leden.gilde')->find(8));
+
+
+//        foreach (Vendelen::all() as $vendel)
+////        {
+////            $id = $vendel->leden_id - 200000;
+////            $lid = Leden::where([['leden_id', '=', $id], ['formonderdeel_id', '=', 11]])->first();
+////            $disciplineid = array_search(1, [13 => $vendel->{"senioren C"},
+////                14 => $vendel->{"senioren C+"},
+////                15 => $vendel->{"senioren Acrobatiek"},
+////                16 => $vendel->{"senioren Zonder Acrobatiek 35 t/m 50 jaar"},
+////                17 => $vendel->{"senioren Zonder Acrobatiek 51+ jaar"},
+////                3 => $vendel->{"Junioren"}]);
+////
+////            $lid->gilde_id = $vendel->NBFS_id;
+////            $lid->formonderdelendiscipline_id = $disciplineid;
+////
+////            $lid->save();
+////        }
+///
+//        foreach (Trommen::orderBy('leden_id')->get() as $trom)
+//        {
+//            $disciplineid = array_search(1,
+//                [8 => $trom->{"senioren U"},
+//                    9 => $trom->{"senioren A"},
+//                    10 => $trom->{"senioren B"},
+//                    11 => $trom->{"senioren C"},
+//                    12 => $trom->{"senioren E"},
+//                    1 => $trom->{"Junioren muziektrom"},
+//                    2 => $trom->{"Junioren gildetrom"}]);
+//
+//            dump([8 => $trom->{"senioren U"},
+//                9 => $trom->{"senioren A"},
+//                10 => $trom->{"senioren B"},
+//                11 => $trom->{"senioren C"},
+//                12 => $trom->{"senioren E"},
+//                1 => $trom->{"Junioren muziektrom"},
+//                2 => $trom->{"Junioren gildetrom"}]);
+//
+//            $id = $trom->leden_id - 100000;
+//            $lid = Leden::select(['formonderdeel_id', 'id', 'idOld', 'voornaam', 'achternaam', 'formonderdelendiscipline_id', 'gilde_id'])->where([['leden_id', '=', $id], ['formonderdeel_id', '=', 10]])->first();
+//
+//            $lid->gilde_id = $trom->NBFS_id;
+//            $lid->formonderdelendiscipline_id = $disciplineid;
+//            dump($lid);
+//            $lid->save();
+////            1 raar record met id 200073 -> frank hilt
+//        }
+
+//        foreach (Bazuinblazen::orderBy('leden_id')->get() as $bazuin)
+//        {
+//            $disciplineid = array_search(1,
+//                [   5 => $bazuin->{"senioren A"},
+//                    6 => $bazuin->{"senioren B"},
+//                    7 => $bazuin->{"senioren C"},
+//                    4 => $bazuin->{"Junioren"}]);
+//
+//            dump($bazuin);
+//
+////            dump([   5 => $bazuin->{"senioren A"},
+////                6 => $bazuin->{"senioren B"},
+////                7 => $bazuin->{"senioren C"},
+////                4 => $bazuin->{"Junioren"}]);
+//
+//            $id = $bazuin->leden_id;
+//            $lid = Leden::where([['leden_id', '=', $id], ['formonderdeel_id', '=', 6]])->first();
+//
+//            $lid->gilde_id = $bazuin->NBFS_id;
+//            $lid->formonderdelendiscipline_id = $disciplineid;
+//
+//            $lid->save();
+//            dump($lid);
+//        }
+
+//        $lid = new Leden();
+//        $lid->formonderdeel_id = 4;
+//        $lid->id = 2001;
+//        $lid->idOld = 200;
+//        $lid->leden_id = 200;
+//        $lid->voorletter = 200;
+//        $lid->voornaam = 200;
+//        $lid->achternaam = 200;
+//        $lid->geboortedatum = Carbon::today();
+//        $lid->setIdAttribute($lid->id);
+//        dump($lid->getAttributes('id'));
+//        dump(Leden::findOrFail(2001)->id);
+//        $leden->save();
+//        dump(Leden::find(600236)->discipline()->get());
+//        , Leden::find(600241), Leden::find(600276)));
+//        dump(Formonderdelendiscipline::first()->leden()->get());
+
+//        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+//
+//        foreach (Leden::all() as $lid){
+//            $lid->gilde_id = null;
+//            $lid->save();
+//
+//        }
+//
+//        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+//        Leden::first()->discipline()->detach();
+
+//        dd(Formonderdelendiscipline::first()->leden()->get());
+
+//        foreach (Formonderdelendiscipline::get() as $item) {
+//            Trommen::where()
+//            dd($item->leden()->get());
+//        }
+
+//        $formonderdelen = Formonderdeel::findMany([6,10,11]);
+//
+//        foreach ($formonderdelen as $formonderdeel){
+//            $formonderdeel->leden = 1;
+//            $formonderdeel->save();
+//        }
+
+//        $formonderdelen = Formonderdeel::findMany([1,2,3,4,6,7,8,9,10,11]);
+//
+//        foreach ($formonderdelen as $formonderdeel){
+//            $formonderdeel->vragen = 1;
+//            $formonderdeel->save();
+//        }
+
 //        $vragen = Vraag::all();
 //
 //        foreach ($vragen as $vraag){
@@ -86,7 +210,7 @@ class RaadsheerVraagController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function showData($id)
     {
@@ -94,7 +218,7 @@ class RaadsheerVraagController extends Controller
             abort(403);
         }
 
-//        return
+        return redirect()->back()->with('error', 'Moet nog gemaakt worden');
     }
 
     /**
@@ -118,8 +242,6 @@ class RaadsheerVraagController extends Controller
             'maximumValue' . $id => 'integer|nullable',
             'placeholder' . $id => 'string|nullable'
         ]);
-
-        if ($this)
 
         try {
             $this->vraagService->update($request, $id);

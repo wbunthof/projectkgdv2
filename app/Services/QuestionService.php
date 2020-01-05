@@ -36,7 +36,7 @@ class QuestionService
     {
         $attributes = $request->all();
 
-        // if the attributes array is made of keys with the id in the name replace with keys without the id
+        // if the attributes array is made of keys with the id in the name, replace the keyname without id
         if (array_key_exists('tekst' . $id, $attributes))
         {
             $attributes = array_combine(str_replace($id, '', array_keys($attributes)), $attributes);

@@ -8,6 +8,46 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Vraag
+ *
+ * @property int $id
+ * @property string $tekst
+ * @property string|null $extraInfo
+ * @property string|null $placeholder
+ * @property string|null $minimumValue
+ * @property string|null $maximumValue
+ * @property string|null $type
+ * @property int $verplicht
+ * @property int $formonderdeel_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Antwoord[] $antwoord
+ * @property-read int|null $antwoord_count
+ * @property-read \App\Formonderdeel $formOnderdeel
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Vraag onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereExtraInfo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereFormonderdeelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereMaximumValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereMinimumValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag wherePlaceholder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereTekst($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereVerplicht($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Vraag withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Vraag withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Vraag extends Model
 {
     use SoftDeletes;
