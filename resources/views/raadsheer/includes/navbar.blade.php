@@ -23,8 +23,8 @@
                   Inschrijfformulier <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    @foreach($volgordePagina as $onderdeel)
-                        <a class="dropdown-item" href="{{ route('raadsheer.dashboard') }}">{{ ucfirst($onderdeel) }}</a>
+                    @foreach(Auth::user()->formonderdelen()->get() as $onderdeel)
+                        <a class="dropdown-item" href="{{ route('raadsheer.onderdeel', ['id' => $onderdeel->id]) }}">{{ ucfirst($onderdeel->onderdeel) }}</a>
                     @endforeach
                 </div>
             </li>

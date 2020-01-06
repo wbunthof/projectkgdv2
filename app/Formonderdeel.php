@@ -74,7 +74,7 @@ class Formonderdeel extends Model
     }
 
     //Atributes
-    protected $table = 'formOnderdelen';
+    protected $table = 'formonderdelen';
     protected $fillable = [
         'id', 'onderdeel', ' vragen', 'leden'
     ];

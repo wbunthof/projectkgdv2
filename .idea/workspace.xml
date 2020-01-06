@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminRaadsheerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/raadsheer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php" afterDir="false" />
+    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="Misc">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Formonderdeel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Formonderdeel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/GildeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/GildeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/RaasheerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/RaadsheerService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Vraag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vraag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gilde/includes/formVragen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gilde/includes/formVragen.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/includes/navbar.blade.php" afterDir="false" />
     </list>
     <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/projectkgdv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectkgdv2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
-    <list id="56d3c248-085e-4db0-978d-fb10e4d2cbc5" name="Admin" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AdminService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AdminService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/QuestionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/QuestionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/messages.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +21,75 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="PHP Repository" />
+        <option value="PHP Service (repository)" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="12d3809dcb1e570f7acf2df9d962dfbbe183052c" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/wbunthof/projectkgdv2.git" />
+      </set>
+    </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="7" start2="3" end2="5" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="8" end1="15" start2="6" end2="7" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="17" end1="18" start2="9" end2="9" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="20" end1="27" start2="11" end2="11" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="38" end1="38" start2="22" end2="44" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="39" end1="39" start2="45" end2="50" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="41" end1="41" start2="52" end2="92" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="136" end1="136" start2="187" end2="196" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="149" end1="149" start2="209" end2="210" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="153" end1="154" start2="214" end2="215" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="160" end1="160" start2="221" end2="258" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="198" end1="198" start2="296" end2="308" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="262" end1="263" start2="372" end2="471" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="292" end1="293" start2="500" end2="511" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="295" end1="296" start2="513" end2="514" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="298" end1="300" start2="516" end2="518" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="301" end1="301" start2="519" end2="527" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="303" end1="305" start2="529" end2="533" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="306" end1="310" start2="534" end2="542" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
+        <range start1="311" end1="313" start2="543" end2="546" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
+        <range start1="315" end1="315" start2="548" end2="549" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="316" end1="317" start2="550" end2="575" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="319" end1="319" start2="577" end2="578" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="320" end1="321" start2="579" end2="580" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="323" end1="323" start2="582" end2="592" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="324" end1="325" start2="593" end2="596" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+        <range start1="327" end1="328" start2="598" end2="639" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
+      </ranges>
+    </file>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -134,6 +186,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/vendor/ckeditor/ckeditor" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
     </include_path>
   </component>
   <component name="ProjectId" id="1UkKEQiyyJMXz4X4KPxVJLAH1Va" />
@@ -147,17 +208,55 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Services" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\projectkgdv2\app\Services" />
       <recent name="C:\xampp\htdocs\projectkgdv2\app\Repositories" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="artisan make:controller TestController -p" />
+      <command value="artisan make:controller -p TestController " />
+      <command value="artisan make:migration ledenables" />
+      <command value="artisan make:migration disciplinesonderdelen" />
+      <command value="artisan make:model disciplinesonderdeel" />
+      <command value="artisan make:model Disciplinesonderdeel" />
+      <command value="artisan ide-helper:generate" />
+      <command value="artisan ide-helper:eloquent" />
+      <command value="artisan ide-helper:meta" />
+      <command value="artisan make:migration leden_table_add_discipline_onderdeel_kolom" />
+      <command value="artisan make:migration" />
+      <command value="artisan make:migration leden_formonderdeeldiscplines_pivot_table" />
+      <command value="artisan migrate:rollback" />
+      <command value="artisan migrate" />
+      <command value="artisan make:controller --resource RaadsheerDisciplineController" />
+      <command value="artisan ide-helper:models" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -196,6 +295,18 @@
       <workItem from="1576414459965" duration="2081000" />
       <workItem from="1576426937986" duration="6984000" />
       <workItem from="1576665418166" duration="2103000" />
+      <workItem from="1576757837571" duration="535000" />
+      <workItem from="1576758399907" duration="7292000" />
+      <workItem from="1576835823250" duration="20295000" />
+      <workItem from="1577108430280" duration="9000" />
+      <workItem from="1577108470486" duration="330000" />
+      <workItem from="1577454194042" duration="8965000" />
+      <workItem from="1577464771528" duration="6002000" />
+      <workItem from="1577526848065" duration="7271000" />
+      <workItem from="1577614729088" duration="4510000" />
+      <workItem from="1577628112232" duration="46374000" />
+      <workItem from="1578243606090" duration="2729000" />
+      <workItem from="1578318654953" duration="3464000" />
     </task>
     <task id="LOCAL-00001" summary="Created files for admin service/repository">
       <created>1575969512489</created>
@@ -260,7 +371,105 @@
       <option name="project" value="LOCAL" />
       <updated>1576064291598</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added the following for the raadsheer:&#10;- Toevoegen&#10;- Verwijderen (incl detach from formonderdelen)&#10;- Nieuw wachtwoord&#10;- Bewerken (email/toegang)">
+      <created>1576701469797</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576701469797</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added the following for the raadsheer:&#10;- Toevoegen&#10;- Verwijderen (incl detach from formonderdelen)&#10;- Nieuw wachtwoord&#10;- Bewerken (email/toegang)">
+      <created>1576701489748</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576701489748</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Commented the code which made it able to register as a user. Which shouldn't be able...">
+      <created>1576701557059</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1576701557059</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Typo">
+      <created>1576701572009</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576701572009</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Diversen">
+      <created>1577105442267</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1577105442267</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Hoofdletter">
+      <created>1577105685435</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1577105685435</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Hoofdletter">
+      <created>1577105710063</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1577105710063</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Hoofdletter">
+      <created>1577105861492</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1577105861492</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Van alles">
+      <created>1577478987954</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1577478987954</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Van alles">
+      <created>1577479005240</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1577479005240</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Making the tags matching">
+      <created>1577479497408</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1577479497408</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Softdeletes for vragen en antwoorden">
+      <created>1577534828449</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1577534828449</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Permanentdeletes for vragen en antwoorden">
+      <created>1577535632297</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1577535632297</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Misc">
+      <created>1578243267211</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1578243267211</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,41 +499,144 @@
     <MESSAGE value="Didn't include variable in class" />
     <MESSAGE value="Created files for question service/repository" />
     <MESSAGE value="Made the raadsheer/formonderdeel relation, and removed the table that was planned for it (&quot;raadsheerrechten&quot;), and made table which complies to the naming convention." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the raadsheer/formonderdeel relation, and removed the table that was planned for it (&quot;raadsheerrechten&quot;), and made table which complies to the naming convention." />
+    <MESSAGE value="Added the following for the raadsheer:&#10;- Toevoegen&#10;- Verwijderen (incl detach from formonderdelen)&#10;- Nieuw wachtwoord&#10;- Bewerken (email/toegang)" />
+    <MESSAGE value="Commented the code which made it able to register as a user. Which shouldn't be able..." />
+    <MESSAGE value="Typo" />
+    <MESSAGE value="Diversen" />
+    <MESSAGE value="Hoofdletter" />
+    <MESSAGE value="Van alles" />
+    <MESSAGE value="Making the tags matching" />
+    <MESSAGE value="Softdeletes for vragen en antwoorden" />
+    <MESSAGE value="Permanentdeletes for vragen en antwoorden" />
+    <MESSAGE value="Misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Misc" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="513" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575970040916">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577108799234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="513" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1575970040916" />
-    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576061389225">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577108799234" />
+    <state x="513" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576680317879">
       <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="513" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1576680317879" />
+    <state x="765" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1577961746382">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1577961746382" />
+    <state x="561" y="177" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577464682724">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576061389225" />
-    <state x="2266" y="0" key="CommitChangelistDialog2" timestamp="1576064466628">
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1576758359295" />
+    <state x="561" y="177" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577464682724" />
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1578244202488">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="277" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105860497" />
+    <state x="2266" y="0" width="1170" height="1040" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701625591" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576668761775" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578244202488" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535631108" />
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479496482" />
+    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1578320292800">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1576680581591" />
+    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578320292800" />
+    <state x="417" y="169" key="FileChooserDialogImpl" timestamp="1577024928948">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="417" y="169" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577024928948" />
+    <state x="417" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575895500376" />
+    <state width="1877" height="270" key="GridCell.Tab.0.bottom" timestamp="1578239108704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105371148" />
+    <state width="1877" height="270" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239108704" />
+    <state width="1877" height="270" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577623021647" />
+    <state width="1877" height="270" key="GridCell.Tab.0.center" timestamp="1578239108704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105371148" />
+    <state width="1877" height="270" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239108704" />
+    <state width="1877" height="270" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577623021647" />
+    <state width="1877" height="270" key="GridCell.Tab.0.left" timestamp="1578239108704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105371148" />
+    <state width="1877" height="270" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239108704" />
+    <state width="1877" height="270" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577623021647" />
+    <state width="1877" height="270" key="GridCell.Tab.0.right" timestamp="1578239108704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105371148" />
+    <state width="1877" height="270" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239108704" />
+    <state width="1877" height="270" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577623021647" />
+    <state x="147" y="57" key="SettingsEditor" timestamp="1577108543651">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="57" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577108543651" />
+    <state x="147" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575895870807" />
+    <state x="395" y="249" key="SymfonyComponentCompositeDataDialog" timestamp="1577024929924">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="395" y="249" key="SymfonyComponentCompositeDataDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577024929924" />
+    <state x="618" y="321" key="VCS.ChangelistChooser" timestamp="1576668171439">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="618" y="321" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1576668171439" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1578243269627">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105875919" />
+    <state x="2371" y="183" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701658871" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975230305" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578243269627" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479027548" />
+    <state x="577" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576682025528">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="577" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1576682025528" />
+    <state x="327" y="66" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1577024783934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="327" y="66" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577024783934" />
+    <state x="620" y="69" key="ftp.server.browser" timestamp="1577106787878">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="620" y="69" key="ftp.server.browser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577106787878" />
+    <state x="2521" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1577628195267">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2266" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576064466628" />
-    <state x="393" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575976020564" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1575975841730">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2521" y="246" width="700" height="530" key="recent.locations.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577628195267" />
+    <state x="531" y="236" width="840" height="855" key="run.anything.popup" timestamp="1578239096577">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1575975841730" />
-    <state x="417" y="169" key="FileChooserDialogImpl" timestamp="1575895500376">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577025069202" />
+    <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239096577" />
+    <state x="2451" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577628284561" />
+    <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577531278761" />
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup" timestamp="1578322116484">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="417" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575895500376" />
-    <state x="147" y="57" key="SettingsEditor" timestamp="1575895870807">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="147" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575895870807" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1575975230305">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975230305" />
-    <state x="301" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575978868342">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1575978868342" />
+    <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577025056866" />
+    <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576697517291" />
+    <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1576839285846" />
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322116484" />
+    <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577618569640" />
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535524037" />
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577480431390" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php</url>
+          <line>337</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
