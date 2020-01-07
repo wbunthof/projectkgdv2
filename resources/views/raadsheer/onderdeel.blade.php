@@ -327,7 +327,7 @@
                             {!! Form::text('tekst' . $vraag->id, $vraag->tekst, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de vraag in', 'required']) !!}
 
                             {!! Form::label('extraInfo' . $vraag->id, 'Vul hier de extra info in, voor als de vraag niet helemaal duidelijk is voor de secretarissen.') !!}
-                            {!! Form::textarea('extraInfo' . $vraag->id, $vraag->extrainfo, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.']) !!}
+                            {!! Form::textarea('extraInfo' . $vraag->id, $vraag->extraInfo, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de extra info in.']) !!}
                             <br>
 
     {{--                        {!! Form::label('type' . $vraag->id, 'Type: Als je dit aanpast worden de ingevulde antwoorden gewist! Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het wordt alleen ingekort indien nodig. ') !!}--}}
@@ -357,13 +357,13 @@
                                 <hr>
                                 <h3>Details over de vraag</h3><br>
                                 {!! Form::label('minimumValue' . $vraag->id, 'Minimale aantal') !!}
-                                {!! Form::number('minimumValue' . $vraag->id, null, ['min' => 0, 'class' => 'form-control']) !!}
+                                {!! Form::number('minimumValue' . $vraag->id, $vraag->minimumValue, ['min' => 0, 'class' => 'form-control']) !!}
 
                                 {!! Form::label('maximumValue' . $vraag->id, 'Maximale aantal') !!}
-                                {!! Form::number('maximumValue' . $vraag->id, null, ['min' => 0, 'class' => 'form-control']) !!}
+                                {!! Form::number('maximumValue' . $vraag->id, $vraag->maximumValue, ['min' => 0, 'class' => 'form-control']) !!}
 
                                 {!! Form::label('placeholder' . $vraag->id, 'Tekst die achter de vraag komt te staan zoals deze:') !!}
-                                {!! Form::text('placeholder' . $vraag->id, null, ['class' => 'form-control', 'placeholder' => 'Dit is dus de tekst']) !!}
+                                {!! Form::text('placeholder' . $vraag->id, $vraag->placholder, ['class' => 'form-control', 'placeholder' => 'Dit is dus de tekst']) !!}
                                 <br>
                             </div>
                             {!! Form::submit('Opslaan', ['class' => 'btn btn-primary mb-2']) !!}
