@@ -88,7 +88,7 @@
         </a>
     </h2>
 
-        <div class="collapse" id="collapseLeden">
+        <div class="collapse show" id="collapseLeden">
             <button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#newLidModal">
                 Lid toevoegen
             </button>
@@ -238,7 +238,7 @@
                 Vragen
             </a>
         </h2>
-        <div class="collapse" id="collapseVragen">
+        <div class="collapse show" id="collapseVragen">
         <button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#exampleModal">
             Vraag toevoegen
         </button>
