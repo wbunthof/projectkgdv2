@@ -248,7 +248,7 @@ class RaadsheerVraagController extends Controller
         try {
             $this->vraagService->update($request, $id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol!']);
@@ -272,7 +272,7 @@ class RaadsheerVraagController extends Controller
         try {
             $a = 4+4;
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol verwijderd!']);
@@ -289,7 +289,7 @@ class RaadsheerVraagController extends Controller
             $this->vraagService->undelete($id);
             $this->antwoordService->undelete(Antwoord::onlyTrashed()->where('vraag_id', $id)->get());
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol teruggezet!']);
@@ -306,7 +306,7 @@ class RaadsheerVraagController extends Controller
             $this->antwoordService->permanentDelete(Antwoord::onlyTrashed()->where('vraag_id', $id)->get());
             $this->vraagService->permanentDelete($id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['error' => 'Succesvol permanent verwijderd!']);    }

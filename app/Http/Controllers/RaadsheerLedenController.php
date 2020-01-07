@@ -71,7 +71,7 @@ class RaadsheerLedenController extends Controller
         try {
             $this->ledenService->update($request, $id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol geüpdate!']);
@@ -92,7 +92,7 @@ class RaadsheerLedenController extends Controller
         try {
             $this->ledenService->delete($id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol verwijderd!']);

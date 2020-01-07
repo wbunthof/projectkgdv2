@@ -35,7 +35,7 @@ class RaadsheerDisciplineController extends Controller
         try {
             $this->disciplineService->create($request);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol']);
@@ -61,7 +61,7 @@ class RaadsheerDisciplineController extends Controller
         try {
             $this->disciplineService->update($request, $id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol geüpdate!']);
@@ -82,7 +82,7 @@ class RaadsheerDisciplineController extends Controller
         try {
             $this->disciplineService->delete($id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e]);
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succesvol verwijderd!']);
