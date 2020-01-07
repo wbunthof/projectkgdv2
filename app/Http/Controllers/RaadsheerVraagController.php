@@ -178,12 +178,14 @@ class RaadsheerVraagController extends Controller
         $vaildation = $request->validate([
             'formonderdeel_id' => 'required|integer|exists:formonderdelen,id',
             'tekst' => 'required|string',
-            'extrainfo' => 'string|nullable',
+            'extraInfo' => 'string|nullable',
             'type' => 'required|string',
             'minimumValue' => 'integer|nullable',
             'maximumValue' => 'integer|nullable',
             'placeholder' => 'string|nullable'
         ]);
+
+//        dd($request->all());
 
         try {
             $this->vraagService->create($request);

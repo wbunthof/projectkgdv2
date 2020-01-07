@@ -112,7 +112,7 @@ class Vraag extends Model
 
     protected $table = 'vraag';
     protected $fillable = [
-        'tekst', 'type', 'minimumValue', 'maximumValue', 'placeholder', 'formonderdeel_id'
+        'tekst', 'extraInfo', 'type', 'minimumValue', 'maximumValue', 'placeholder', 'formonderdeel_id', 'type',
     ];
 }
 
