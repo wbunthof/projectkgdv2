@@ -30,8 +30,6 @@ class LedenService
 
         $attributes['voorletter'] = $attributes['voornaam'][0];
 
-        $attributes['formonderdeel_id'] = 1;
-
         return $this->ledenService->create($attributes);
     }
 

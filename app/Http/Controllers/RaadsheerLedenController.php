@@ -27,6 +27,7 @@ class RaadsheerLedenController extends Controller
                                     'geboortedatum' => 'required|date',
                                     'straat' => 'nullable|string',
                                     'huisnummer' => 'nullable|alpha_num',
+                                    'plaats' => 'nullable|string',
                                     'formonderdeel_id' => 'numeric|required'];
     }
 
@@ -43,6 +44,8 @@ class RaadsheerLedenController extends Controller
         }
 
         $vaildation = $request->validate($this->validationRules);
+
+        dump($request->get('formonderdeel_id'));
 
         try {
             $this->ledenService->create($request);

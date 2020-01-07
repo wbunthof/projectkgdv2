@@ -64,6 +64,7 @@ class DisciplineService
 
         foreach ($this->disciplinerepository->find($id)->leden()->get() as $lid){
             $lid->formonderdelendiscipline_id = null;
+            $lid->gilde_id = null;
             $lid->save();
         }
 

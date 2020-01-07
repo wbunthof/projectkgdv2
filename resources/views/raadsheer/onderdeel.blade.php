@@ -47,7 +47,7 @@
                 <button class="btn btn-secondary" type="submit">Data</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateDiscipline{{$discipline->id}}Modal">Bewerken</button>
                 <a class="btn btn-danger" href="{{ route('raadsheer.discipline.destroy', ['id' => $discipline->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteDiscipline-{{$discipline->id}}').submit();">Verwijderen</a>
-                {!! Form::open(['id' => 'deleteDiscipline' . $discipline->id,'class' => 'form', 'url' => route('raadsheer.discipline.destroy', ['id' => $discipline->id]), 'method' => 'POST']) !!}
+                {!! Form::open(['id' => 'deleteDiscipline-' . $discipline->id,'class' => 'form', 'url' => route('raadsheer.discipline.destroy', ['id' => $discipline->id]), 'method' => 'POST']) !!}
                 {!! Form::hidden('_method', 'DELETE') !!}
                 {!! Form::close() !!}
             </div>
@@ -136,11 +136,14 @@
 
                             {!! Form::label('', 'Adres') !!}
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-5">
                                     {!! Form::text('straat' , '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Straat']) !!}
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     {!! Form::text('huisnummer', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Huisnumer']) !!}
+                                </div>
+                                <div class="col-5">
+                                    {!! Form::text('plaats', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Plaats']) !!}
                                 </div>
                             </div>
 
@@ -212,11 +215,14 @@
 
                                     {!! Form::label('', 'Adres') !!}
                                     <div class="form-row">
-                                        <div class="col-8">
+                                        <div class="col-5">
                                             {!! Form::text('straat' , $lid->straat, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Straat']) !!}
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-2">
                                             {!! Form::text('huisnummer', $lid->huisnummer, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Huisnumer']) !!}
+                                        </div>
+                                        <div class="col-5">
+                                            {!! Form::text('plaats', $lid->plaats, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Plaats']) !!}
                                         </div>
                                     </div>
 
