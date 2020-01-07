@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="Misc">
+    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Formonderdeel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Formonderdeel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/includes/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Vraag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vraag.php" afterDir="false" />
     </list>
-    <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,39 +54,6 @@
         <option value="https://github.com/wbunthof/projectkgdv2.git" />
       </set>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/.idea/workspace.xml">
-      <ranges>
-        <range start1="3" end1="7" start2="3" end2="5" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="8" end1="15" start2="6" end2="7" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="17" end1="18" start2="9" end2="9" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="20" end1="27" start2="11" end2="11" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="38" end1="38" start2="22" end2="44" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="39" end1="39" start2="45" end2="50" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="41" end1="41" start2="52" end2="92" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="136" end1="136" start2="187" end2="196" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="149" end1="149" start2="209" end2="210" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="153" end1="154" start2="214" end2="215" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="160" end1="160" start2="221" end2="258" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="198" end1="198" start2="296" end2="308" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="262" end1="263" start2="372" end2="471" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="292" end1="293" start2="500" end2="511" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="295" end1="296" start2="513" end2="514" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="298" end1="300" start2="516" end2="518" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="301" end1="301" start2="519" end2="527" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="303" end1="305" start2="529" end2="533" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="306" end1="310" start2="534" end2="542" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
-        <range start1="311" end1="313" start2="543" end2="546" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
-        <range start1="315" end1="315" start2="548" end2="549" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="316" end1="317" start2="550" end2="575" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="319" end1="319" start2="577" end2="578" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="320" end1="321" start2="579" end2="580" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="323" end1="323" start2="582" end2="592" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="324" end1="325" start2="593" end2="596" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-        <range start1="327" end1="328" start2="598" end2="639" changelist="b356e9be-151c-4950-b60e-98b4dce55f7a" />
-      </ranges>
-    </file>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -306,7 +270,8 @@
       <workItem from="1577614729088" duration="4510000" />
       <workItem from="1577628112232" duration="46374000" />
       <workItem from="1578243606090" duration="2729000" />
-      <workItem from="1578318654953" duration="3464000" />
+      <workItem from="1578318654953" duration="3773000" />
+      <workItem from="1578405821141" duration="519000" />
     </task>
     <task id="LOCAL-00001" summary="Created files for admin service/repository">
       <created>1575969512489</created>
@@ -469,7 +434,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578243267211</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Misc">
+      <created>1578322133820</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1578322133820</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Capital mistake">
+      <created>1578322244824</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1578322244824</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +488,8 @@
     <MESSAGE value="Softdeletes for vragen en antwoorden" />
     <MESSAGE value="Permanentdeletes for vragen en antwoorden" />
     <MESSAGE value="Misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Misc" />
+    <MESSAGE value="Capital mistake" />
+    <option name="LAST_COMMIT_MESSAGE" value="Capital mistake" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577108799234">
@@ -530,13 +510,13 @@
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576061389225" />
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1576758359295" />
     <state x="561" y="177" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577464682724" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1578244202488">
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1578322243207">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105860497" />
     <state x="2266" y="0" width="1170" height="1040" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701625591" />
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576668761775" />
-    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578244202488" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322243207" />
     <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535631108" />
     <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479496482" />
     <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1578320292800">
@@ -586,13 +566,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="321" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1576668171439" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1578243269627">
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1578322247846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105875919" />
     <state x="2371" y="183" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701658871" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975230305" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578243269627" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322247846" />
     <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479027548" />
     <state x="577" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576682025528">
       <screen x="0" y="0" width="1536" height="824" />
@@ -617,16 +597,16 @@
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239096577" />
     <state x="2451" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577628284561" />
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577531278761" />
-    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup" timestamp="1578322116484">
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1578405849784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577025056866" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576697517291" />
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1576839285846" />
-    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322116484" />
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322311905" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577618569640" />
     <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535524037" />
-    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577480431390" />
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578405849784" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
