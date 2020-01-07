@@ -236,14 +236,14 @@ class RaadsheerVraagController extends Controller
             abort(403);
         }
 
-        $vaildation = $request->validate(['rules' => [
+        $vaildation = $request->validate([
             'tekst' . $id => 'required|string',
             'extrainfo' . $id => 'string|nullable',
             'type' . $id => 'required|string',
             'minimumValue' . $id => 'integer|nullable',
             'maximumValue' . $id => 'integer|nullable',
             'placeholder' . $id => 'string|nullable'
-        ], 'messages' => ['tekst.required' => 'Een tekst is verplicht']]);
+        ]);
 
         try {
             $this->vraagService->update($request, $id);
