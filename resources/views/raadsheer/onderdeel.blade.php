@@ -318,7 +318,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            {!! Form::open(['class' => 'form', 'url' => route('raadsheer.vraag.update', ['id' => $vraag->id + 1]), 'method' => 'POST']) !!}
+                            {!! Form::open(['class' => 'form', 'url' => route('raadsheer.vraag.update', ['id' => $vraag->id]), 'method' => 'POST']) !!}
 
                             {!! Form::hidden('_method', 'patch') !!}
                             {!! Form::token() !!}
