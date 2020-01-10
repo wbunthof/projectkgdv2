@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Vraag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vraag.php" afterDir="false" />
     </list>
     <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +269,8 @@
       <workItem from="1577628112232" duration="46374000" />
       <workItem from="1578243606090" duration="2729000" />
       <workItem from="1578318654953" duration="3773000" />
-      <workItem from="1578405821141" duration="519000" />
+      <workItem from="1578405821141" duration="1229000" />
+      <workItem from="1578420151844" duration="6160000" />
     </task>
     <task id="LOCAL-00001" summary="Created files for admin service/repository">
       <created>1575969512489</created>
@@ -448,7 +447,84 @@
       <option name="project" value="LOCAL" />
       <updated>1578322244824</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Capital mistake">
+      <created>1578406345299</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1578406345299</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Vraag fillable property updated">
+      <created>1578406416025</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1578406416025</updated>
+    </task>
+    <task id="LOCAL-00028" summary="onderdeel.blade.php test removed">
+      <created>1578420303368</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1578420303368</updated>
+    </task>
+    <task id="LOCAL-00029" summary="commented dev dependecy">
+      <created>1578420354099</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1578420354099</updated>
+    </task>
+    <task id="LOCAL-00030" summary="values on input at modal when change question, raadsheer">
+      <created>1578420645852</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1578420645852</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Test">
+      <created>1578421554959</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1578421554959</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Undo test">
+      <created>1578421869603</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1578421869603</updated>
+    </task>
+    <task id="LOCAL-00033" summary="always show collapsed items on load">
+      <created>1578422292637</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1578422292637</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Name change verwijderen-&gt;deactiveren&#10;From whole error to small error to user">
+      <created>1578422568074</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1578422568074</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Button color changed">
+      <created>1578423022538</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1578423022538</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Misc">
+      <created>1578425107341</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1578425107341</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,10 +545,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created files for admin service/repository" />
-    <MESSAGE value="Made use of adminservice while updating accountdetails" />
-    <MESSAGE value="updated account.blade.php because it wasnt working" />
-    <MESSAGE value="Updated for the gilde service/repository pattern" />
     <MESSAGE value="Updated .env.example to env2" />
     <MESSAGE value="Unused files removed" />
     <MESSAGE value="Didn't include variable in class" />
@@ -487,9 +559,18 @@
     <MESSAGE value="Making the tags matching" />
     <MESSAGE value="Softdeletes for vragen en antwoorden" />
     <MESSAGE value="Permanentdeletes for vragen en antwoorden" />
-    <MESSAGE value="Misc" />
     <MESSAGE value="Capital mistake" />
-    <option name="LAST_COMMIT_MESSAGE" value="Capital mistake" />
+    <MESSAGE value="Vraag fillable property updated" />
+    <MESSAGE value="onderdeel.blade.php test removed" />
+    <MESSAGE value="commented dev dependecy" />
+    <MESSAGE value="values on input at modal when change question, raadsheer" />
+    <MESSAGE value="Test" />
+    <MESSAGE value="Undo test" />
+    <MESSAGE value="always show collapsed items on load" />
+    <MESSAGE value="Name change verwijderen-&gt;deactiveren&#10;From whole error to small error to user" />
+    <MESSAGE value="Button color changed" />
+    <MESSAGE value="Misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Misc" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577108799234">
@@ -510,20 +591,20 @@
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576061389225" />
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1576758359295" />
     <state x="561" y="177" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577464682724" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1578322243207">
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1578425106480">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105860497" />
     <state x="2266" y="0" width="1170" height="1040" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701625591" />
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576668761775" />
-    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322243207" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578425106480" />
     <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535631108" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479496482" />
-    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1578320292800">
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578406415069" />
+    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1578425262402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1576680581591" />
-    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578320292800" />
+    <state x="116" y="117" width="1688" height="806" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578425262402" />
     <state x="417" y="169" key="FileChooserDialogImpl" timestamp="1577024928948">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -553,6 +634,10 @@
     <state width="1493" height="199" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105371148" />
     <state width="1877" height="270" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239108704" />
     <state width="1877" height="270" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577623021647" />
+    <state x="795" y="147" key="RollbackChangesDialog" timestamp="1578421840904">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="795" y="147" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578421840904" />
     <state x="147" y="57" key="SettingsEditor" timestamp="1577108543651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -566,14 +651,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="321" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1576668171439" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1578322247846">
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1578425125769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105875919" />
     <state x="2371" y="183" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701658871" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975230305" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322247846" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577479027548" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578425125769" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578406419182" />
     <state x="577" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576682025528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -586,6 +671,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="620" y="69" key="ftp.server.browser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577106787878" />
+    <state x="681" y="294" key="git4idea.merge.GitPullDialog" timestamp="1578423031835">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="294" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578423031835" />
     <state x="2521" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1577628195267">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -597,13 +686,13 @@
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578239096577" />
     <state x="2451" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577628284561" />
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577531278761" />
-    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1578405849784">
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup" timestamp="1578422493279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577025056866" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576697517291" />
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1576839285846" />
-    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578322311905" />
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422493279" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577618569640" />
     <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535524037" />
     <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578405849784" />
@@ -613,7 +702,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php</url>
-          <line>337</line>
+          <line>343</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
