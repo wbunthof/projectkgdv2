@@ -53,7 +53,9 @@ class GildeService
 
     public function newPassword($id)
     {
-        return $this->gilde->update($id, ['password' => Hash::make(Str::random(8))]);
+        $password = Str::random(8);
+        $this->gilde->update($id, ['password' => Hash::make($password)]);
+        return $password;
     }
 }
 

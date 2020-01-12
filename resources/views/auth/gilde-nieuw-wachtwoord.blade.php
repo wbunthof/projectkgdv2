@@ -6,10 +6,11 @@
     <title>Inschrijfformulier Kringgildedag</title>
   </head>
   <body>
-    {!! Form::open() !!}
+    {!! Form::open(['url' => route('NieuwWachtwoordGildePOST'), 'method' => 'POST']) !!}
     {{ csrf_field() }}
-    {!! Form::label('E-mailadres', 'Vul hier het e-mailadres in waarvan u een nieuw wachtwoord wilt.', []) !!}
-    {!! Form::text('E-mailadres', '', []) !!}
+    {!! Form::label('email', 'Vul hier het e-mailadres in waarvan u een nieuw wachtwoord wilt.', []) !!}
+    {!! Form::text('email', '', []) !!}
+    {!! Form::submit() !!}
     {!! Form::close() !!}
   </body>
 </html>

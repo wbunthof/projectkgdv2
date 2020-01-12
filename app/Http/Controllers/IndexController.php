@@ -30,11 +30,13 @@ class IndexController extends Controller
 
     public function test()
     {
-      return dump(DB::table('beamer')->select('gegevens')->get());
+        $gilde = Gilde::find(1);
+        return dump(Mail::to('d11167091@urhen.com')->send(new testMail()));
+//        return dump($gilde);
     }
 
-      public function nietIngevuld()
-      {
+    public function nietIngevuld()
+    {
         $gilden = Gilde::all();
         $nietIngevulGilden = [];
 
@@ -46,7 +48,7 @@ class IndexController extends Controller
         }
 
 
-      return dump($nietIngevulGilden);
+        return dump($nietIngevulGilden);
     }
 
     public function ajax($type, $input, $discpline) //Request $request

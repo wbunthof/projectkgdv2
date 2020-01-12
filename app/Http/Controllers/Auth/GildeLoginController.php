@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\gildeNewPassword;
 use App\Services\GildeService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Gilde;
 use Auth;
 use App\Http\Controllers\AdminController;
+use Mail;
 
 class GildeLoginController extends Controller
 {
@@ -51,12 +53,12 @@ class GildeLoginController extends Controller
       if (!isset($request->email)) {
         return view('auth.gilde-login')->with('error', 'Fout');
       }
-      if (Gilde::where('email', $request->email)->count() < 1) {
-        return view('auth.gilde-login')->with('error', 'Fout');
-      }
 
-      $gilde = Gilde::where('email', $request->email)->first();
+      $gilde = Gilde::where('email', $request->email)->firstOrFail();
+      $password = $this->gildeservice->newPassword($gilde->id);
 
-      return $this->gildeservice-> newPassword($gilde->id);
+      Mail::to($gilde)->send(new gildeNewPassword($gilde, $password));
+
+      return redirect(route('gilde.login'))->with('succes', 'Nieuw wachtwoord verzonden naar ' . $gilde->email);
     }
 }

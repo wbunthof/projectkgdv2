@@ -7,18 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class testMail extends Mailable
+class gildeNewPassword extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $password;
+    public $user;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $user
+     * @param $password
      */
-    public function __construct()
+    public function __construct($user, $password)
     {
-        //
+        $this->user = $user;
+        $this->password = $password;
     }
 
     /**
@@ -28,6 +33,6 @@ class testMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.test');
+        return $this->view(' mails.newPassword');
     }
 }

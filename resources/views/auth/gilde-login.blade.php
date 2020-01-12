@@ -6,6 +6,14 @@
       <h1>Inschrijfformulier voor de Kringgildedag</h1>
         <div class="col-md-8">
             <div class="card">
+                @if (session('succes'))
+                    <div class="alert alert-success alert-dismissible">
+                        {{session('succes')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="card-header">{{ __('Inloggen voor gilden')}}</div>
 
                 <div class="card-body">
@@ -48,12 +56,11 @@
                                     {{ __('Inloggen') }}
                                 </button>
                             </div>
-                            {{-- <div class="col-md-8 offset-md-4">
-                              <a href="{{route('NieuwWachtwoordGildeGET')}}"></a>
-                              <button type="submit" class="btn btn-primary">
-                                 Nieuw wachtwoord
-                              </button>
-                            </div> --}}
+                            <div class="col-md-8 offset-md-4">
+                                <a href="{{route('NieuwWachtwoordGildeGET')}}">
+                                    Nieuw wachtwoord
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>
