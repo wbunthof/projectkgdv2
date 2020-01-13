@@ -4,6 +4,10 @@
 //
 namespace App\Http\Controllers;
 
+use App\Admin;
+use App\Mail\newUser;
+use App\Organiser;
+use App\Raadsheer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -30,8 +34,9 @@ class IndexController extends Controller
 
     public function test()
     {
-        $gilde = Gilde::find(1);
-        return dump(Mail::to('d11167091@urhen.com')->send(new testMail()));
+        $gilde = Raadsheer::first();
+//        return str_replace('App\\', '', get_class($gilde));
+       return new \App\Mail\newUser($gilde, 'Test');
 //        return dump($gilde);
     }
 

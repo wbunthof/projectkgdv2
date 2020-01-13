@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Formonderdeel;
+use App\Mail\newPassword;
+use App\Mail\raadsheerNewPassword;
+use App\Raadsheer;
 use App\Services\RaadsheerService;
 use Exception;
 use Illuminate\Http\Request;
+use Mail;
 use Validator;
 
 class AdminRaadsheerController extends Controller
@@ -28,7 +32,7 @@ class AdminRaadsheerController extends Controller
         try {
             $this->raadsheerservice->create($request);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => $e]);
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
         return redirect()->back()->with(['succes' => 'Success']);
     }
@@ -38,9 +42,13 @@ class AdminRaadsheerController extends Controller
         if ($this->idValidator($id)->fails()){
             return redirect()->back()->withErrors($this->idValidator($id));
         }
+        try {
+            $this->raadsheerservice->delete($id);
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
 
-        $this->raadsheerservice->delete($id);
-        return redirect()->back();
+        return redirect()->back()->with(['succes' => 'Succesvol!']);
     }
 
     public function update(Request $request, $id)
@@ -52,25 +60,26 @@ class AdminRaadsheerController extends Controller
         try {
             $this->raadsheerservice->update($request, $id);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => $e]);
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
         return redirect()->back()->with(['succes' => 'Succes']);
     }
 
-    public function newPassword($id)
+    public function newPassword(Raadsheer $id)
     {
-        if ($this->idValidator($id)->fails()){
-            return redirect()->back()->withErrors($this->idValidator($id));
+        if ($this->idValidator($id->id)->fails()){
+            return redirect()->back()->withErrors($this->idValidator($id->id));
         }
 
         try {
-            $password = $this->raadsheerservice->newPassword($id);
+            $password = $this->raadsheerservice->newPassword($id->id);
         } catch (Exception $e){
-            return redirect()->back()->with(['error' => $e]);
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
-        // TODO: Mail new password
+        Mail::to($id)->send(new newPassword($id, $password));
+
         return redirect()->back()->with(['succes' => 'New password send, password: ' . $password]);
     }
 
