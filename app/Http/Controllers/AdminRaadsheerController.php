@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Formonderdeel;
 use App\Mail\newPassword;
+use App\Mail\newUser;
 use App\Mail\raadsheerNewPassword;
 use App\Raadsheer;
 use App\Services\RaadsheerService;
@@ -30,10 +31,13 @@ class AdminRaadsheerController extends Controller
     public function create(Request $request)
     {
         try {
-            $this->raadsheerservice->create($request);
+            $raadsheer = $this->raadsheerservice->create($request);
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
+
+        Mail::to($raadsheer)->send(new newUser());
+        dump($raadsheer);
         return redirect()->back()->with(['succes' => 'Success']);
     }
 
