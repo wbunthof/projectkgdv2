@@ -36,8 +36,8 @@ class AdminRaadsheerController extends Controller
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
-        Mail::to($create['raadsheer'])->send(new newUser($create['raadsheer'], $create['password']));
-        dump($create['raadsheer']);
+        Mail::to($create['user'])->send(new newUser($create['user'], $create['password']));
+        dump($create['user']);
         return redirect()->back()->with(['succes' => 'Success']);
     }
 
