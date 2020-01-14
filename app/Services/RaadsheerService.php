@@ -43,7 +43,7 @@ class RaadsheerService
             }
         }
 
-        return $raadsheer;
+        return ['user' => $raadsheer, 'password' => $attributes['password']];
     }
 
     public function delete($id)

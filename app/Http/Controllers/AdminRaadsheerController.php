@@ -31,13 +31,13 @@ class AdminRaadsheerController extends Controller
     public function create(Request $request)
     {
         try {
-            $raadsheer = $this->raadsheerservice->create($request);
+            $create = $this->raadsheerservice->create($request);
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
-        Mail::to($raadsheer)->send(new newUser());
-        dump($raadsheer);
+        Mail::to($create['raadsheer'])->send(new newUser($create['raadsheer'], $create['password']));
+        dump($create['raadsheer']);
         return redirect()->back()->with(['succes' => 'Success']);
     }
 
