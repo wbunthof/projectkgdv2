@@ -33,7 +33,8 @@ class RaadsheerService
     {
 
         $attributes = $request->all();
-        $attributes['password'] = Hash::make(Str::random(8));
+        $password = Str::random(8);
+        $attributes['password'] = Hash::make($password);
 
         $raadsheer = $this->raadsheerRepository->create($attributes);
 
@@ -43,7 +44,7 @@ class RaadsheerService
             }
         }
 
-        return ['user' => $raadsheer, 'password' => $attributes['password']];
+        return ['user' => $raadsheer, 'password' => $password];
     }
 
     public function delete($id)
