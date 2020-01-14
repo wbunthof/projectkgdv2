@@ -35,6 +35,6 @@ class newUser extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.newUser')->subject('U bent toegevoegde aan kringgildedag.nl!');
+        return $this->markdown('mails.newUser')->subject('U bent toegevoegd aan kringgildedag.nl!');
     }
 }
