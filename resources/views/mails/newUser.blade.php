@@ -20,7 +20,17 @@ Uw wachtwoord:<br>
 
 Let op! De link om in te loggen is <a href="https://www.kringgildedag.nl/raadsheer/login">www.kringgildedag.nl/raadsheer/login</a>.
 
-
+U heeft machtigingen tot de/het volgende onderde(e)l(en):<br>
+    @foreach($user->formOnderdelen as $onderdeel)
+    <a href="{{ route('raadsheer.onderdeel', ['id' => $onderdeel->id]) }}">{{ ucfirst($onderdeel->onderdeel) }}</a><br>
+    @endforeach
+<br>
+    
+U kunt hier:<br>
+- Vragen toevoegen/bewerken/deactiveren (later weer te activeren)/definitief verwijderen, <br>
+- Leden toevoegen/bewerken/verwijderen en <br>
+- Disciplines toevoegen/bewerken/verwijderen.
+    
 @elseif($type === 'Admin')
 @component('mail::button', ['url' => 'https://www.kringgildedag.nl/admin/login/'])
     Inloggen
@@ -36,7 +46,9 @@ Let op! De link om in te loggen is <a href="https://www.kringgildedag.nl/admin/l
 
 Let op! De link om in te loggen is <a href="https://www.kringgildedag.nl/organiser/login">www.kringgildedag.nl/organiser/login</a>.
 @endif
-
+Bij onduidelijkheden over de website mail naar: website@kringgildedag.nl<br>
+<br>
+<br>
 Bedankt,<br>
 {{ config('app.name') }}
 @endcomponent
