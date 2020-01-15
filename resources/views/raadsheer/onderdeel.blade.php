@@ -397,8 +397,6 @@
 
         @foreach($deletedVragen as $vraag)
             {{ $vraag->tekst }}
-            {{--            {{ $vraag->setTypeAttribute($vraag->type) }}--}}
-            {{ ucfirst($vraag->type) }}
             <div class="btn btn-group float-right">
                 <a class="btn btn-warning" href="{{ route('raadsheer.vraag.undelete', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('undeleteVraag{{$vraag->id}}').submit();">Terugzetten</a>
                 {!! Form::open(['id' => 'undeleteVraag' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.undelete', ['id' => $vraag->id]), 'method' => 'POST']) !!}
