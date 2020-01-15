@@ -30,4 +30,10 @@ class RaadsheerLoginController extends Controller
       //If unsuccessful, then route back to the form
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('raadsheer/login');
+    }
 }
