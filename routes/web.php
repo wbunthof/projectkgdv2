@@ -98,12 +98,14 @@ Route::prefix('raadsheer')->group(function () {
         Route::patch('{id}/update', 'RaadsheerVraagController@update')->name('raadsheer.vraag.update');
         Route::patch('{id}/undelete', 'RaadsheerVraagController@undelete')->name('raadsheer.vraag.undelete');
         Route::delete('{id}/permanentdelete', 'RaadsheerVraagController@permanentDelete')->name('raadsheer.vraag.permanentDelete');
+        Route::get('{id}/data', 'RaadsheerVraagController@data')->name('raadsheer.vraag.data');
     });
 
   Route::prefix('discipline')->group(function (){
       Route::put('/create', 'RaadsheerDisciplineController@create')->name('raadsheer.discipline.create');
       Route::delete('{id}/destroy', 'RaadsheerDisciplineController@destroy')->name('raadsheer.discipline.destroy');
       Route::patch('{id}/update', 'RaadsheerDisciplineController@update')->name('raadsheer.discipline.update');
+      Route::get('{id}/data', 'RaadsheerDisciplineController@data')->name('raadsheer.discipline.data');
   });
 
   Route::prefix('leden')->group(function (){

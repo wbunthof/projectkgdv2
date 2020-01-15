@@ -88,4 +88,13 @@ class RaadsheerDisciplineController extends Controller
         return redirect()->back()->with(['succes' => 'Succesvol verwijderd!']);
 
     }
+
+    public function data(Formonderdelendiscipline $id)
+    {
+        if ($id->formonderdeel()->first()->id == 10){
+            return view('raadsheer.disciplineData')->with(['discipline' => $id]);
+        } else {
+            return redirect()->back()->with(['error' => 'Nog niet klaar']);
+        }
+    }
 }
