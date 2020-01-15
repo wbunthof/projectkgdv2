@@ -87,7 +87,7 @@ Route::prefix('raadsheer')->group(function () {
   });
 
   Route::middleware('auth:raadsheer')->group(function () {
-    Route::post('logout', 'RaadsheerLoginController@logout')->name('raadsheer.logout');
+    Route::post('logout', 'Auth\RaadsheerLoginController@logout')->name('raadsheer.logout');
     Route::get('/dashboard', 'RaadsheerController@index')->name('raadsheer.dashboard');
     Route::get('/onderdeel/{id}', 'RaadsheerController@onderdeel')->name('raadsheer.onderdeel');
 
