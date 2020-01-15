@@ -309,5 +309,11 @@ class RaadsheerVraagController extends Controller
             return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
         }
 
-        return redirect()->back()->with(['error' => 'Succesvol permanent verwijderd!']);    }
+        return redirect()->back()->with(['error' => 'Succesvol permanent verwijderd!']);
+    }
+
+    public function data($id)
+    {
+        return redirect()->back()->with(['error' => 'Nog niet klaar']);
+    }
 }
