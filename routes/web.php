@@ -135,21 +135,19 @@ Route::prefix('gilde')->group(function () {
     // Alles voor het inschrijfformulier
     Route::prefix('/inschrijffomulier')->group(function (){
 
-      //Deelname vraag 1
-      Route::post('/deelnameOpslaan', 'inschrijfformulierController@deelnameOpslaan')->name('gilde.inschrijffomulier.deelnameOpslaan');
-
       // Deelname, Gildemis, Optocht, Tentoonstelling, Geweer, Kruis-handboog, Standaardrijden
       Route::get('/{formonderdeel}/1', 'inschrijfformulierController@formShowNormal')->name('gilde.inschrijffomulier.deelname1');
       Route::put('/{formonderdeel}/formOpslaan', 'inschrijfformulierController@formOpslaan')->name('gilde.inschrijffomulier.formOpslaan');
-      Route::post('/{formonderdeel}/vraagOpslaan', 'inschrijfformulierController@vraagOpslaan')->name('gilde.inschrijffomulier.vraagOpslaan');
+      Route::post('/vraagOpslaan', 'inschrijfformulierController@vraagOpslaan')->name('gilde.inschrijffomulier.vraagOpslaan');
 
       // Bazuinblazen, Trommen, Vendelen
+        Route::get('{id}', 'inschrijfformulierController@index')->name('gilde.inschrijfformulier');
       Route::get('/{formonderdeel}/2', 'inschrijfformulierController@formShowTable')->name('gilde.inschrijffomulier.deelname2');
-      Route::put('/{formonderdeel}/lidToevoegen', 'inschrijfformulierController@lidToevoegen')->name('gilde.inschrijffomulier.lidToevoegen');
+      Route::put('/lidToevoegen', 'inschrijfformulierController@lidToevoegen')->name('gilde.inschrijffomulier.lidToevoegen');
       Route::put('/juniorToevoegen', 'inschrijfformulierController@juniorToevoegen')->name('gilde.inschrijffomulier.juniorToevoegen');
-      Route::delete('/{formonderdeel}/lidVerwijderen', 'inschrijfformulierController@lidVerwijderen')->name('gilde.inschrijffomulier.lidVerwijderen');
+      Route::delete('/{id}/lidVerwijderen', 'inschrijfformulierController@lidVerwijderen')->name('gilde.inschrijffomulier.lidVerwijderen');
       Route::delete('/{formonderdeel}/juniorVerwijderen', 'inschrijfformulierController@juniorVerwijderen')->name('gilde.inschrijffomulier.juniorVerwijderen');
-      Route::post('/{formonderdeel}/lidUpdaten', 'inschrijfformulierController@lidUpdaten')->name('gilde.inschrijffomulier.lidUpdaten');
+      Route::post('/{id}/lidUpdaten', 'inschrijfformulierController@lidUpdaten')->name('gilde.inschrijffomulier.lidUpdaten');
       // AJAX call voor het aanvragen van leden
       Route::get('/lidopzoeken/{type}/{input}/{discipline}', 'IndexController@ajax')->name('lidopzoeken');
 

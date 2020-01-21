@@ -225,41 +225,30 @@ function LidOpzoeken(type, str, discipline, url) {
 // Wanneer er op een van de resultaten van het tabel wordt geklikt wordt het in de inputs gezet.
 function inputsVullen(elem) {
   document.getElementById('id').value = elem.getElementsByClassName('id')[0].innerHTML;
-  document.getElementById('voornaam').value = elem.getElementsByClassName('voorletter')[0].innerHTML;
+  document.getElementById('voorletter').value = elem.getElementsByClassName('voorletter')[0].innerHTML;
   document.getElementById('achternaam').value = elem.getElementsByClassName('achternaam')[0].innerHTML;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Functie om deelname in database op te slaan
 // Dit is een speciale button en wordt niet standaard gegenereerd
-function deelname(keuze, vraag_id, nbfs, token, url) { // 0 = nee; 1 = ja
-		xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
+function deelname(keuze) { // 0 = nee; 1 = ja
+		el1 = document.getElementById("deelname1");
+        el0 = document.getElementById("deelname0");
 
-        el1 = document.getElementById("vraag1.1");
-        el0 = document.getElementById("vraag1.0");
-
-				if (keuze == 1) {
+				if (keuze === 1) {
 					document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Deelname is opgeslagen!</div>';
-          el1.className = "btn btn-primary mr-1 mb-2 active";
-          el1.innerHTML = "Ja (gekozen)";
-          el0.className = "btn btn-primary mr-1 mb-2"
-          el0.innerHTML = "Nee";
-					} else if (keuze == 0) {
+                    el1.className = "btn btn-primary mr-1 mb-2 active";
+                    el1.innerHTML = "Ja (gekozen)";
+                    el0.className = "btn btn-primary mr-1 mb-2"
+                    el0.innerHTML = "Nee";
+                } else if (keuze === 0) {
 					document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Geen deelname is opgeslagen!</div>';
-          el1.className = "btn btn-primary mr-1 mb-2";
-          el1.innerHTML = "Ja";
-          el0.className = "btn btn-primary mr-1 mb-2 active"
-          el0.innerHTML = "Nee  (gekozen)";
+                    el1.className = "btn btn-primary mr-1 mb-2";
+                    el1.innerHTML = "Ja";
+                    el0.className = "btn btn-primary mr-1 mb-2 active"
+                    el0.innerHTML = "Nee  (gekozen)";
 				}
-			}
-		};
-    xmlhttp.open("POST", url, true);
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //altijd hetzeflde
-
-		//verzend de data
-		xmlhttp.send("keuze=" + keuze + "&NBFS=" + nbfs  + "&vraag_id=" + vraag_id + "&_token=" + token);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -271,7 +260,7 @@ function lidUpdatenInschrijfformulier(id, discipline, route, csrf){
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //altijd hetzeflde
 
   //verzend de data
-  xmlhttp.send("id=" + id + "&discipline=" + encodeURIComponent(discipline) + "&_token=" + csrf);
+  xmlhttp.send("id=" + id + "&formonderdelendiscipline_id=" + encodeURIComponent(discipline) + "&_token=" + csrf);
   console.log(encodeURIComponent(discipline));
 
 

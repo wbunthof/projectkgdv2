@@ -32,6 +32,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $leden_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Leden[] $ledenAll
  * @property-read int|null $leden_all_count
+ * @property bool $meerderewedstrijden
+ * @property bool $junioren
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Formonderdeel whereJunioren($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Formonderdeel whereMeerderewedstrijden($value)
  */
 class Formonderdeel extends Model
 {
@@ -45,11 +49,6 @@ class Formonderdeel extends Model
     {
         return $this->hasMany('App\Formonderdelendiscipline');
     }
-
-//    public function leden()
-//    {
-//        return $this->hasManyThrough('App\Formonderdelendiscipline', 'App\Leden', 'formonderdeel_id');
-//    }
 
     public function leden()
     {
@@ -76,8 +75,10 @@ class Formonderdeel extends Model
     //Atributes
     protected $table = 'formonderdelen';
     protected $fillable = [
-        'id', 'onderdeel', ' vragen', 'leden'
+        'id', 'onderdeel', ' vragen', 'leden', 'meerdereWedstrijden', 'junioren'
     ];
     protected $casts = ['vragen' => 'boolean',
-                        'leden' => 'boolean'];
+                        'leden' => 'boolean',
+                        'meerderWedstrijden' => 'boolean',
+                        'junioren' => 'boolean'];
 }

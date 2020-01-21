@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        $volgordePagina = array('deelname', 'gildemis', 'optocht', 'tentoonstelling', 'bazuinblazen', 'geweer', 'kruis-handboog', 'standaardrijden', 'trommen', 'vendelen', 'junioren & leden zonder pas', 'deelname meerdere wedstrijden');
+        $volgordePagina = Formonderdeel::where('id', '!=', 0)->get();
         $volgordePaginaZonderOpmaak = array('deelname', 'gildemis', 'optocht', 'tentoonstelling', 'bazuinblazen', 'geweer', 'kruis-handboog', 'standaardrijden', 'trommen', 'vendelen', 'junioren');
 //        $formonderdelenVragen = DB::table('vraag')->select('formonderdeel_id')->distinct()->get();
         $formonderdelenVragen = Formonderdeel::all('onderdeel');
@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('volgordePagina', $volgordePagina);
         View::share('formonderdelen', Formonderdeel::all());
         View::share('disciplines', Discipline::all());
-        View::share('readonly', true);
+        View::share('readonly', env('slot', false));
     }
 
     /**

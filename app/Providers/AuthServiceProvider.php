@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Formonderdeel;
+use App\Gilde;
+use App\Leden;
 use App\Raadsheer;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -29,6 +31,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('raadsheer-onderdeel', function (Raadsheer $raadsheer, Formonderdeel $formonderdeel){
             return $raadsheer->formOnderdelen->contains($formonderdeel);
+        });
+
+        Gate::define('gilde-update-leden', function (Gilde $gilde, Leden $lid) {
+            return $lid->gilde_id === $gilde->id;
         });
 
         //

@@ -4,9 +4,14 @@
 //
 namespace App\Http\Controllers;
 
+use App\Services\AnswerService;
+use App\Services\LedenService;
+use App\Services\QuestionService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
 use App\Leden;
 use App\Vraag;
@@ -18,39 +23,71 @@ use App\Formonderdeel;
 
 class  inschrijfformulierController extends Controller
 {
-    // Normale formulier gedeelte met alleen vragen
-    public function formShowNormal($formonderdeel)
-    {
-      // Als het $formonderdeel niet in de if zit geef 404 error weer
-      if ($formonderdeel == 'deelname' || $formonderdeel == 'gildemis' || $formonderdeel == 'optocht' || $formonderdeel == 'tentoonstelling' || $formonderdeel == 'geweer' || $formonderdeel == 'kruis-handboog' || $formonderdeel == 'standaardrijden') {
-        $formonderdeel = str_replace('-', '', $formonderdeel);
+    protected $vraagService;
+    protected $antwoordService;
+    protected $ledenService;
 
-        $vragen = Vraag::where('formonderdeel_id', Formonderdeel::where('onderdeel', $formonderdeel)->first()->id)->get();
+    public function __construct(QuestionService $questionService, AnswerService $answerService, LedenService $ledenService)
+    {
+        $this->vraagService = $questionService;
+        $this->antwoordService = $answerService;
+        $this->ledenService = $ledenService;
+    }
+
+
+    public function index(Formonderdeel $id)
+    {
+        if ($id->leden)
+        {
+            return $this->formShowTable($id);
+        }
+
+        if ($id->meerderewedstrijden)
+        {
+            return $this->formDeelnameMeerdereWedstrijden();
+        }
+
+        if ($id->junioren)
+        {
+            return $this->juniorenShow();
+        }
+
+        if ($id->vragen)
+        {
+            return $this->formShowNormal($id);
+        }
+
+        return abort(404);
+    }
+
+    // Normale formulier gedeelte met alleen vragen
+    public function formShowNormal(Formonderdeel $formonderdeel)
+    {
+        // Als het $formonderdeel niet in de if zit geef 404 error weer
+        if (!$formonderdeel->vragen) {
+            abort(404);
+        }
 
         $vragenIds = array();
+        $antwoorden = array();
+
+        $vragen = $formonderdeel->vraag;
 
         foreach ($vragen as $vraag) {
-          if(!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first())) {
-            $antwoorden[$vraag->id] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first()->antwoord;
-          }
-          array_push($vragenIds, $vraag->id);
+            if(!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first())) {
+                $antwoorden[$vraag->id] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first()->antwoord;
+            }
+            array_push($vragenIds, $vraag->id);
         }
 
 
-        if ($formonderdeel == 'deelname'){
-          if (!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', 1 ]])->first())) {
-            $antwoorden[1] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', 1 ]])->first()->antwoord;
-          }
+        if ($formonderdeel->id == 1){
+            if (!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', 1 ]])->first())) {
+                $antwoorden[1] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', 1 ]])->first()->antwoord;
+            }
         }
 
-        if (empty($antwoorden)) {
-          $antwoorden = array();
-        }
-        if (empty($vragen)) {
-          $vragen = array();
-        }
-
-        $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
+        $deel= Auth::user()->antwoorden->count();
         $geheel = Vraag::count();
 
         return view('gilde.formulierNormal')
@@ -59,257 +96,122 @@ class  inschrijfformulierController extends Controller
                   ->with('antwoorden', $antwoorden)
                   ->with('vragen', $vragen)
                   ->with('vragenIds', $vragenIds)
-                  ->with('onderdeel', $formonderdeel)
-                  ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan', ['formonderdeel' => $formonderdeel]));
-      } else {
-        //geef 404 error omdat de pagina niet bestaat
-        return abort(404);
-      }
+                  ->with('onderdeel', $formonderdeel->onderdeel)
+                  ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
     }
 
-    public function deelnameOpslaan(Request $request)
+    public function vraagOpslaan(Request $request)
     {
-      if (Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $request->vraag_id]])->count() == 0){
-        $deelname = New Antwoord;
-      } else {
-        $deelname = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $request->vraag_id]])->first();
-      }
-      $deelname->vraag_id = $request->vraag_id;
-      $deelname->NBFS = Auth::user()->id;
-      $deelname->antwoord = $request->keuze;
-      $deelname->save();
-      return 'succes';
+       $validate = $request->validate([
+           'vraag_id' => 'required|integer|exists:vraag,id',
+           'waarde' => 'required'
+       ]);
 
+        $antwoord = Antwoord::where([])->updateOrCreate([
+            // Create or update a record matching the attributes
+            'NBFS' => Auth::user()->id,
+            'vraag_id' => $request->vraag_id
+        ],[
+            // Fill it with values.
+            'NBFS'=> Auth::user()->id,
+            'vraag_id' => $request->vraag_id,
+            'antwoord' => $request->waarde
+        ]);
+
+        return 'Opslaan vraag: ' . $antwoord->vraag->id . ' gelukt';
     }
-
-    public function vraagOpslaan(Request $request, $formonderdeel)
-    {
-      // $formonderdeel = str_replace('-', '', $formonderdeel);
-      // $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-      // $class = New $formonderdeelTotal();
-
-      $vraag = Vraag::where('id', $request->vraag_id)->first();
-
-      //Validatie
-      // switch ($vraag->type) {
-      //   case 'N':
-      //     // $request = $request->validate([
-      //     //   'waarde' => 'nummeric|nullable|between:' . $vraag->minimumValue . ',' . $vraag->maximumValue,
-      //     // ]);
-      //     break;
-      //
-      //   case 'B':
-      //     // $request = $request->validate([
-      //     //     'waarde' => 'boolean|nullable',
-      //     //   ]);
-      //     break;
-      //
-      //   case 'T':
-      //   case 'TA':
-      //     // $request = $request->validate([
-      //     //   'waarde' => 'nullable|size:'. $vraag->maximumValue,
-      //     // ]);
-      //     break;
-      //
-      //   default:
-      //     return 'Inputtype niet herkend';
-      //     break;
-      // }
-
-
-
-      if (Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $request->vraag_id]])->count() == 0){
-        // nee => nieuwe vraag;
-        $vraag = New Antwoord;
-        $vraag->vraag_id = $request->vraag_id;
-        $vraag->NBFS = Auth::user()->id;
-        $vraag->antwoord = $request->waarde;
-
-      } else {
-        // ja => oude vraag updaten
-        $vraag = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $request->vraag_id]])->first();
-        $vraag->antwoord = $request->waarde;
-      }
-
-      $vraag->save();
-
-      return 'Opslaan vraag: '. $vraag->id .' gelukt';
-    }
-
-    // public function formOpslaan(Request $request, $formonderdeel)
-    // {
-    //   // Opslaan van deze data evt. omzetten naar AJAX
-    //   $formonderdeel = str_replace('-', '', $formonderdeel);
-    //   $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-    //   $class = New $formonderdeelTotal();
-    //
-    //   // alle vraagId's zijn verwerkt naar tekst omdat er geen array in een POST method verstuurd kan worden.
-    //   $request->vraagIds = unserialize($request->vraagIds);
-    //
-    //   // $formAll wordt dadelijk een array met index => vraagId, en value => antwoord.
-    //   $formAll = array();
-    //
-    //   for ($i = 0; $i < count($request->vraagIds); $i++) {
-    //     $idTMP = $request->vraagIds[$i];
-    //       $formAll[$i] = array('vraag_id' => $request->vraagIds[$i], 'antwoord' => $request->$idTMP);
-    //   }
-    //
-    //   // Elke vraag behandelen
-    //   foreach ($formAll as $form) {
-    //
-    //     // Kijk of er al een antwoord is opgeslagen in de database
-    //     if ($class::where([['NBFS', Auth::user()->id],['vraag_id', $form['vraag_id']]])->count() == 0){
-    //       // nee => nieuwe vraag;
-    //       $vraag = New $class;
-    //       $vraag->vraag_id = $form['vraag_id'];
-    //       $vraag->NBFS = Auth::user()->id;
-    //       $vraag->antwoord = $form['antwoord'];
-    //
-    //     } else {
-    //       // ja => oude vraag updaten
-    //       $vraag = $class::where([['NBFS', Auth::user()->id],['vraag_id', $form['vraag_id']]])->first();
-    //       $vraag->antwoord = $form['antwoord'];
-    //     }
-    //
-    //     $vraag->save();
-    //   }
-    //
-    //   // Redirect terug naar vorige pagina
-    //   return back()->with('succes', 'Gegevens opgeslagen');
-    // }
 
     // Formulier gedeelte waar er leden worden toegevoegd
-    public function formShowTable($formonderdeel)
+    public function formShowTable(Formonderdeel $formonderdeel)
     {
-      if ($formonderdeel == 'bazuinblazen' || $formonderdeel == 'trommen' || $formonderdeel == 'vendelen' || $formonderdeel == 'deelname-meerdere-wedstrijden') {
-        $formonderdeel = str_replace('-', '', $formonderdeel);
-        $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-        $class = New $formonderdeelTotal();
-
-        // Leden
-        $leden = $class::where('NBFS_id', Auth::user()->id)->get();
-        $emptyLeden = (empty($leden{0})) ? true : false;
-
-        list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen($formonderdeel);
-
-        // Vragen
-//        $vragen = Vraag::where('formonderdeel', $formonderdeel)->get();
-        $vragen = Formonderdeel::where('onderdeel', $formonderdeel)->first()->vraag()->get();
-
-        $vragenIds = [];
-        foreach ($vragen as $vraag) {
-          if(!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first())) {
-            $antwoorden[$vraag->id] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first()->antwoord;
-          }
-          array_push($vragenIds, $vraag->id);
+        if (!$formonderdeel->leden) {
+            return abort(404);
         }
+            $antwoorden = array();
+            $vragen = $formonderdeel->vraag;
+            $vragenIds = [];
 
-        if (empty($antwoorden)) {
-          $antwoorden = array();
-        }
-        if (empty($vragen)) {
-          $vragen = array();
-        }
+            foreach ($vragen as $vraag) {
+                if(!is_null(Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first())) {
+                    $antwoorden[$vraag->id] = Antwoord::where([['NBFS', Auth::user()->id],['vraag_id', $vraag->id ]])->first()->antwoord;
+                }
+                array_push($vragenIds, $vraag->id);
+            }
 
-        $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
-        $geheel = Vraag::count();
+            $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
+            $geheel = Vraag::count();
 
-        // return dd($junioren);
-        return view('gilde.formulierTable')
-        ->with('onderdeel', $formonderdeel)
-        ->with('leden', $leden)
-        ->with('koloms', $koloms)
-        ->with('KolommenDieKunnenVeranderen', $KolommenDieKunnenVeranderen)
-        ->with('KolommenDieKunnenVeranderenMetSpatie', $KolommenDieKunnenVeranderenMetSpatie)
-        ->with('emptyLeden', $emptyLeden)
-        ->with('antwoorden', $antwoorden)
-        ->with('vragen', $vragen)
-        ->with('vragenIds', $vragenIds)
-        ->with('deel', $deel)
-        ->with('geheel', $geheel)
-        ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan', ['formonderdeel' => 'groep']));
-      } else {
-        //geef 404 error omdat de pagina niet bestaat
-        return abort(404);
-      }
+            // return dd($junioren);
+            return view('gilde.formulierTable')
+                ->with('leden', Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->get())
+                ->with('disciplines', $formonderdeel->formonderdelendiscipline()->with('leden')->get())
+                ->with('onderdeel', $formonderdeel->onderdeel)
+                ->with('formonderdeel', $formonderdeel)
+                ->with('antwoorden', $antwoorden)
+                ->with('vragen', $vragen)
+                ->with('vragenIds', $vragenIds)
+                ->with('deel', $deel)
+                ->with('geheel', $geheel)
+                ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
     }
 
-    public function lidToevoegen(Request $request, $formonderdeel)
+    public function lidToevoegen(Request $request)
     {
-      if (empty($request->onderdeel) || empty($request->nummer) || empty($request->discipline)) {
-        return back()->with('error', 'Vul alles in');
-      }
 
-      $discipline = DB::table('discipline')->where('discipline', $formonderdeel)->first();
+        $request->request->add(['gilde_id' => Auth::id()]);
+        $request->validate([
+            'leden_id' => 'required|integer|exists:leden',
+            'onderdeel' => 'required|integer|exists:formonderdelen,id',
+            'formonderdelendiscipline_id' => 'required|integer|exists:formonderdelendisciplines,id',
+            'gilde_id' => 'required|integer|exists:gilde,id'
+        ]);
 
-      $formonderdeel = str_replace('-', '', $formonderdeel);
-      $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-      $class = New $formonderdeelTotal();
 
-      list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen($formonderdeel);
+        try {
+            $this->ledenService->update($request, Leden::where([['leden_id', $request->leden_id],['formonderdeel_id', $request->onderdeel]])->first()->id);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
 
-      if (Leden::where([['leden_id', $request->nummer],['discipline_id', inschrijfformulierController::disciplineId($request->onderdeel)]])->get()->count() == 0) {
-        return back()->with('error', 'Lid bestaat niet');
-      }
-
-      if ($class::where([['leden_id', $request->nummer + ($discipline->id * 100000)],['NBFS_id', Auth::user()->id]])->get()->count() > 0) {
-
-        return back()->with('error', 'Lid al toegevoegd');
-      }
-
-      $class = New $class;
-      $class->leden_id = Leden::where([['leden_id', $request->nummer],['discipline_id', inschrijfformulierController::disciplineId($request->onderdeel)]])->first()->id;//$request->nummer;
-      $class->NBFS_id = Auth::user()->id;
-
-      foreach ($KolommenDieKunnenVeranderen as $kolomVeranderd1) {
-        $class->$kolomVeranderd1 = 0;
-      }
-      $discipline = $request->discipline;//str_replace(' ', '', $request->discipline);
-      if (!array_search($discipline, DB::getSchemaBuilder()->getColumnListing($formonderdeel))) {
-        return back()->with('error', 'Discipline niet gevonden. Mail: info@pure-air.nl');
-      }
-      $class->$discipline = 1;
-      $class->save();
-
-      return back()->with('succes', 'Gegevens opgeslagen');
+        return back()->with('succes', 'Gegevens opgeslagen');
     }
 
-    public function lidVerwijderen(Request $request, $formonderdeel)
+    public function lidVerwijderen(Request $request, int $id)
     {
-      $formonderdeel = str_replace('-', '', $formonderdeel);
-      $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-      $class = New $formonderdeelTotal();
 
-      if ($class::where([['NBFS_id', Auth::user()->id],['id', $request->id]])->count() == 0){
-        return back()->with('error', 'Lid bestaat niet, of is niet toegevoegd');
-      } else {
-        $deelname = $class::where([['NBFS_id', Auth::user()->id],['id', $request->id]])->first();
-        $class::destroy($deelname->id);
+        $request->request->add([
+            'gilde_id' => null,
+            'formonderdelendiscipline_id' => null
+        ]);
+
+        try {
+            $lid = $this->ledenService->update($request, $id);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+
         return back()->with('succes', 'Lid verwijderd');
-      }
     }
 
-    public function lidUpdaten(Request $request, $formonderdeel)
+    public function lidUpdaten(Request $request, Leden $id)
     {
-      $formonderdeel = str_replace('-', '', $formonderdeel);
-      $formonderdeelTotal = "App\\".ucfirst($formonderdeel);
-      $class = New $formonderdeelTotal();
+        $request->validate([
+            'id' => 'required|integer|exists:leden',
+            'formonderdelendiscipline_id' => 'required|integer|exists:formonderdelendisciplines,id',
+        ]);
 
-      list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen($formonderdeel);
-
-      if ($class::where([['NBFS_id', Auth::user()->id],['id', $request->id]])->count() == 0){
-        return back()->withInput(Input::all())->with('error', 'Lid bestaat niet, of is niet toegevoegd');
-      } else {
-        $lid = $class::where([['NBFS_id', Auth::user()->id],['id', $request->id]])->first();
-
-        foreach ($KolommenDieKunnenVeranderen as $kolom) {
-          $lid->$kolom = 0;
+        if (Gate::denies('gilde-update-leden', $id))
+        {
+            return abort(401);
         }
-        $discipline = $request->discipline;
-        $lid->$discipline = 1;
-        $lid->save();
+
+        try {
+            $lid = $this->ledenService->update($request, $request->id);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
         return 'succes';
-      }
     }
     // Fromulier ondrdeerl met gewone vragen voor bij leden gedeelte
     public function vraagOpslaanTable(Request $request, $formonderdeel)

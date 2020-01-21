@@ -63,7 +63,7 @@ class GildeController extends Controller
             '3' => 'optocht',
             '4' => 'tentoonstelling',
             '7' => 'geweer',
-            '8' => 'kruis-handboog',
+            '8' => 'kruisboog/handboog',
             '9' => 'standaardrijden');
         $modelsLeden = array(
             '6' => 'bazuinblazen',

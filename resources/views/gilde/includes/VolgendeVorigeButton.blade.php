@@ -3,7 +3,7 @@
       #
       # --}}
 @php
-if (false !== $key = array_search(str_replace(' ', '-', strtolower($onderdeel)), $volgordePaginaZonderOpmaak)) {
+if (false !== $key = array_search(str_replace(' ', '-', strtolower($onderdeel)), $volgordePagina = App\Formonderdeel::where('id', '!=', 0)->get()->toArray())) {
   if ($key == 0) {
     $hrefVolgende = route('gilde.inschrijffomulier.' . str_replace(' ', '-', $volgordePagina[$key + 1]));
     echo '<div class="btn-group"><a href="'.$hrefVolgende.'" ><button  class="btn btn-primary" type="button" name="button">Volgende</button></a></div> ';

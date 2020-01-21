@@ -24,8 +24,9 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="margin-top: 0px">
+                
               @foreach ($volgordePagina as $link)
-                <a class="dropdown-item" onclick="this.parentNode.parentNode.children[0].disabled = 'disabled'" href="{{route('gilde.inschrijffomulier.' . str_replace(' ', '-', $link))}}">{{ucfirst($link)}}</a>
+                <a class="dropdown-item" onclick="this.parentNode.parentNode.children[0].disabled = 'disabled'" href="{{route('gilde.inschrijfformulier', ['id' => $link->id])}}">{{ucfirst($link->onderdeel)}}</a>
               @endforeach
             </div>
           </li>

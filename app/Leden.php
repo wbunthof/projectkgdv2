@@ -113,7 +113,7 @@ class Leden extends Model
       'tussenvoegsel',
       'achternaam',
       'geboortedatum',
-      'discipline_id',
+      'formonderdelendiscipline_id',
       'straat',
       'huisnummer',
       'plaats',

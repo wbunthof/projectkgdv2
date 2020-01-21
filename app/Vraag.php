@@ -47,6 +47,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Vraag withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Vraag withoutTrashed()
  * @mixin \Eloquent
+ * @property string|null $formonderdeel
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vraag whereFormonderdeel($value)
  */
 class Vraag extends Model
 {
