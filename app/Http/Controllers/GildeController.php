@@ -57,21 +57,8 @@ class GildeController extends Controller
         // $antwoordenId = array();
 
 
-        $modelsVragen = array(
-            '1' => 'deelname',
-            '2' => 'gildemis',
-            '3' => 'optocht',
-            '4' => 'tentoonstelling',
-            '7' => 'geweer',
-            '8' => 'kruisboog/handboog',
-            '9' => 'standaardrijden');
-        $modelsLeden = array(
-            '6' => 'bazuinblazen',
-            '10' => 'trommen',
-            '11' => 'vendelen');
-        $modelsAnders = array(
-            '13' => 'Junioren',
-            '12' => 'Deelnamemeerderewedstrijden');
+        $modelsLeden = Formonderdeel::where('leden', 1)->get();
+        $modelsAnders = Formonderdeel::where([['leden', 0],['vragen',0]])->get();
 
         $vragen = Vraag::get();
 
@@ -81,20 +68,12 @@ class GildeController extends Controller
 //                            })->get());
 
 //        for ($i=0; $i < count($modelsVragen); $i++) {
-        foreach ($modelsVragen as $id => $modelvraag) {
-            array_push($dataVragen,
-                array($modelvraag,
-                    Auth::user()->antwoorden()->whereHas('vraag', function ($query) use ($id) {
-                        $query->where('formonderdeel_id', $id);
-                    })->get()));
-//Antwoord::where('formonderdeel', $modelsVragen[$i])->get()));
-        }
 
         $dataGroepen =  [];
-        foreach ($modelsLeden as $id => $model) {
-            array_push($dataGroepen, [$model,
-                Auth::user()->antwoorden()->whereHas('vraag', function ($query) use ($id) {
-                    $query->where('formonderdeel_id', $id);
+        foreach ($modelsLeden as $model) {
+            array_push($dataGroepen, [$model->onderdeel,
+                Auth::user()->antwoorden()->whereHas('vraag', function ($query) use ($model) {
+                    $query->where('formonderdeel_id', $model->id);
                 })->get()]);
 //                Antwoord::where('NBFS', Auth::user()->id)
 //                                                      ->whereHas('vraag',function ($query) use ($model) {
@@ -108,17 +87,13 @@ class GildeController extends Controller
 
 
         foreach ($modelsLeden as $model) {
-            $tmp = array();
-            $classNaam = "App\\" . ucfirst($model);
-            $class = New $classNaam();
-            list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = GildeController::GetKolommen($class->getTable());
-            array_push($tmp, $model, $class::where('NBFS_id', Auth::user()->id)->get(), $KolommenDieKunnenVeranderen);
-            array_push($dataLeden, $tmp);
+//            $tmp = array();
+//            $classNaam = "App\\" . ucfirst($model);
+//            $class = New $classNaam();
+//            list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = GildeController::GetKolommen($class->getTable());
+//            array_push($tmp, $model, $class::where('NBFS_id', Auth::user()->id)->get(), $KolommenDieKunnenVeranderen);
+//            array_push($dataLeden, $tmp);
         }
-
-        $dataDeelnameMeedereWedstrijden = Deelnamemeerderewedstrijden::where('NBFS_id', Auth::user()->id)->get();
-
-        $dataJunioren = Junioren::where('NBFS_id', Auth::user()->id)->get();
 
         $antwoorden = Antwoord::where('NBFS', Auth::user()->id)->get();
         $antwoordenId = array();
@@ -126,14 +101,14 @@ class GildeController extends Controller
             array_push($antwoordenId, $antwoord->vraag_id);
         }
 
-
         return view('gilde.gilde')
             ->with('gilde', Auth::user())
+            ->with('onderdelen', Formonderdeel::all())
             ->with('dataLeden', $dataLeden)
-            ->with('dataDeelnameMeedereWedstrijden', $dataDeelnameMeedereWedstrijden)
-            ->with('dataJunioren', $dataJunioren)
-            ->with('dataVragen', $dataVragen)
-            ->with('dataGroepen', $dataGroepen)
+            ->with('deelnameMeerdereWedstrijden', Deelnamemeerderewedstrijden::where('NBFS_id', Auth::user()->id)->get())
+            ->with('junioren', Junioren::with('discipline')->where('NBFS_id', Auth::user()->id)->get())
+            ->with('onderdelenVragen', Formonderdeel::where([['leden', 0],['vragen',1]])->get())
+            ->with('onderdelenLeden', Formonderdeel::where('leden', 1)->get())
             ->with('vragen', $vragen)
             ->with('formonderdelenVragen', $formonderdelenVragen)
             ->with('antwoordenId', $antwoordenId)

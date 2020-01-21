@@ -62,6 +62,16 @@ class Formonderdeel extends Model
         );
     }
 
+    public function antwoorden()
+    {
+        return $this->hasManyThrough(
+            'App\Antwoord',
+            'App\Vraag',
+            'formonderdeel_id',
+            'vraag_id'
+        );
+    }
+
     public function ledenAll()
     {
         return $this->hasMany('App\Leden');

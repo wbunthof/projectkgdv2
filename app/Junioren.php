@@ -31,9 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Junioren extends Model
 {
-  public function juniorenDiscipline()
+  public function discipline()
   {
-    return $this->belongsTo('App\JuniorenDiscipline', 'juniorenDiscipline_id');
+    return $this->belongsTo('App\Formonderdelendiscipline', 'juniorenDiscipline_id');
   }
 
   public function gilde($value='')

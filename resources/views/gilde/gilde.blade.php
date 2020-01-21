@@ -161,168 +161,176 @@
           </div>
         </div>
       @endif --}}
-@if (!is_null($antwoordenId))
-@foreach ($dataVragen as $onderdeel)
-
-
+{{--@if (!is_null($antwoordenId))--}}
+@foreach ($onderdelen as $onderdeel)
   {{--  Hotfix omdat 'groep' geen $onderdeel[0] heeft en tijdelijk hier toegewezen krijgt--}}
   <div class="card">
-    <div class="card-header" id="heading{{{$onderdeel[0]}}}">
+    <div class="card-header" id="heading{{ $onderdeel->onderdeel }}">
       <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{{$onderdeel[0]}}}" aria-expanded="true" aria-controls="collapse{{{$onderdeel[0]}}}">
-          <h4><b>{{{ucfirst($onderdeel[0])}}}</b></h4>
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ $onderdeel->onderdeel }}" aria-expanded="true" aria-controls="collapse{{ $onderdeel->onderdeel }}">
+          <h4><b>{{ ucfirst($onderdeel->onderdeel) }}</b></h4>
         </button>
       </h5>
     </div>
 
-    <div id="collapse{{{$onderdeel[0]}}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapse{{ $onderdeel->onderdeel }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-          @if (isset($onderdeel[1][0]))
-          @foreach ($onderdeel[1] as $vraag)
-            <a href="{{route('gilde.inschrijffomulier.' . $onderdeel[0]) . '#' . $vraag->vraag->id}}">
-              {{$vraag->vraag->tekst}}</a>
-              <b><span class="float-right">
-                @if ($vraag->vraag->type == 'B')
-                  @if ($vraag->antwoord == 1)
-                    Ja
-                  @elseif ($vraag->antwoord == 0)
-                    Nee
-                  @endif
-                @else
-                  {{$vraag->antwoord}}
-                @endif
-              </span></b><br>
-          @endforeach
-          @else
-            <b>Geen antwoorden voor deze discipline gegeven.</b>
-          @endif
-      </div>
-    </div>
-  </div>
-@endforeach
-
-  <div class="card">
-    <div class="card-header" id="headingGroepen">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGroepen" aria-expanded="true" aria-controls="collapseGroepen">
-          <h4><b>Groepen</b></h4>
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseGroepen" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-          @foreach ($dataGroepen as $onderdeel)
-            <h5><b>{{{ucfirst($onderdeel[0])}}}</b></h5>
-            @if ($onderdeel[1]->count() == 0)
-              Geen antwoorden gegeven bij het groeps{{{$onderdeel[0]}}}
-            @endif
-            @foreach ($onderdeel[1] as $vraag)
-              <a href="{{route('gilde.inschrijffomulier.' . $onderdeel[0]) . '#' . $vraag->vraag->id}}">
-                {{$vraag->vraag->tekst}}</a>
-                <b><span class="float-right">
-                  @if ($vraag->vraag->type == 'B')
-                    @if ($vraag->antwoord == 1)
-                      Ja
-                    @elseif ($vraag->antwoord == 0)
-                      Nee
+{{--          @dump($onderdeel->antwoorden()->where('NBFS', Auth::id())->get())--}}
+      @if($onderdeel->vraag->count())
+              @forelse ($onderdeel->antwoorden()->with('vraag')->where('NBFS', Auth::id())->get() as $antwoord)
+                <a href="{{route('gilde.inschrijfformulier', ['id' => $onderdeel->id]) . '#' . $antwoord->vraag->id}}">
+                  {{$antwoord->vraag->tekst}}</a>
+                  <b><span class="float-right">
+                    @if ($antwoord->vraag->type == 'boolean')
+                      @if ($antwoord->antwoord == 1)
+                        Ja
+                      @elseif ($antwoord->antwoord == 0)
+                        Nee
+                      @endif
+                    @else
+                      {{$antwoord->antwoord}}
                     @endif
-                  @else
-                    {{$vraag->antwoord}}
-                  @endif
-                </span></b><br>
-            @endforeach
-            <br>
-          @endforeach
-      </div>
-    </div>
-  </div>
-
-
-
-@foreach ($dataLeden as $formulieronderdeel)
-  <div class="card">
-    <div class="card-header" id="heading{{{$formulieronderdeel[0]}}}">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{{$formulieronderdeel[0]}}}" aria-expanded="true" aria-controls="collapse{{{$formulieronderdeel[0]}}}">
-          <h4><b>{{{ucfirst($formulieronderdeel[0])}}}</b></h4>
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapse{{{$formulieronderdeel[0]}}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        @if (isset($formulieronderdeel[1][0]))
-        @foreach ($formulieronderdeel[1] as $lid)
-          {{{$lid->leden->voornaam}}}
-          {{{$lid->leden->tussenvoegsel}}}
-          {{{$lid->leden->achternaam}}}
-          @foreach ($formulieronderdeel[2] as $kolom)
-            @if ($lid->$kolom == 1)
-              <b><span class="float-sm-right">{{ucfirst($kolom)}}</span></b>
-            @endif
-          @endforeach
+                  </span></b><br>
+              @empty
+                  <b>Geen antwoorden voor deze discipline gegeven.</b>
+              @endforelse
+          @endif
           <br>
-        @endforeach
-        @else
-          <b>Geen leden bij het {{{$formulieronderdeel[0]}}}</b>
-        @endif
+      @if($onderdeel->leden)
+          @forelse($onderdeel->leden()->with('discipline')->where('gilde_id', Auth::id())->get() as $lid)
+                  {{$lid->voornaam}}
+                  {{$lid->tussenvoegsel}}
+                  {{$lid->achternaam}}
+                  <b><span class="float-sm-right">{{ucfirst($lid->discipline->naam)}}</span></b>
+                  <br>
+              @empty
+              <b>Geen leden bij het {{ $onderdeel->onderdeel }}</b>
+          @endforelse
+
+{{--              @if (isset($formulieronderdeel[1][0]))--}}
+{{--                  @foreach ($formulieronderdeel[1] as $lid)--}}
+{{--                          {{{$lid->leden->voornaam}}}--}}
+{{--                          {{{$lid->leden->tussenvoegsel}}}--}}
+{{--                          {{{$lid->leden->achternaam}}}--}}
+{{--                      @foreach ($formulieronderdeel[2] as $kolom)--}}
+{{--                          @if ($lid->$kolom == 1)--}}
+{{--                                  <b><span class="float-sm-right">{{ucfirst($kolom)}}</span></b>--}}
+{{--                              @endif--}}
+{{--                          @endforeach--}}
+{{--                          <br>--}}
+{{--                      @endforeach--}}
+{{--                  @else--}}
+{{--              @endif--}}
+          @endif
+          <br>
+      @if ($onderdeel->meerderewedstrijden)
+              @forelse ($deelnameMeerdereWedstrijden as $lid)
+                  {{ $lid->naam }}
+                  <b><span class="float-sm-right">{{{$lid->disciplines}}}</span></b>
+                  <br>
+              @empty
+                  <b>Geen leden die deelnemen aan meerdere wedstrijden toegevoegd</b>
+              @endforelse
+          @endif
+          <br>
+      @if($onderdeel->junioren)
+              @forelse ($junioren as $lid)
+                  {{ $lid->voornaam }} {{ $lid->achternaam }}
+                  <b><span class="float-sm-right">{{ $lid->discipline->naam }}</span></b>
+                  <br>
+              @empty
+                  <b>Geen leden geen pas hebben toegevoegd</b>
+              @endforelse
+      @endif
+          
       </div>
     </div>
   </div>
 @endforeach
+          
+{{--@foreach ($dataLeden as $formulieronderdeel)--}}
+{{--  <div class="card">--}}
+{{--    <div class="card-header" id="heading{{{$formulieronderdeel[0]}}}">--}}
+{{--      <h5 class="mb-0">--}}
+{{--        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{{$formulieronderdeel[0]}}}" aria-expanded="true" aria-controls="collapse{{{$formulieronderdeel[0]}}}">--}}
+{{--          <h4><b>{{{ucfirst($formulieronderdeel[0])}}}</b></h4>--}}
+{{--        </button>--}}
+{{--      </h5>--}}
+{{--    </div>--}}
+
+{{--    <div id="collapse{{{$formulieronderdeel[0]}}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--}}
+{{--      <div class="card-body">--}}
+{{--        @if (isset($formulieronderdeel[1][0]))--}}
+{{--        @foreach ($formulieronderdeel[1] as $lid)--}}
+{{--          {{{$lid->leden->voornaam}}}--}}
+{{--          {{{$lid->leden->tussenvoegsel}}}--}}
+{{--          {{{$lid->leden->achternaam}}}--}}
+{{--          @foreach ($formulieronderdeel[2] as $kolom)--}}
+{{--            @if ($lid->$kolom == 1)--}}
+{{--              <b><span class="float-sm-right">{{ucfirst($kolom)}}</span></b>--}}
+{{--            @endif--}}
+{{--          @endforeach--}}
+{{--          <br>--}}
+{{--        @endforeach--}}
+{{--        @else--}}
+{{--          <b>Geen leden bij het {{{$formulieronderdeel[0]}}}</b>--}}
+{{--        @endif--}}
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--@endforeach--}}
 
 {{-- DeelnameMeerdereWedstrijden --}}
-<div class="card">
-  <div class="card-header" id="headingDeelnameMeerdereWedstrijden">
-    <h5 class="mb-0">
-      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDeelnameMeerdereWedstrijden" aria-expanded="true" aria-controls="collapseDeelnameMeerdereWedstrijden">
-        <h4><b>Deelname Meerdere Wedstrijden</b></h4>
-      </button>
-    </h5>
-  </div>
+{{--<div class="card">--}}
+{{--  <div class="card-header" id="headingDeelnameMeerdereWedstrijden">--}}
+{{--    <h5 class="mb-0">--}}
+{{--      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDeelnameMeerdereWedstrijden" aria-expanded="true" aria-controls="collapseDeelnameMeerdereWedstrijden">--}}
+{{--        <h4><b>Deelname Meerdere Wedstrijden</b></h4>--}}
+{{--      </button>--}}
+{{--    </h5>--}}
+{{--  </div>--}}
 
-  <div id="collapseDeelnameMeerdereWedstrijden" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-    <div class="card-body">
-      @if ($dataDeelnameMeedereWedstrijden->count() > 0)
-      @foreach ($dataDeelnameMeedereWedstrijden as $lid)
-        {{{$lid->naam}}}
-        <b><span class="float-sm-right">{{{$lid->disciplines}}}</span></b>
-        <br>
-      @endforeach
-      @else
-      <b>Geen leden die deelnemen aan meerdere wedstrijden toegevoegd</b>
-    @endif
-    </div>
-  </div>
-</div>
+{{--  <div id="collapseDeelnameMeerdereWedstrijden" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--}}
+{{--    <div class="card-body">--}}
+{{--      @if ($dataDeelnameMeedereWedstrijden->count() > 0)--}}
+{{--      @foreach ($dataDeelnameMeedereWedstrijden as $lid)--}}
+{{--        {{{$lid->naam}}}--}}
+{{--        <b><span class="float-sm-right">{{{$lid->disciplines}}}</span></b>--}}
+{{--        <br>--}}
+{{--      @endforeach--}}
+{{--      @else--}}
+{{--      <b>Geen leden die deelnemen aan meerdere wedstrijden toegevoegd</b>--}}
+{{--    @endif--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--</div>--}}
 
- {{-- Junioren  --}}
-<div class="card">
-  <div class="card-header" id="headingJunioren">
-    <h5 class="mb-0">
-      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseJunioren" aria-expanded="true" aria-controls="collapseJunioren">
-        <h4><b>Junioren en leden zonder pas</b></h4>
-      </button>
-    </h5>
-  </div>
+{{-- --}}{{-- Junioren  --}}
+{{--<div class="card">--}}
+{{--  <div class="card-header" id="headingJunioren">--}}
+{{--    <h5 class="mb-0">--}}
+{{--      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseJunioren" aria-expanded="true" aria-controls="collapseJunioren">--}}
+{{--        <h4><b>Junioren en leden zonder pas</b></h4>--}}
+{{--      </button>--}}
+{{--    </h5>--}}
+{{--  </div>--}}
 
-  <div id="collapseJunioren" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-    <div class="card-body">
-      @if ($dataJunioren->count() > 0)
-      @foreach ($dataJunioren as $lid)
-        {{{$lid->voornaam}}}
-        {{{$lid->achternaam}}}
-        <b><span class="float-sm-right">{{{$lid->JuniorenDiscipline->klasse}}}</span></b>
-        <br>
-      @endforeach
-      @else
-        <b>Geen leden & junioren zonder pas toegevoegd</b>
-      @endif
-    </div>
-  </div>
-</div>
-@endif
+{{--  <div id="collapseJunioren" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--}}
+{{--    <div class="card-body">--}}
+{{--      @if ($dataJunioren->count() > 0)--}}
+{{--      @foreach ($dataJunioren as $lid)--}}
+{{--        {{{$lid->voornaam}}}--}}
+{{--        {{{$lid->achternaam}}}--}}
+{{--        <b><span class="float-sm-right">{{{$lid->JuniorenDiscipline->klasse}}}</span></b>--}}
+{{--        <br>--}}
+{{--      @endforeach--}}
+{{--      @else--}}
+{{--        <b>Geen leden & junioren zonder pas toegevoegd</b>--}}
+{{--      @endif--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--</div>--}}
+{{--@endif--}}
 
 </div>
 </div>
