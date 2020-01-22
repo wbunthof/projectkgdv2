@@ -47,6 +47,11 @@ class Raadsheer extends Authenticatable
         return $this->belongsToMany('App\Formonderdeel');
     }
 
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'logable');
+    }
+
     protected $guard = 'raadsheer';
 
     protected $table = 'raadsheer';
