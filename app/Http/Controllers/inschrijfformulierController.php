@@ -163,8 +163,6 @@ class  inschrijfformulierController extends Controller
             $volgende = Formonderdeel::where('id', '>', $formonderdeel->id)->where('id', '!=', 0)->min('id');
 
 
-            dd(Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->first(), Auth::user());
-
             return view('gilde.formulierTable')
                 ->with('leden', Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->get())
                 ->with('disciplines', $formonderdeel->formonderdelendiscipline()->with('leden')->get())
