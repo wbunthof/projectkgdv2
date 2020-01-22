@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('gilde-update-leden', function (Gilde $gilde, Leden $lid) {
-            return $lid->gilde_id === $gilde->id;
+            return $lid->gilde_id == $gilde->id;
         });
 
         //
