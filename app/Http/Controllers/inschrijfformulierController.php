@@ -9,7 +9,6 @@ use App\Services\AnswerService;
 use App\Services\LedenService;
 use App\Services\QuestionService;
 use Exception;
-use Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\Input;
 use App\Leden;
 use App\Vraag;
 use App\Junioren;
-use App\JuniorenDiscipline;
 use App\Antwoord;
 use App\Formonderdeel;
 
@@ -36,7 +34,7 @@ class  inschrijfformulierController extends Controller
         $this->ledenService = $ledenService;
     }
 
-
+// TODO de ingevulde gegevens van meerdere wedstrijden en junioren worden niet weergegeven
     public function index(Formonderdeel $formonderdeel)
     {
         $return = [];
@@ -144,6 +142,7 @@ class  inschrijfformulierController extends Controller
     // Formulier gedeelte waar er leden worden toegevoegd
     public function formShowTable(Formonderdeel $formonderdeel)
     {
+
         if (!$formonderdeel->leden) {
             return abort(404);
         }
@@ -164,7 +163,8 @@ class  inschrijfformulierController extends Controller
             $volgende = Formonderdeel::where('id', '>', $formonderdeel->id)->where('id', '!=', 0)->min('id');
 
 
-        // return dd($junioren);
+            dd(Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->first(), Auth::user());
+
             return view('gilde.formulierTable')
                 ->with('leden', Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->get())
                 ->with('disciplines', $formonderdeel->formonderdelendiscipline()->with('leden')->get())
@@ -217,13 +217,14 @@ class  inschrijfformulierController extends Controller
 
         return back()->with('succes', 'Lid verwijderd');
     }
-
+// TODO leden worden niet geüpdate, krijgt 401 error
     public function lidUpdaten(Request $request, Leden $id)
     {
         $request->validate([
             'id' => 'required|integer|exists:leden',
             'formonderdelendiscipline_id' => 'required|integer|exists:formonderdelendisciplines,id',
         ]);
+
 
         if (Gate::denies('gilde-update-leden', $id))
         {
