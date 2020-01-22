@@ -4,10 +4,12 @@
 //
 namespace App\Http\Controllers;
 
+use App\Formonderdelendiscipline;
 use App\Services\AnswerService;
 use App\Services\LedenService;
 use App\Services\QuestionService;
 use Exception;
+use Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -35,26 +37,40 @@ class  inschrijfformulierController extends Controller
     }
 
 
-    public function index(Formonderdeel $id)
+    public function index(Formonderdeel $formonderdeel)
     {
-        if ($id->leden)
+        $return = [];
+
+        if ($formonderdeel->leden)
         {
-            return $this->formShowTable($id);
+            return $this->formShowTable($formonderdeel);
         }
 
-        if ($id->meerderewedstrijden)
+        if ($formonderdeel->meerderewedstrijden)
         {
             return $this->formDeelnameMeerdereWedstrijden();
         }
 
-        if ($id->junioren)
+        if ($formonderdeel->junioren)
         {
             return $this->juniorenShow();
         }
 
-        if ($id->vragen)
+        if ($formonderdeel->vragen)
         {
-            return $this->formShowNormal($id);
+            return $this->formShowNormal($formonderdeel);
+
+            $return['deel'] =  Auth::user()->antwoorden->count();
+            $return['geheel'] = Vraag::count();
+            $return['vorige'] = Formonderdeel::where('id', '<', Formonderdeel::find(10)->id)->max('id');
+            $return['volgende'] = Formonderdeel::where('id', '>', Formonderdeel::find(10)->id)->min('id');
+
+            return view('gilde.formulierNormal')
+                ->with('antwoorden', $antwoorden)
+                ->with('vragen', $vragen)
+                ->with('vragenIds', $vragenIds)
+                ->with('onderdeel', $formonderdeel->onderdeel)
+                ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
         }
 
         return abort(404);
@@ -89,15 +105,19 @@ class  inschrijfformulierController extends Controller
 
         $deel= Auth::user()->antwoorden->count();
         $geheel = Vraag::count();
+        $vorige = Formonderdeel::where('id', '<', $formonderdeel->id)->where('id', '!=', 0)->max('id');
+        $volgende = Formonderdeel::where('id', '>', $formonderdeel->id)->where('id', '!=', 0)->min('id');
 
         return view('gilde.formulierNormal')
-                  ->with('deel', $deel)
-                  ->with('geheel', $geheel)
-                  ->with('antwoorden', $antwoorden)
-                  ->with('vragen', $vragen)
-                  ->with('vragenIds', $vragenIds)
-                  ->with('onderdeel', $formonderdeel->onderdeel)
-                  ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
+            ->with('volgende', $volgende)
+            ->with('vorige', $vorige)
+            ->with('deel', $deel)
+            ->with('geheel', $geheel)
+            ->with('antwoorden', $antwoorden)
+            ->with('vragen', $vragen)
+            ->with('vragenIds', $vragenIds)
+            ->with('onderdeel', $formonderdeel->onderdeel)
+            ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
     }
 
     public function vraagOpslaan(Request $request)
@@ -140,8 +160,11 @@ class  inschrijfformulierController extends Controller
 
             $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
             $geheel = Vraag::count();
+            $vorige = Formonderdeel::where('id', '<', $formonderdeel->id)->where('id', '!=', 0)->max('id');
+            $volgende = Formonderdeel::where('id', '>', $formonderdeel->id)->where('id', '!=', 0)->min('id');
 
-            // return dd($junioren);
+
+        // return dd($junioren);
             return view('gilde.formulierTable')
                 ->with('leden', Auth::user()->leden()->where('formonderdeel_id', $formonderdeel->id)->get())
                 ->with('disciplines', $formonderdeel->formonderdelendiscipline()->with('leden')->get())
@@ -150,6 +173,8 @@ class  inschrijfformulierController extends Controller
                 ->with('antwoorden', $antwoorden)
                 ->with('vragen', $vragen)
                 ->with('vragenIds', $vragenIds)
+                ->with('volgende', $volgende)
+                ->with('vorige', $vorige)
                 ->with('deel', $deel)
                 ->with('geheel', $geheel)
                 ->with('urlVraagOpslaan', route('gilde.inschrijffomulier.vraagOpslaan'));
@@ -240,22 +265,27 @@ class  inschrijfformulierController extends Controller
     public function juniorenShow()
     {
       // Junioren
-      $junioren = Junioren::where('NBFS_id', Auth::user()->id)->get();
-      $emptyJunioren = (empty($junioren{0})) ? true : false;
+        $junioren = Junioren::where('NBFS_id', Auth::user()->id)->get();
+        $emptyJunioren = (empty($junioren{0})) ? true : false;
 
-      $klasse = JuniorenDiscipline::all();
+        $klasse = Formonderdelendiscipline::all();
 
-      $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
-      $geheel = Vraag::count();
+        $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
+        $geheel = Vraag::count();
+        $vorige = Formonderdeel::where('id', '<', Formonderdeel::where('onderdeel', 'junioren & leden zonder pas')->first()->id)->where('id', '!=', 0)->max('id');
+        $volgende = Formonderdeel::where('id', '>', Formonderdeel::where('onderdeel', 'junioren & leden zonder pas')->first()->id)->where('id', '!=', 0)->min('id');
 
-      // return dump($klasse{1}->Junioren{0}->voornaam);
-      return view('gilde.formulierJunioren')
-              ->with('deel', $deel)
-              ->with('geheel', $geheel)
-              ->with('junioren', $junioren)
-              ->with('emptyJunioren', $emptyJunioren)
-              ->with('klasse', $klasse)
-              ->with('onderdeel', 'Junioren');
+
+        // return dump($klasse{1}->Junioren{0}->voornaam);
+        return view('gilde.formulierJunioren')
+            ->with('deel', $deel)
+            ->with('geheel', $geheel)
+            ->with('vorige', $vorige)
+            ->with('volgende', $volgende)
+            ->with('junioren', $junioren)
+            ->with('emptyJunioren', $emptyJunioren)
+            ->with('klasse', $klasse)
+            ->with('onderdeel', 'Junioren');
     }
 
     public function juniorToevoegen(Request $request)
@@ -294,34 +324,39 @@ class  inschrijfformulierController extends Controller
     // Formulier onderdeel deelname meerdere wedstrijden
     public function formDeelnameMeerdereWedstrijden()
     {
-      $class = New \App\Deelnamemeerderewedstrijden();
+        $class = New \App\Deelnamemeerderewedstrijden();
 
-      $leden = $class::where('NBFS_id', Auth::user()->id)->get();
-      //return ($class)->first();
+        $leden = $class::where('NBFS_id', Auth::user()->id)->get();
+        //return ($class)->first();
 
-      list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen('DeelnameMeerdereWedstrijden');
+        list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen('DeelnameMeerdereWedstrijden');
 
 
-      if (empty($leden{0})) {
-        $empty = true;
-      } else {
-        $empty = false;
-      }
+        if (empty($leden{0})) {
+            $empty = true;
+        } else {
+            $empty = false;
+        }
 
-      $formonderdeel = 'Deelname meerdere wedstrijden';
+        $formonderdeel = Formonderdeel::where('onderdeel', 'Deelname meerdere wedstrijden')->first();
 
-      $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
-      $geheel = Vraag::count();
+        $deel = Antwoord::where('NBFS', Auth::user()->id)->count();
+        $geheel = Vraag::count();
+        $vorige = Formonderdeel::where('id', '<', $formonderdeel->id)->where('id', '!=', 0)->max('id');
+        $volgende = Formonderdeel::where('id', '>', $formonderdeel->id)->where('id', '!=', 0)->min('id');
 
-      //return dd($leden);
-      return view('gilde.deelnameMeerdereWedstrijden')
-                  ->with('onderdeel', $formonderdeel)
-                  ->with('leden', $leden)->with('koloms', $koloms)
-                  ->with('KolommenDieKunnenVeranderen', $KolommenDieKunnenVeranderen)
-                  ->with('KolommenDieKunnenVeranderenMetSpatie', $KolommenDieKunnenVeranderenMetSpatie)
-                  ->with('empty', $empty)
-                  ->with('deel', $deel)
-                  ->with('geheel', $geheel);
+
+        //return dd($leden);
+        return view('gilde.deelnameMeerdereWedstrijden')
+                ->with('onderdeel', $formonderdeel->onderdeel)
+                ->with('leden', $leden)->with('koloms', $koloms)
+                ->with('KolommenDieKunnenVeranderen', $KolommenDieKunnenVeranderen)
+                ->with('KolommenDieKunnenVeranderenMetSpatie', $KolommenDieKunnenVeranderenMetSpatie)
+                ->with('empty', $empty)
+                ->with('deel', $deel)
+                ->with('geheel', $geheel)
+                ->with('vorige', $vorige)
+                ->with('volgende', $volgende);
     }
 
     public function formDeelnameMeerdereWedstrijdenToevoegen(Request $request)

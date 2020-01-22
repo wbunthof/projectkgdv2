@@ -26,7 +26,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="margin-top: 0px">
                 
               @foreach ($volgordePagina as $link)
-                <a class="dropdown-item" onclick="this.parentNode.parentNode.children[0].disabled = 'disabled'" href="{{route('gilde.inschrijfformulier', ['id' => $link->id])}}">{{ucfirst($link->onderdeel)}}</a>
+                <a class="dropdown-item" onclick="this.parentNode.parentNode.children[0].disabled = 'disabled'" href="{{route('gilde.inschrijfformulier', ['formonderdeel' => $link->id])}}">{{ucfirst($link->onderdeel)}}</a>
               @endforeach
             </div>
           </li>
@@ -42,17 +42,6 @@
               {{ __('Uitloggen') }}
           </a>
         </li>
-          <!-- Authentication Links -->
-          @guest
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-              </li>
-              @if (Route::has('register'))
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                  </li>
-              @endif
-          @else
               <li class="nav-item dropdown" onmouseover="this.children[0].click()" onmouseout="this.children[0].click()">
                   <a id="navbarDropdownEigenPagina" onclick="this.click()" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                       {{ Auth::user()->name }} <span class="caret"></span>
@@ -73,7 +62,6 @@
                   </div>
               </li>
               <li class="nav-item"></li>
-          @endguest
       </ul>
     </div>
   </div>

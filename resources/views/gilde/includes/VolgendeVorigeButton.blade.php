@@ -2,22 +2,19 @@
       # Code van Wouter
       #
       # --}}
-@php
-if (false !== $key = array_search(str_replace(' ', '-', strtolower($onderdeel)), $volgordePagina = App\Formonderdeel::where('id', '!=', 0)->get()->toArray())) {
-  if ($key == 0) {
-    $hrefVolgende = route('gilde.inschrijffomulier.' . str_replace(' ', '-', $volgordePagina[$key + 1]));
-    echo '<div class="btn-group"><a href="'.$hrefVolgende.'" ><button  class="btn btn-primary" type="button" name="button">Volgende</button></a></div> ';
 
-  } elseif ($key == array_key_last($volgordePagina)) {
-    $hrefVorige = route('gilde.inschrijffomulier.' . str_replace(' ', '-', $volgordePagina[$key - 1]));
-    echo '<div class="btn-group"><a href="'.$hrefVorige.'" ><button class="btn btn-secondary" type="button" name="button">Vorige</button></a></div> ';
+@isset($vorige)
+    <div class="btn-group"><a href="{{ route('gilde.inschrijfformulier', ['formonderdeel' => $vorige]) }}" ><button class="btn btn-secondary" type="button" name="button">Vorige</button></a></div>
+    
+@else
+    <div class="btn-group"><a href="{{route('gilde.dashboard')}}" ><button  class="btn btn-secondary" type="button" name="button">Terug naar hoofdscherm</button></a></div>
+@endisset
 
-  } else {
-    $hrefVorige = route('gilde.inschrijffomulier.' . str_replace(' ', '-', $volgordePagina[$key - 1]));
-    $hrefVolgende = route('gilde.inschrijffomulier.' . str_replace(' ', '-', $volgordePagina[$key + 1]));
-    echo '<div class="btn-group"><a href="'.$hrefVorige.'" ><button class="btn btn-secondary" type="button" name="button">Vorige</button></a></div> ';
-    echo '<div class="btn-group"><a href="'.$hrefVolgende.'" ><button  class="btn btn-primary" type="button" name="button">Volgende</button></a></div> ';
-  }
-}
-echo '';
-@endphp
+@isset($volgende)
+    <div class="btn-group"><a href="{{ route('gilde.inschrijfformulier', ['formonderdeel' => $volgende]) }}" ><button  class="btn btn-primary" type="button" name="button">Volgende</button></a></div>
+    
+@else
+    <div class="btn-group"><a href="{{route('gilde.dashboard')}}" ><button  class="btn btn-primary" type="button" name="button">Beeïndigen & terug naar hoofdscherm</button></a></div>
+    
+@endisset
+    

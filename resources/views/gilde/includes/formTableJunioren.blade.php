@@ -22,7 +22,7 @@
 				@foreach ($klasse as $klas)
 					<div class="form-check">
 						{!! Form::radio('klasse', $klas->id, false, ['id' => $klas->id, 'class' => 'form-check-input', 'required']) !!}
-						{!! Form::label($klas->id, ucfirst($klas->klasse), ['class' => 'form-check-label']) !!}
+						{!! Form::label($klas->id, ucfirst($klas->naam), ['class' => 'form-check-label']) !!}
 						<br>
 					</div>
 
@@ -69,7 +69,7 @@
 					<td>{{{$lid->voornaam}}}</td>
 					<td>{{{$lid->achternaam}}}</td>
 					<td>{{{$lid->geboortedatum}}}</td>
-					<td>{{{$lid->JuniorenDiscipline->klasse}}}</td>
+					<td>{{{$lid->discipline->naam}}}</td>
 					{{-- Verwijder button verwerkt in form --}}
 					<td>
                         @php $route = 'gilde/inschrijffomulier/'.$onderdeel.'/lidVerwijderen';	@endphp

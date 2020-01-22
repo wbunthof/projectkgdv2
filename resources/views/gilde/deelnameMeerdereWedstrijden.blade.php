@@ -62,54 +62,52 @@
 
 	{{-- Lid toevoegen button -> activeert het toevoegenModal  --}}
 	<button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#exampleModal">
-		Lid toevoegen voor {{{$onderdeel}}} (klik hier)
+        Lid toevoegen voor {{{$onderdeel}}} (klik hier)
 	</button>
 	<br>
 	<div class="table-responsive">
-	<table class="table">
-	  <thead>
+	    <table class="table">
+	        <thead>
 			@if ($empty)
 				{{-- Melding als er nog geen leden ingevuld zijn --}}
 				<tr>
-					<th>Geen leden ingevuld die deelnemen aan meerdere wedstrijden.<br>
-							Als er geen leden toegevoegd zijn, gaan wij er automatische vanuit dat er geen indivduele leden meedoen aan meerdere wedstrijden (zodra de deadline verstreken is).</th>
+					<th>
+                        Geen leden ingevuld die deelnemen aan meerdere wedstrijden.<br>
+						Als er geen leden toegevoegd zijn, gaan wij er automatische vanuit dat er geen indivduele leden meedoen aan meerdere wedstrijden (zodra de deadline verstreken is).
+                    </th>
 				</tr>
-				<thead>
+            <thead>
 			@else
 				<tr>
 					{{-- Kolomnamen --}}
 					<th class="align-top">Naam:</th>
-          <th class="align-top">Disciplines:</th>
+                    <th class="align-top">Disciplines:</th>
 					<th class="align-top">Opties</th>
-					</tr>
-		  </thead>
-		  <tbody>
-					@foreach ($leden as $lid)
-		    <tr>
+                </tr>
+		    </thead>
+		    <tbody>
+                @foreach ($leden as $lid)
+		        <tr>
 					{{-- Gebruikergegevens --}}
-		      <td>{{{$lid->naam}}}</td>
-          <td>{{{$lid->disciplines}}}</td>
-
+		            <td>{{{$lid->naam}}}</td>
+                    <td>{{{$lid->disciplines}}}</td>
 					<td>
-					{!! Form::open(['url' => route('gilde.inschrijffomulier.deelname-meerdere-wedstrijden.Verwijderen'), 'method' => 'POST']) !!}
-
-					{!! Form::hidden('_method', 'delete') !!}
-					{!! Form::hidden('id', $lid->id) !!}
-					{!! Form::token() !!}
-
-					{!! Form::submit('Afmelden', ['class' => 'btn btn-secondary']) !!}
-
-					{!! Form::close() !!}
-
-						 </div></td>
-		    </tr>
+                        {!! Form::open(['url' => route('gilde.inschrijffomulier.deelname-meerdere-wedstrijden.Verwijderen'), 'method' => 'POST']) !!}
+    
+                        {!! Form::hidden('_method', 'delete') !!}
+                        {!! Form::hidden('id', $lid->id) !!}
+                        {!! Form::token() !!}
+    
+                        {!! Form::submit('Afmelden', ['class' => 'btn btn-secondary']) !!}
+    
+    					{!! Form::close() !!}
+                    </td>
+		        </tr>
 				@endforeach
-		  </tbody>
+		    </tbody>
 			@endif
 		</table>
-
-<div class="btn-group"><a href="{{route('gilde.inschrijffomulier.vendelen')}}" ><button class="btn btn-secondary" type="button" name="button">Vorige</button></a></div>
-<div class="btn-group"><a href="{{route('gilde.dashboard')}}" ><button  class="btn btn-primary" type="button" name="button">Beeïndigen & terug naar hoofdscherm</button></a></div>
-<br>
+    @include('gilde.includes.VolgendeVorigeButton')
+    <br>
 </div>
 @endsection

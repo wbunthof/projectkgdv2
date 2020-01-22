@@ -141,7 +141,7 @@ Route::prefix('gilde')->group(function () {
       Route::post('/vraagOpslaan', 'inschrijfformulierController@vraagOpslaan')->name('gilde.inschrijffomulier.vraagOpslaan');
 
       // Bazuinblazen, Trommen, Vendelen
-        Route::get('{id}', 'inschrijfformulierController@index')->name('gilde.inschrijfformulier');
+        Route::get('{formonderdeel}', 'inschrijfformulierController@index')->name('gilde.inschrijfformulier');
       Route::get('/{formonderdeel}/2', 'inschrijfformulierController@formShowTable')->name('gilde.inschrijffomulier.deelname2');
       Route::put('/lidToevoegen', 'inschrijfformulierController@lidToevoegen')->name('gilde.inschrijffomulier.lidToevoegen');
       Route::put('/juniorToevoegen', 'inschrijfformulierController@juniorToevoegen')->name('gilde.inschrijffomulier.juniorToevoegen');
