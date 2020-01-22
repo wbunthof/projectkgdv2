@@ -112,7 +112,7 @@ class Gilde extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $table = 'Gilde';
+    public $table = 'gilde';
 }
 
 //
