@@ -183,12 +183,12 @@
 
         <h2>
             <a data-toggle="collapse" href="#collapseDisciplines" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Disciplines voor leden
+                Klassen voor leden
             </a>
         </h2>
         <div class="collapse show" id="collapseDisciplines">
             <button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#newDisciplineModal">
-                Discipline toevoegen
+                Klasse toevoegen
             </button>
             <br>
             <!-- Modal voor het toevoegen van disciplines -->
@@ -196,7 +196,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="newDisciplineModalLabel">Discipline toevoegen</h5>
+                            <h5 class="modal-title" id="newDisciplineModalLabel">Klasse toevoegen</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -208,8 +208,8 @@
                             {!! Form::hidden('formonderdeel_id', $formonderdeel->id) !!}
                             {!! Form::token() !!}
 
-                            {!! Form::label('naam', 'Vul hier de naam van de nieuwe discipline in.') !!}
-                            {!! Form::text('naam', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de discipline in', 'required']) !!}
+                            {!! Form::label('naam', 'Vul hier de naam van de nieuwe Klasse in.') !!}
+                            {!! Form::text('naam', '', ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de Klasse in', 'required']) !!}
 
                             {!! Form::submit('Toevoegen', ['class' => 'btn btn-primary mb-2']) !!}
                             {!! Form::close() !!}
@@ -233,7 +233,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="updateDiscipline{{$discipline->id}}ModalLabel">Discipline toevoegen</h5>
+                            <h5 class="modal-title" id="updateDiscipline{{$discipline->id}}ModalLabel">Klasse toevoegen</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -244,8 +244,8 @@
                             {!! Form::hidden('_method', 'PATCH') !!}
                             {!! Form::token() !!}
 
-                            {!! Form::label('naam' . $discipline->id, 'Vul hier de nieuwe naam van de discipline in. Let op! de leden die voor deze discipline al eerder zijn aangemeld blijven aangemeld.') !!}
-                            {!! Form::text('naam' . $discipline->id, $discipline->naam, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de discipline in', 'required']) !!}
+                            {!! Form::label('naam' . $discipline->id, 'Vul hier de nieuwe naam van de Klasse in. Let op! de leden die voor deze Klasse al eerder zijn aangemeld blijven aangemeld.') !!}
+                            {!! Form::text('naam' . $discipline->id, $discipline->naam, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Vul hier de Klasse in', 'required']) !!}
 
                             {!! Form::submit('Opslaan', ['class' => 'btn btn-primary mb-2']) !!}
                             {!! Form::close() !!}
