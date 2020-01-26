@@ -9,6 +9,8 @@ use Auth;
 
 class AdminLoginController extends Controller
 {
+    protected $redirectTo = '/admin/login';
+
     public function showLoginForm()
     {
       return view('auth.admin-login');
@@ -30,14 +32,5 @@ class AdminLoginController extends Controller
 
       //If unsuccessful, then route back to the form
         return redirect()->back()->withInput($request->only('email', 'remember'));
-    }
-
-    function authenticated(Request $request, $user)
-    {
-        $user->update([
-            'last_login_at' => Carbon::now()->toDateTimeString(),
-        ]);
-
-        $user->save();
     }
 }

@@ -38,12 +38,4 @@ class RaadsheerLoginController extends Controller
         Auth::logout();
         return redirect('raadsheer/login');
     }
-
-    function authenticated(Request $request, $user)
-    {
-        $user->update([
-            'last_login_at' => Carbon::now()->toDateTimeString(),
-        ]);
-    }
-
 }

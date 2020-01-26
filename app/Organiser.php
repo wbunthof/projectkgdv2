@@ -39,6 +39,11 @@ class Organiser extends Authenticatable
 {
     use Notifiable;
 
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'logable');
+    }
+
     protected $guard = 'organiser';
 
     protected $table = 'organiser';
