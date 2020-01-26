@@ -30,8 +30,11 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
-        View::share('volgordePagina', Formonderdeel::where('id', '!=', 0)->get());
-        View::share('formonderdelen', Formonderdeel::all());
+        if (Schema::hasTable('formonderdelen'))
+        {
+            View::share('volgordePagina', Formonderdeel::where('id', '!=', 0)->get());
+            View::share('formonderdelen', Formonderdeel::all());
+        }
         View::share('readonly', env('slot', false));
     }
 
