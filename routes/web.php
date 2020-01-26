@@ -42,6 +42,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('/gilde/verwijderen/', 'AdminController@gildenVerwijderen')->name('admin.gilde.verwijderen');
     Route::put('/gilde/nieuwWachtwoord/', 'AdminController@gildeNieuwWachtwoordAdmin')->name('admin.gilde.nieuwWachtwoord');
 
+    Route::get('MailGildeHerrineringsMailBeginVanHetJaar', 'MailController@GildeHerrineringsMailBeginVanHetJaar');
+
     Route::get('/raadsheer', 'AdminRaadsheerController@index')->name('admin.raadsheer.weergeven');
     Route::put('/raadsheer','AdminRaadsheerController@create')->name('admin.raadsheer.create');
     Route::patch('/raadsheer/{id}', 'AdminRaadsheerController@update')->name('admin.raadsheer.update');

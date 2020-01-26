@@ -20,6 +20,8 @@
                     @endif
 
                     You are logged in as admin!
+                    
+                    <a href="{{ url('admin/MailGildeHerrineringsMailBeginVanHetJaar') }}"><button>Send</button></a>
                 </div>
             </div>
         </div>
