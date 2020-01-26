@@ -105,7 +105,7 @@ class Gilde extends Authenticatable
     protected $guard = 'gilde';
 
     protected $fillable = [
-        'id', 'name', 'email', 'password', 'locatie',
+        'id', 'name', 'email', 'password', 'locatie', 'last_login_at',
     ];
 
     protected $hidden = [

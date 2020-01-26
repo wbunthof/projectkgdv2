@@ -44,7 +44,7 @@ class Organiser extends Authenticatable
     protected $table = 'organiser';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password',  'last_login_at',
     ];
 
     protected $hidden = [

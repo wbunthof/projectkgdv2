@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Mail\newPassword;
 use App\Services\GildeService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Gilde;
@@ -60,5 +61,12 @@ class GildeLoginController extends Controller
       Mail::to($gilde)->send(new newPassword($gilde, $password));
 
       return redirect(route('gilde.login'))->with('succes', 'Nieuw wachtwoord verzonden naar ' . $gilde->email);
+    }
+
+    function authenticated(Request $request, $user)
+    {
+        $user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+        ]);
     }
 }

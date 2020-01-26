@@ -57,7 +57,7 @@ class Raadsheer extends Authenticatable
     protected $table = 'raadsheer';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'last_login_at',
     ];
 
     protected $hidden = [
