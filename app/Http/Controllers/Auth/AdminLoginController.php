@@ -37,5 +37,6 @@ class AdminLoginController extends Controller
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
         ]);
+        $user->save();
     }
 }
