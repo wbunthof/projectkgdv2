@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Input;
 use App\Leden;
 use App\Vraag;
 use App\Junioren;
@@ -34,7 +33,6 @@ class  inschrijfformulierController extends Controller
         $this->ledenService = $ledenService;
     }
 
-// TODO de ingevulde gegevens van meerdere wedstrijden en junioren worden niet weergegeven
     public function index(Formonderdeel $formonderdeel)
     {
         $return = [];
@@ -189,9 +187,15 @@ class  inschrijfformulierController extends Controller
             'gilde_id' => 'required|integer|exists:gilde,id'
         ]);
 
+        $lid = Leden::where([['leden_id', $request->leden_id],['formonderdeel_id', $request->onderdeel]])->firstOrFail();
+
+        if (Gate::denies('lid-vrij',$lid)) {
+            return redirect()->back()->with('error', 'Dit lid is al toegevoegd door een gilde');
+        }
+
 
         try {
-            $this->ledenService->update($request, Leden::where([['leden_id', $request->leden_id],['formonderdeel_id', $request->onderdeel]])->first()->id);
+            $this->ledenService->update($request, $lid->id);
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -215,7 +219,6 @@ class  inschrijfformulierController extends Controller
 
         return back()->with('succes', 'Lid verwijderd');
     }
-// TODO leden worden niet geüpdate, krijgt 401 error
     public function lidUpdaten(Request $request, Leden $id)
     {
         $request->validate([
@@ -360,22 +363,22 @@ class  inschrijfformulierController extends Controller
 
     public function formDeelnameMeerdereWedstrijdenToevoegen(Request $request)
     {
-      if (empty($request->Naam) || empty($request->Disciplines)) {
-        return back()->withInput(Input::all())->with('error', 'Vul alle gegevens in');
 
-      }
+        $request->validate([
+            'Naam' => 'required|string',
+            'Disciplines' => 'required|string'
+        ]);
 
+        $class = New \App\Deelnamemeerderewedstrijden();
 
-      $class = New \App\Deelnamemeerderewedstrijden();
+        $class = New $class;
+        $class->naam = $request->Naam;
+        $class->disciplines = $request->Disciplines;
+        $class->NBFS_id = Auth::user()->id;
 
-      $class = New $class;
-      $class->naam = $request->Naam;
-      $class->disciplines = $request->Disciplines;
-      $class->NBFS_id = Auth::user()->id;
+        $class->save();
 
-      $class->save();
-
-      return back()->with('succes', 'Gegevens opgeslagen');
+        return back()->with('succes', 'Gegevens opgeslagen');
     }
 
     public function formDeelnameMeerdereWedstrijdenVerwijderen(Request $request)

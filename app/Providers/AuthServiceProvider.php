@@ -37,6 +37,10 @@ class AuthServiceProvider extends ServiceProvider
             return $lid->gilde_id == $gilde->id;
         });
 
+        Gate::define('lid-vrij', function (Gilde $gilde, Leden $lid){
+            return !(isset($lid->gilde_id));
+        });
+
         //
     }
 }
