@@ -33,11 +33,14 @@ class AdminRaadsheerController extends Controller
         try {
             $create = $this->raadsheerservice->create($request);
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
+            return redirect()->back()->with(['error' => 'Raadsheer is niet gecreërd ' . $e->getMessage()]);
         }
 
-        Mail::to($create['user'])->send(new newUser($create['user'], $create['password']));
-        dump($create['user']);
+        try {
+            Mail::to($create['user'])->send(new newUser($create['user'], $create['password']));
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => 'Email is niet naar raadsheer verzonden ' . $e->getMessage()]);
+        }
         return redirect()->back()->with(['succes' => 'Success']);
     }
 
@@ -82,7 +85,11 @@ class AdminRaadsheerController extends Controller
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
-        Mail::to($id)->send(new newPassword($id, $password));
+        try {
+            Mail::to($id)->send(new newPassword($id, $password));
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => 'Email is niet naar raadsheer verzonden ' . $e->getMessage()]);
+        }
 
         return redirect()->back()->with(['succes' => 'New password send, password: ' . $password]);
     }
