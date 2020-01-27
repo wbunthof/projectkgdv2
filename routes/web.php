@@ -37,10 +37,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
     Route::get('/account', 'AdminController@account')->name('admin.account');
     Route::put('/account', 'AdminController@accountUpdate')->name('admin.account.update');
-    Route::get('/gilde', 'AdminController@gildenWeergeven')->name('admin.gilde.weergeven');
-    Route::put('/gilde', 'AdminController@gildenOpslaanNieuw')->name('admin.gilde.nieuw');
-    Route::delete('/gilde/verwijderen/', 'AdminController@gildenVerwijderen')->name('admin.gilde.verwijderen');
-    Route::put('/gilde/nieuwWachtwoord/', 'AdminController@gildeNieuwWachtwoordAdmin')->name('admin.gilde.nieuwWachtwoord');
+
+    Route::get('/settings', 'AdminSettingsController@index')->name('admin.settings');
+    Route::put('/{setting}/settings', 'AdminSettingsController@update')->name('admin.settings.update');
+
+    Route::get('/gilde', 'AdminGildeController@index')->name('admin.gilde.weergeven');
+    Route::put('/gilde', 'AdminGildeController@create')->name('admin.gilde.nieuw');
+    Route::delete('/gilde/verwijderen/', 'AdminGildeController@delete')->name('admin.gilde.verwijderen');
+    Route::put('/gilde/nieuwWachtwoord/', 'AdminGildeController@newPassword')->name('admin.gilde.nieuwWachtwoord');
+    Route::put('/gilde/{id}/email', 'AdminGildeController@changeMail')->name('admin.gilde.nieuwMail');
 
     Route::get('MailGildeHerrineringsMailBeginVanHetJaar', 'MailController@GildeHerrineringsMailBeginVanHetJaar');
 

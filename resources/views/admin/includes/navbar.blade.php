@@ -4,23 +4,27 @@
       # --}}
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('gilde.dashboard')}}">{{config('app.name', 'Kringgildedag')}}</a>
+    <a class="navbar-brand" href="{{ route('admin.dashboard')}}">{{config('app.name', 'Kringgildedag')}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-  		<li class="nav-item {{ Route::currentRouteNamed('admin.gilde.bewerken') ? 'active' : '' }}">
+  		<li class="nav-item {{ Route::currentRouteNamed('admin.gilde.weergeven') ? 'active' : '' }}">
   			<a class="nav-link" href="{{route('admin.gilde.weergeven')}}">Gildes bewerken</a>
   		</li>
 
   		<li class="nav-item {{ Route::currentRouteNamed('admin.raadsheer.weergeven') ? 'active' : '' }}">
-  			<a class="nav-link disabled" href="{{route('admin.raadsheer.weergeven')}}">Raadsheren bewerken</a>
+  			<a class="nav-link" href="{{route('admin.raadsheer.weergeven')}}">Raadsheren bewerken</a>
   		</li>
 
   		<li class="nav-item {{ Route::currentRouteNamed('admin.organiser.bewerken') ? 'active' : '' }}">
   			<a class="nav-link disabled" href="{{'#' /*route('admin.organiser.weergeven')*/}}">Organiserend gilde bewerken</a>
   		</li>
+            
+        <li class="nav-item {{ Route::currentRouteNamed('admin.settings') ? 'active' : '' }}">
+            <a class="nav-link disabled" href="{{route('admin.settings')}}">Algemene instellingen</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav float-right">
         <li class="nav-item dropdown">
