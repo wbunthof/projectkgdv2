@@ -77,21 +77,6 @@ class Gilde extends Authenticatable
         return $this->hasMany('App\Leden');
     }
 
-//    public function bazuinblazen()
-//    {
-//      return $this->hasMany('App\Bazuinblazen', 'NBFS_id');
-//    }
-//
-//    public function trommen()
-//    {
-//      return $this->hasMany('App\Trommen', 'NBFS_id');
-//    }
-//
-//    public function vendelen()
-//    {
-//      return $this->hasMany('App\Vendelen', 'NBFS_id');
-//    }
-
     public function deelnamMeerdereWedstrijden()
     {
       return $this->hasMany('App\Deelnamemeerderewedstrijden', 'NBFS_id');
