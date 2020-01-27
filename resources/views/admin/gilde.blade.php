@@ -106,19 +106,12 @@
 									        </button>
 									      </div>
 									      <div class='modal-body'>
-													<form class='form-inline'action='includes.gilde/changemail.php?changemail={{$gilde->id}}' method='POST'>
-														<div class='form-group'>
-									 					 <label class='sr-only' for='inlineFormInputEmail'>Nieuw e-mailadres</label>
-									 				   <input name='email' type='email' class='form-control mr-sm-2' id='email' placeholder='E-mailadres'>
-									 				 </div>
-
-													  <!-- <a href='bewerken.gilde.php?changemail=1'> -->
-														 <button type='submit' name='submit' class='btn btn-primary'>Opslaan</button>
-													  <!--</a> -->
-														<!--<button type='button' class='btn btn-secondary' data-dismiss='modal'>Annuleren</button> -->
-
-													</form>
-												</div>
+                                                {!! Form::open(['url' => route('admin.gilde.nieuwMail', ['id' => $gilde->id]), 'method' => 'PUT']) !!}
+                                                {!! Form::label('changeMail' . $gilde->id, 'Vul hier het nieuwe e-mailadres in.') !!}
+                                                {!! Form::email('changeMail' . $gilde->id, $gilde->email, ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van het Gilde', 'required']) !!}
+                                                {!! Form::submit('Update', ['class' => 'btn btn-primary mb-2']) !!}
+                                                {!! Form::close() !!}
+                                          </div>
 									    </div>
 									  </div>
 									</div>
