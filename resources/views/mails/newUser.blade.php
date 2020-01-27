@@ -50,5 +50,8 @@ Bij onduidelijkheden over de website mail naar: website@kringgildedag.nl<br>
 <br>
 <br>
 Bedankt,<br>
-{{ config('app.name') }}
+{{ config('app.name') }}<br>
+<br>
+PS. Disclaimer:<br> Door in te loggen en invullen van de digitale inschrijf omgeving verklaard het deelnemend gilde akkoord te gaan met het gebruik van haar gegevens en die van haar leden door het {{ setting('naam organiserend gilde') }} voor de organisatie van de
+Kringgildedag {{ setting('datum kringgildedag') }} te {{ setting('locatie kringgildedag') }}.
 @endcomponent
