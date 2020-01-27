@@ -1,4 +1,7 @@
 @component('mail::message')
+![Banner][logo]
+
+[logo]: {{asset('/img/Banner.png')}} "Banner KGD 2020"
 
 # Hallo {{ $user->name }},
 
