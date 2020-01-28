@@ -23,10 +23,10 @@
     </div>
 </div>
 <div class="justify-content-center">
-    <div class="alert alert-warning text-center" role="alert">
-        <strong>Belangrijk!</strong> U kunt geen gegevens meer wijzigen. Mocht er iets dringends zijn verzoek ik u om een e-mail te sturen naar <a href="mailto:inschrijvenkgd2019@gmail.com">inschrijvenkgd2019@gmail.com</a>
-        {{-- <strong>Belangrijk!</strong> Uw gegevens worden automatisch opgeslagen, daardoor kan het organiserend gilde meteen de gegevens inzien. Dit betekend dat u niks hoeft in te sturen dit gebeurt namelijk automatisch. --}}
-    </div>
+{{--    <div class="alert alert-warning text-center" role="alert">--}}
+{{--        <strong>Belangrijk!</strong> U kunt geen gegevens meer wijzigen. Mocht er iets dringends zijn verzoek ik u om een e-mail te sturen naar <a href="mailto:inschrijvenkgd2019@gmail.com">inschrijvenkgd2019@gmail.com</a>--}}
+{{--        --}}{{-- <strong>Belangrijk!</strong> Uw gegevens worden automatisch opgeslagen, daardoor kan het organiserend gilde meteen de gegevens inzien. Dit betekend dat u niks hoeft in te sturen dit gebeurt namelijk automatisch. --}}
+{{--    </div>--}}
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">Hallo, {{$gilde->name}}.</h1>
