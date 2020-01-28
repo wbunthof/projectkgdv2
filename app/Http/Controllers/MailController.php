@@ -13,8 +13,8 @@ class MailController extends Controller
     {
 //        $gilden = Gilde::all();
 
-        $mail = Mail::to('wbunthof@gmail.com')->send(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
+        $mail = Mail::to('secretariskringkempenland@gmail.com')->send(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
 
-        return dump($mail);
+        return new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1));
     }
 }
