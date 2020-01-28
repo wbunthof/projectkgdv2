@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gilde;
 use App\Mail\GildeHerrineringsMailBeginVanHetJaar;
+use Exception;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -11,12 +12,17 @@ class MailController extends Controller
 {
     public function GildeHerrineringsMailBeginVanHetJaar()
     {
-        $gilden = Gilde::find(1);
+        $gilden = Gilde::all();
         $log = [];
+        $error = [];
         foreach ($gilden as $gilde) {
-            array_push($log, Mail::to($gilde)->send(new GildeHerrineringsMailBeginVanHetJaar($gilde)));
+            try {
+                array_push($log, Mail::to($gilde)->send(new GildeHerrineringsMailBeginVanHetJaar($gilde)));
+            } catch (Exception $e) {
+                array_push($error, $e);
+            }
         }
 
-        return dd($log);
+        return dd($log, $error, $gilden);
     }
 }

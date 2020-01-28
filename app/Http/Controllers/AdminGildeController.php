@@ -43,8 +43,8 @@ class AdminGildeController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'required|email|unique:Gilde',
-            'id'  => 'required|numeric|unique:Gilde,id',
+            'email'   => 'required|email|unique:gilde',
+            'id'  => 'required|numeric|unique:gilde,id',
             'name'    => 'required|string',
             'locatie' => 'required|string'
         ]);
