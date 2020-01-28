@@ -32,6 +32,9 @@ class changeMail extends Mailable
     public function build()
     {
         return $this->markdown('mails.changeMail')
-                    ->subject('E-mailadres voor kringgildedag.nl is gewijzigd');
+                    ->subject('E-mailadres voor kringgildedag.nl is gewijzigd')
+                    ->attach(asset('/attachments/Uitnodiging2020.pdf', [
+                        'mime' => 'application/pdf'
+                    ]));
     }
 }
