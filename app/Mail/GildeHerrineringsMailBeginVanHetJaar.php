@@ -32,6 +32,8 @@ class GildeHerrineringsMailBeginVanHetJaar extends Mailable implements ShouldQue
     {
         return $this->markdown('mails.GildeHerrineringsMailBeginVanHetJaar')
                     ->subject('Kringgildedag Inschrijfformulier')
-                    ->attach(asset('/attachments/Uitnodiging2020.pdf'));
+                    ->attach(asset('/attachments/Uitnodiging2020.pdf'), [
+                        'mime' => 'application/pdf'
+                    ]);
     }
 }
