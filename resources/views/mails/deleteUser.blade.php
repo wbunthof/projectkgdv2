@@ -9,4 +9,3 @@ Voor vragen neem contact op met het organiserend gilde op <a href="mailto:{{ set
 Bedankt voor het gebruik van de onlinedienst,<br>
 {{ config('app.name') }}
 @endcomponent
-H
