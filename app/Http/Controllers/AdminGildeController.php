@@ -9,6 +9,7 @@ use App\Mail\newUser;
 use App\Services\GildeService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Str;
 use Illuminate\Validation\Rule;
 use Mail;
@@ -49,7 +50,7 @@ class AdminGildeController extends Controller
         ]);
 
         $password = Str::random(8);
-        $request->merge(['password' => $password]);
+        $request->merge(['password' => Hash::make($password)]);
 
         try {
             $user = $this->gildeService->create($request);
