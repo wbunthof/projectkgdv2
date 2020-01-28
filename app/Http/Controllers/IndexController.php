@@ -12,17 +12,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Leden;
-use App\Vraag;
-use App\Mail\testMail;
 use App\Gilde;
-use App\Antwoord;
-use App\Bazuinblazen;
-use App\Trommen;
-use App\Vendelen;
-use App\Formonderdeel;
-use App\Discipline;
-use App\Deelnamemeerderewedstrijden;
-use App\Junioren;
+use App\Repositories\GildeRepository;
+use App\Services\GildeService;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Writer\Exception;
 
 
 class IndexController extends Controller
