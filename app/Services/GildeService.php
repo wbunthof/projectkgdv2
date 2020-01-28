@@ -24,8 +24,6 @@ class GildeService
     {
 
         $attributes = $request->all();
-        $attributes["password"] = Hash::make(Str::random(8));
-
         return $this->gilde->create($attributes);
     }
 

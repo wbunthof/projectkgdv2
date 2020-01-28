@@ -9,6 +9,7 @@ use App\Mail\newUser;
 use App\Services\GildeService;
 use Exception;
 use Illuminate\Http\Request;
+use Str;
 use Illuminate\Validation\Rule;
 use Mail;
 
@@ -47,14 +48,16 @@ class AdminGildeController extends Controller
             'locatie' => 'required|string'
         ]);
 
+        $password = Str::random(8);
+        $request->merge(['password' => $password]);
+
         try {
-            $create = $this->gildeService->create($request);
+            $user = $this->gildeService->create($request);
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Creëren van gilde mislukt, error: '. $e->getMessage());
         }
-
         try {
-            Mail::to($create['user'])->send(new newUser($create['user'], $create['password']));
+            Mail::to($user)->send(new newUser($user, $password));
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Mailen van gilde mislukt, error: '. $e->getMessage());
         }
