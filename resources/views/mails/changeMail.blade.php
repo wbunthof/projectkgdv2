@@ -1,10 +1,10 @@
 @component('mail::message')
 # Hallo {{ $user->name }}
 
-Uw bent e-mailadres is gewijzigd naar {{ $user->mail }} van het online inschrijfformulier.
+Uw bent e-mailadres is gewijzigd naar {{ $user->email }} van het online inschrijfformulier.
 U kunt dus niet meer met het oude e-mailadres inloggen.
 
-Voor vragen neem contact op met het organiserend gilde op <a href="mailto:{{ setting('email organiserend gilde') }}">{{ setting('email organiserend gilde') }}</a>.
+Voor vragen neem contact op <a href="mailto:website@kringgildedag.nl">website@kringgildedag.nl</a>.
 
 Bedankt voor het gebruik van de onlinedienst,<br>
 {{ config('app.name') }}

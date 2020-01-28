@@ -98,6 +98,7 @@ class AdminGildeController extends Controller
      */
     public function newPassword(Request $request)
     {
+//        It's better that users can do it their self
 //        $this->validate($request, [
 //            'id' => 'required|numeric'
 //        ]);
@@ -116,7 +117,7 @@ class AdminGildeController extends Controller
             ]
         ]);
 
-        $mails = [$id->email, $request->email];
+        $mails = ['old' => $id->email, 'new' => $request->email];
 
         try {
             $this->gildeService->update($request, $id->id);
@@ -125,7 +126,7 @@ class AdminGildeController extends Controller
         }
 
         try {
-            Mail::to($mails)->send(new changeMail($id));
+            Mail::to($mails['new'])->cc($mails['old'])->send(new changeMail($id->fresh()));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => 'Email is niet naar gilde verzonden ' . $e->getMessage()]);
         }
