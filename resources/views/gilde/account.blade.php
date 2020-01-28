@@ -26,6 +26,6 @@
         {!! Form::close() !!}
     @endforeach
 
-    <a href="{{route('gilde.inschrijffomulier.deelname')}}" class="btn btn-primary btn-block">Inschrijfformulier</a>
+    <a href="{{route('gilde.inschrijfformulier', ['formonderdeel' => 1])}}" class="btn btn-primary btn-block">Inschrijfformulier</a>
 </div>
 @endsection
