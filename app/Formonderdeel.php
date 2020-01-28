@@ -36,6 +36,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $junioren
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Formonderdeel whereJunioren($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Formonderdeel whereMeerderewedstrijden($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Antwoord[] $antwoorden
+ * @property-read int|null $antwoorden_count
  */
 class Formonderdeel extends Model
 {

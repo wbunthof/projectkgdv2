@@ -64,20 +64,6 @@ class Leden extends Model
         return $this->belongsTo('App\Formonderdelendiscipline', 'formonderdelendiscipline_id');
     }
 
-    public function bazuinblazen()
-    {
-        return $this->hasOne('App\Bazuinblazen');
-    }
-
-    public function trommen()
-    {
-        return $this->hasOne('App\Trommen');
-    }
-
-    public function vendelen()
-    {
-        return $this->hasOne('App\Vendelen');
-    }
 
      public function gilde()
     {

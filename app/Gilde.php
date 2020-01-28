@@ -56,6 +56,10 @@ use Illuminate\Support\Str;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Leden[] $leden
  * @property-read int|null $leden_count
+ * @property string|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Log[] $logs
+ * @property-read int|null $logs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Gilde whereLastLoginAt($value)
  */
 class Gilde extends Authenticatable
 {

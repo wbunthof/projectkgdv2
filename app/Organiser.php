@@ -34,6 +34,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Organiser whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Organiser whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Log[] $logs
+ * @property-read int|null $logs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Organiser whereLastLoginAt($value)
  */
 class Organiser extends Authenticatable
 {

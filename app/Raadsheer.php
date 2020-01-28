@@ -38,6 +38,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Raadsheer whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Raadsheer whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Log[] $logs
+ * @property-read int|null $logs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Raadsheer whereLastLoginAt($value)
  */
 class Raadsheer extends Authenticatable
 {
