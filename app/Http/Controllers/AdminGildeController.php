@@ -79,6 +79,7 @@ class AdminGildeController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Mailen van gilde mislukt, error: '. $e->getMessage());
         }
+
         try {
             $this->gildeService->delete($request->id);
         } catch (Exception $e) {

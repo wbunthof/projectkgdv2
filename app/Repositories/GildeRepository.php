@@ -42,22 +42,18 @@ class GildeRepository
 
     public function deleteAntwoorden($id)
     {
-        return $this->gilde->find($id)->antwoorden()->delete();
+        return $this->gilde->find($id)->antwoorden()->forceDelete();
     }
 
     public function deleteLeden($id)
     {
-        $tablesVerwijderenNBFS_id = array(
-            'bazuinblazen',
-            'DeelnameMeerdereWedstrijden',
-            'junioren',
-            'trommen',
-            'vendelen');
-
-
-        foreach ($tablesVerwijderenNBFS_id as $tabel) {
-            DB::table($tabel)->where('NBFS_id', $id)->delete();
+        $gilde = $this->gilde->find($id);
+        foreach ($gilde->leden as $lid) {
+            $lid->update(['gilde_id' => null, 'formonderdelendiscipline_id' => null]);
         }
+
+        $gilde->deelnamMeerdereWedstrijden()->delete();
+        $gilde->junioren()->delete();
         return true;
     }
 }
