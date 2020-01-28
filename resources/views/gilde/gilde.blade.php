@@ -43,7 +43,7 @@
                     <b>Als u iets intypt of een keuze maakt wordt het automatisch opgeslagen!</b>
                 </li>
                 <li>
-                    Bij vragen kunt u altijd een e-mail sturen naar <a href="mailto:inschrijvenkgd2019@gmail.com">inschrijvenkgd2019@gmail.com</a>.
+                    Bij vragen kunt u altijd een e-mail sturen naar <a href="mailto:website@kringgildedag.nl">website@kringgildedag.nl</a> of <a href="mailto:{{ setting('email organiserend gilde') }}">{{ setting('email organiserend gilde') }}</a>.
                 </li>
                 <li>
                     Hieronder staat alle ingevulde gegevens op een rijtje. U kunt de antwoorden van het onderdeel bekijken door op het onderdeel te klikken.
