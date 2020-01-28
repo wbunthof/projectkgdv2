@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li>
-                    Hierna vraag ik u om op <a href="{{route('gilde.inschrijffomulier.deelname')}}">inschrijformulier</a> te klikken en dit te doorlopen. <br>
+                    Hierna vraag ik u om op <a href="{{route('gilde.inschrijfformulier', ['formonderdeel' => 1])}}">inschrijformulier</a> te klikken en dit te doorlopen. <br>
                     <b>Als u iets intypt of een keuze maakt wordt het automatisch opgeslagen!</b>
                 </li>
                 <li>
