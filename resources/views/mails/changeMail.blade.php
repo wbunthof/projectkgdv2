@@ -2,7 +2,7 @@
 # Hallo {{ $user->name }}
 
 Uw bent e-mailadres is gewijzigd naar {{ $user->mail }} van het online inschrijfformulier.
-U kunt dus niet meer inloggen.
+U kunt dus niet meer met het oude e-mailadres inloggen.
 
 Voor vragen neem contact op met het organiserend gilde op <a href="mailto:{{ setting('email organiserend gilde') }}">{{ setting('email organiserend gilde') }}</a>.
 
