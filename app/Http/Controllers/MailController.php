@@ -11,10 +11,12 @@ class MailController extends Controller
 {
     public function GildeHerrineringsMailBeginVanHetJaar()
     {
-//        $gilden = Gilde::all();
+        $gilden = Gilde::find(1);
+        $log = [];
+        foreach ($gilden as $gilde) {
+            array_push($log, Mail::to($gilde)->send(new GildeHerrineringsMailBeginVanHetJaar($gilde)));
+        }
 
-        $mail = Mail::to('secretariskringkempenland@gmail.com')->send(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
-
-        return new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1));
+        return dd($log);
     }
 }
