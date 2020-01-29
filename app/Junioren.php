@@ -37,7 +37,7 @@ class Junioren extends Model
     return $this->belongsTo('App\Formonderdelendiscipline', 'juniorenDiscipline_id');
   }
 
-  public function gilde($value='')
+  public function gilde()
   {
     return $this->belongsTo('App\Gilde', 'NBFS_id');
   }
