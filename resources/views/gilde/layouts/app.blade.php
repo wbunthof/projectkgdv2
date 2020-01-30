@@ -21,21 +21,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
     <body onload="removeMessage()">
-        <script>
-            function removeMessage() {
-                setTimeout(
-                    function() {
-                        var el = document.getElementsByClassName('alert-dismissible');
-                        for (var i = 0; i < el.length; i++) {
-                            console.log(el);
-                            $(el).alert('close');
-                        }
-                    }, 3000    
-                );
-                
-            }
-        </script>
-
         @include('gilde.includes.navbar')
         <main role="main">
             @include('gilde.includes.messages')
@@ -44,7 +29,7 @@
         </main>
         <footer class="footer">
           <div class="container">
-            <a href="{{{ route('disclaimer')}}}">Disclaimer & privacyverklaring - &copy; Wouter Bunthof, 2019</p></a>
+            <a href="{{{ route('disclaimer')}}}">Disclaimer & privacyverklaring - &copy; Wouter Bunthof, 2019</a>
           </div>
         </footer>
     </body>

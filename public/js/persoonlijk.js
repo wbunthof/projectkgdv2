@@ -28,7 +28,7 @@ function myFunction() {
 myFunction();
 
 // reload wanneer pagina bekeken wordt vanuit history
-if (performance.navigation.type == 2) {
+if (performance.navigation.type === 2) {
    location.reload(true);
 }
 
@@ -89,6 +89,46 @@ function verwijderElement(modalId) {
 
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Dismissible alert verwijderen
+function removeMessage() {
+    var el = document.getElementsByClassName('alert-dismissible');
+    console.log(el);
+
+    setTimeout(
+    function() {
+            for (var i = 0; i < el.length; i++) {
+                console.log(el);
+                $(el).alert('close');
+            }
+        }, 3000
+    );
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Message toevoegen
+// <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+//     <span aria-hidden="true">&times;</span>
+// </button>
+
+function createMessage(message, soort) {
+    var messagesDiv = document.getElementById('messages');
+    var div = document.createElement('div');
+    var text = document.createTextNode(message);
+    var button = document.createElement('button');
+    var span = document.createElement('span');
+
+    button.setAttribute('class', 'close');
+    div.setAttribute('class', 'alert alert-' + soort + ' alert-dismissible fade show');
+
+    button.appendChild(span.appendChild(document.createTextNode('x')));
+    div.appendChild(button);
+    div.appendChild(text);
+    messagesDiv.appendChild(div);
+
+    removeMessage();
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Opslaan van nummer velden
@@ -96,8 +136,10 @@ function vraagOpslaanNummer(el, url, token) {
   if (Number(el.value) >= Number(el.min) && Number(el.value) <= Number(el.max) && el.dataset.fout != "true") {
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
+      if (xmlhttp.readyState===4 && xmlhttp.status===200)	{
         console.log(xmlhttp.response);
+        createMessage("Succesvol opgeslagen", "success");
+
       }
     };
     xmlhttp.open("POST", url, true);
@@ -108,8 +150,9 @@ function vraagOpslaanNummer(el, url, token) {
   } else if (!el.max || !el.min){
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
+      if (xmlhttp.readyState===4 && xmlhttp.status===200)	{
         console.log(xmlhttp.response);
+
       }
     };
     xmlhttp.open("POST", url, true);
@@ -129,6 +172,8 @@ function vraagOpslaanText(el, url, token) {
         xmlhttp.onreadystatechange = function() {
           if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
             console.log(xmlhttp.response);
+            createMessage("Succesvol opgeslagen", "success");
+
           }
         };
       xmlhttp.open("POST", url, true);
@@ -148,6 +193,8 @@ function vraagOpslaanBoolean(el, url, token) {
         xmlhttp.onreadystatechange = function() {
           if (xmlhttp.readyState==4 && xmlhttp.status==200)	{
             console.log(xmlhttp.response);
+            createMessage("Succesvol opgeslagen", "success");
+
           }
         };
       xmlhttp.open("POST", url, true);
