@@ -284,13 +284,13 @@ function deelname(keuze) { // 0 = nee; 1 = ja
         el0 = document.getElementById("deelname0");
 
 				if (keuze === 1) {
-					document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Deelname is opgeslagen!</div>';
+					// document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Deelname is opgeslagen!</div>';
                     el1.className = "btn btn-primary mr-1 mb-2 active";
                     el1.innerHTML = "Ja (gekozen)";
                     el0.className = "btn btn-primary mr-1 mb-2"
                     el0.innerHTML = "Nee";
                 } else if (keuze === 0) {
-					document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Geen deelname is opgeslagen!</div>';
+					// document.getElementById("alertOpslaan").innerHTML = '<div class="alert alert-success" role="alert">Geen deelname is opgeslagen!</div>';
                     el1.className = "btn btn-primary mr-1 mb-2";
                     el1.innerHTML = "Ja";
                     el0.className = "btn btn-primary mr-1 mb-2 active"
