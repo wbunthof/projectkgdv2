@@ -7,8 +7,13 @@
     <div class="form-inline">
         @if($setting->type == 'date')
             {!! Form::date('value', $setting->value, [ 'class' => 'form-control mr-sm-2']) !!}
+        
         @elseif($setting->type == 'text')
             {!! Form::text('value', $setting->value, [ 'class' => 'form-control mr-sm-2']) !!}
+            
+        @elseif($setting->type == 'boolean')
+            {!! Form::select('value', ['0' => 'Nee', '1' => 'Ja'], $setting->value) !!}
+       
         @endif
         {!! Form::submit('Opslaan', ['class' => 'btn btn-primary mr-sm-2']) !!}
     </div>
