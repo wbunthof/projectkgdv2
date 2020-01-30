@@ -17,7 +17,20 @@
         <link href="{{asset('css/all.php')}}" rel="stylesheet">
 
     </head>
-    <body>
+    <body onload="removeMessage()">
+    <script>
+        function removeMessage() {
+            setTimeout(
+                function() {
+                    var el = document.getElementsByClassName('alert-dismissible');
+                    for (var i = 0; i < el.length; i++) {
+                        $(el).alert('close');
+                    }
+                }, 3000
+            );
+
+        }
+    </script>
 
         @include('raadsheer.includes.navbar')
         <div class="container">
