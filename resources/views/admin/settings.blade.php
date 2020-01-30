@@ -12,7 +12,7 @@
             {!! Form::text('value', $setting->value, [ 'class' => 'form-control mr-sm-2']) !!}
             
         @elseif($setting->type == 'boolean')
-            {!! Form::select('value', ['0' => 'Nee', '1' => 'Ja'], $setting->value) !!}
+            {!! Form::select('value', ['0' => 'Nee', '1' => 'Ja'], $setting->value), ['class' => 'custom-select mr-sm-2'] !!}
        
         @endif
         {!! Form::submit('Opslaan', ['class' => 'btn btn-primary mr-sm-2']) !!}
