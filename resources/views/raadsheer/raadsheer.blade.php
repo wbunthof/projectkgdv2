@@ -7,6 +7,11 @@
 
 @section('content')
 <div class="container">
+    @if(setting('Raadsheren nog vragen aanpassen melding?') == 1)
+        <div class="alert alert-warning text-center" role="alert">
+            <strong>Opletten!</strong> De gilden zijn de vragen aan het invullen, veranderingen kunnen dus door gilden die al klaar zijn niet meer opgemerkt worden.
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -31,5 +36,5 @@
             </div>
         </div>
     </div>
-</div>
+</>
 @endsection
