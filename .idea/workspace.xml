@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="PhpDoc updates">
-      <change beforePath="$PROJECT_DIR$/.idea/projectkgdv2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectkgdv2.iml" afterDir="false" />
+    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="Message when saving answer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Junioren.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Junioren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/columnsortable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gilde/gilde.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gilde/gilde.blade.php" afterDir="false" />
     </list>
     <list id="b356e9be-151c-4950-b60e-98b4dce55f7a" name=".idea" comment="" />
-    <list id="4e4a4502-5b3f-44e2-9f90-705229668f8d" name="Changemail fix" comment="Changemail fix + AdminController.php refactored to AdminGildeController.php" />
     <list id="41b5cf8d-f5b8-43e5-98d9-ccc4e7b84a57" name="Log" comment="">
       <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Gilde.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gilde.php" afterDir="false" />
@@ -66,16 +65,6 @@
         <option value="https://github.com/wbunthof/projectkgdv2.git" />
       </set>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
-      <ranges>
-        <range start1="6" end1="13" start2="6" end2="8" changelist="41b5cf8d-f5b8-43e5-98d9-ccc4e7b84a57" />
-        <range start1="31" end1="33" start2="26" end2="40" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
-        <range start1="34" end1="35" start2="41" end2="41" changelist="41b5cf8d-f5b8-43e5-98d9-ccc4e7b84a57" />
-        <range start1="37" end1="42" start2="43" end2="43" changelist="41b5cf8d-f5b8-43e5-98d9-ccc4e7b84a57" />
-      </ranges>
-    </file>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -272,7 +261,6 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="" />
       <changelist id="41b5cf8d-f5b8-43e5-98d9-ccc4e7b84a57" name="Log" comment="" />
-      <changelist id="4e4a4502-5b3f-44e2-9f90-705229668f8d" name="Changemail fix" comment="" />
       <created>1575549702776</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -319,91 +307,9 @@
       <workItem from="1579691155211" duration="7406000" />
       <workItem from="1579718654336" duration="995000" />
       <workItem from="1580048913431" duration="22818000" />
-      <workItem from="1580204825707" duration="15087000" />
-    </task>
-    <task id="LOCAL-00046" summary="Redirect after raadsheer logout to raadsheer login page instead of gilde login page">
-      <created>1579105280871</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1579105280871</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Redirect after raadsheer logout to raadsheer login page instead of gilde login page">
-      <created>1579105354430</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1579105354430</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Redirect after raadsheer logout to raadsheer login page instead of gilde login page">
-      <created>1579105490387</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1579105490387</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Vraag type verwijderd">
-      <created>1579106303165</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1579106303165</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Start met data bij disciplines">
-      <created>1579113410294</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1579113410294</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Start met data bij disciplines">
-      <created>1579113608367</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1579113608367</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Start met data bij disciplines">
-      <created>1579113903112</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1579113903112</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Fixed breaking changes from the raadsheer part, which where neccesary to built a useful application">
-      <created>1579608383416</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1579608383416</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Fixed frontpage">
-      <created>1579618250254</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1579618250254</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Typo">
-      <created>1579619028516</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1579619028516</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Fixed next/previous button">
-      <created>1579686077791</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1579686077791</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Typo, but need to change name Gilde table to gilde . (without capital)">
-      <created>1579686524333</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1579686524333</updated>
+      <workItem from="1580204825707" duration="23409000" />
+      <workItem from="1580494704240" duration="415000" />
+      <workItem from="1580745630353" duration="3613000" />
     </task>
     <task id="LOCAL-00058" summary="Test">
       <created>1579687337684</created>
@@ -664,7 +570,91 @@
       <option name="project" value="LOCAL" />
       <updated>1580252655104</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Cleanup">
+      <created>1580291929557</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1580291929557</updated>
+    </task>
+    <task id="LOCAL-00096" summary="IDE updates">
+      <created>1580292022697</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1580292022697</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Boolean type added at settings.blade.php">
+      <created>1580380971434</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1580380971434</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Warning that gildes are filling in questions.">
+      <created>1580381275183</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1580381275183</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Bootstrap mark up">
+      <created>1580381492691</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1580381492691</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Bootstrap mark up">
+      <created>1580381563685</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1580381563685</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Bootstrap mark up">
+      <created>1580381721869</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1580381721869</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Message fade away after x sec">
+      <created>1580384518115</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1580384518115</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Message fade away after x sec">
+      <created>1580384777243</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1580384777243</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Message when saving answer">
+      <created>1580386897342</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1580386897342</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Dubbele melding gefixt">
+      <created>1580387066494</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1580387066494</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Fix for deleted disciplines which didn't delete juniors or members without a card, They get a warning and are deleted from now">
+      <created>1580759482019</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1580759482019</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,15 +685,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="last_login_at column implemented on all user models and functioning." />
-    <MESSAGE value="Inlog implement finished" />
-    <MESSAGE value="Check when gilde wants to add a lid that is already assigned to other gilde" />
-    <MESSAGE value="First mail" />
-    <MESSAGE value="General settings created with helper function settings()" />
-    <MESSAGE value="Cleanup" />
-    <MESSAGE value="Disclaimer added" />
-    <MESSAGE value="Changemail fix + AdminController.php refactored to AdminGildeController.php" />
-    <MESSAGE value="Delete users mail added" />
     <MESSAGE value="Mails in try catch" />
     <MESSAGE value="GildeHerrineringsMailBeginVanHetJaar" />
     <MESSAGE value="changeMail.blade.php update" />
@@ -720,7 +701,16 @@
     <MESSAGE value="Fixed broken links" />
     <MESSAGE value="Update mailadressen" />
     <MESSAGE value="Removed banner which had a message that you can't fill in answers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed banner which had a message that you can't fill in answers" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="IDE updates" />
+    <MESSAGE value="Boolean type added at settings.blade.php" />
+    <MESSAGE value="Warning that gildes are filling in questions." />
+    <MESSAGE value="Bootstrap mark up" />
+    <MESSAGE value="Message fade away after x sec" />
+    <MESSAGE value="Message when saving answer" />
+    <MESSAGE value="Dubbele melding gefixt" />
+    <MESSAGE value="Fix for deleted disciplines which didn't delete juniors or members without a card, They get a warning and are deleted from now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix for deleted disciplines which didn't delete juniors or members without a card, They get a warning and are deleted from now" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577108799234">
@@ -745,16 +735,16 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2634" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580206690895" />
-    <state x="2266" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1580291928676">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1580759480786">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105860497" />
     <state x="2266" y="0" width="1170" height="1040" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701625591" />
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576668761775" />
-    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580252654166" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580387065495" />
     <state x="2266" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580291928676" />
     <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535631108" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580052009818" />
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580759480786" />
     <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1579620915382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -796,10 +786,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2715" y="440" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580127110036" />
-    <state x="795" y="147" key="RollbackChangesDialog" timestamp="1578421840904">
+    <state x="795" y="147" key="RollbackChangesDialog" timestamp="1580387045812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="795" y="147" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578421840904" />
+    <state x="795" y="147" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580387045812" />
     <state x="147" y="57" key="SettingsEditor" timestamp="1577108543651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -820,15 +810,15 @@
     </state>
     <state x="2710" y="390" key="VCS.EditChangelistDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580144292904" />
     <state x="790" y="390" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580051820870" />
-    <state x="2371" y="183" key="Vcs.Push.Dialog.v2" timestamp="1580291932346">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1580759484675">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105875919" />
     <state x="2371" y="183" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576701658871" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575975230305" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580252656561" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580387068013" />
     <state x="2371" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580291932346" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580052015187" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580759484675" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579620915382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -867,16 +857,16 @@
     <state x="2451" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577628284561" />
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577531278761" />
     <state x="531" y="236" width="840" height="855" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579683692369" />
-    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup" timestamp="1580251648224">
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1580759703230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577025056866" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576697517291" />
     <state x="301" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1576839285846" />
-    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580251648224" />
+    <state x="902" y="211" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580384998908" />
     <state x="2296" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580213236015" />
     <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535524037" />
-    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580051638771" />
+    <state x="376" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580759703230" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

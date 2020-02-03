@@ -91,6 +91,11 @@ class Gilde extends Authenticatable
       return $this->hasMany('App\Junioren', 'NBFS_id');
     }
 
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'logable');
+    }
+
     protected $guard = 'gilde';
 
     protected $fillable = [

@@ -117,7 +117,6 @@
                   @forelse ($deelnameMeerdereWedstrijden as $lid)
                       
                       {{ $lid->naam }}
-                      @php(dd($lid->disciplines()))
                       <b><span class="float-sm-right">{{$lid->disciplines}}</span></b>
                       <br>
                   @empty

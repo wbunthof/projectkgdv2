@@ -36,10 +36,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereStraat($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Log[] $logs
+ * @property-read int|null $logs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereLastLoginAt($value)
  */
 class Admin extends Authenticatable
 {
     use Notifiable;
+
+    public function logs()
+    {
+        return $this->morphMany('App\Log', 'logable');
+    }
 
     protected $guard = 'admin';
 
