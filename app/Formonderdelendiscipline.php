@@ -36,7 +36,12 @@ class Formonderdelendiscipline extends Model
 
     public function leden()
     {
-        return $this->HasMany('App\Leden');
+        return $this->hasMany('App\Leden');
+    }
+
+    public function junioren()
+    {
+        return $this->hasMany('App\Junioren', 'juniorenDiscipline_id');
     }
 
     protected $fillable = [

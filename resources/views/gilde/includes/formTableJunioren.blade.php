@@ -69,7 +69,7 @@
 					<td>{{{$lid->voornaam}}}</td>
 					<td>{{{$lid->achternaam}}}</td>
 					<td>{{{$lid->geboortedatum}}}</td>
-					<td>{{{$lid->discipline->naam}}}</td>
+					<td>{{{$lid->discipline ? $lid->discipline->naam : "Verwijderd of onbeschikbare discipline"}}}</td>
 					{{-- Verwijder button verwerkt in form --}}
 					<td>
                         @php $route = 'gilde/inschrijffomulier/'.$onderdeel.'/lidVerwijderen';	@endphp

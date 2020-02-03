@@ -104,7 +104,7 @@
                       {{$lid->voornaam}}
                       {{$lid->tussenvoegsel}}
                       {{$lid->achternaam}}
-                      <b><span class="float-sm-right">{{ucfirst($lid->discipline->naam)}}</span></b>
+                      <b><span class="float-sm-right">{{ucfirst($lid->discipline ? $lid->discipline->naam : "Verwijderd of onbeschikbare discipline")}}</span></b>
                       <br>
                   @empty
                       <b>Geen leden bij het {{ $onderdeel->onderdeel }}</b>
@@ -115,8 +115,10 @@
                   
               @if ($onderdeel->meerderewedstrijden)
                   @forelse ($deelnameMeerdereWedstrijden as $lid)
+                      
                       {{ $lid->naam }}
-                      <b><span class="float-sm-right">{{{$lid->disciplines}}}</span></b>
+                      @php(dd($lid->disciplines()))
+                      <b><span class="float-sm-right">{{$lid->disciplines}}</span></b>
                       <br>
                   @empty
                       <b>Geen leden die deelnemen aan meerdere wedstrijden toegevoegd</b>
@@ -128,7 +130,7 @@
               @if($onderdeel->junioren)
                   @forelse ($junioren as $lid)
                       {{ $lid->voornaam }} {{ $lid->achternaam }}
-                      <b><span class="float-sm-right">{{ $lid->discipline->naam }}</span></b>
+                      <b><span class="float-sm-right">{{ $lid->discipline ? $lid->discipline->naam : "Verwijderd of onbeschikbare discipline"}}</span></b>
                       <br>
                   @empty
                       <b>Geen leden geen pas hebben toegevoegd</b>

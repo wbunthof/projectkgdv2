@@ -68,6 +68,10 @@ class DisciplineService
             $lid->save();
         }
 
+        foreach ($this->disciplinerepository->find($id)->junioren()->get() as $lid){
+            $lid->delete();
+        }
+
         return $this->disciplinerepository->delete($id);
     }
 }
