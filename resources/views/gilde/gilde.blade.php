@@ -52,7 +52,7 @@
                   </li>
             </ul>
               <a href="{{route('gilde.account')}}" class="btn btn-primary btn-block">Account</a>
-              <a href="{{route('gilde.download.all', ['id' => Auth::id()])}}" class="btn btn-primary btn-block">Download gegevens</a>
+              <a href="{{route('gilde.download.all', ['id' => Auth::id()])}}" class="btn btn-primary btn-block" download>Download gegevens</a>
         </div>
     </div>
         

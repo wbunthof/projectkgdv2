@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\GildeData;
+use App\Exports\GildeData\GildeData;
 use App\Formonderdeel;
 use App\Gilde;
 use Carbon\Carbon;

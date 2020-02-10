@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\GildeData;
 
-use App\Antwoord;
 use App\Gilde;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class GildeData implements FromQuery, WithMapping, WithHeadings
+
+class Vragen implements FromQuery, WithMapping, WithHeadings, WithTitle, WithEvents
 {
     use Exportable;
 
@@ -23,6 +26,11 @@ class GildeData implements FromQuery, WithMapping, WithHeadings
         $this->gilde = $gilde;
     }
 
+    public function title(): string
+    {
+        return 'Vragen';
+    }
+
     public function map($antwoord): array
     {
         /*
@@ -32,19 +40,40 @@ class GildeData implements FromQuery, WithMapping, WithHeadings
          *
          */
         $vraag = $antwoord->vraag;
-        return [
+        return ([
             $antwoord->vraag->tekst,
             $vraag->type == 'boolean' ? ($antwoord->antwoord ? 'Ja' : 'Nee') : $antwoord->antwoord,
-            $antwoord->formonderdeel->onderdeel
-        ];
+            ucfirst($antwoord->formonderdeel->onderdeel)
+        ]);
     }
 
     public function headings(): array
     {
         return [
-            'Vraag',
-            'Antwoord',
-            'Inschrijfformulieronderdeel',
+            [
+                'Aanpassing hier heeft geen zin!'
+            ],[
+                'Vraag',
+                'Antwoord',
+                'Inschrijfformulieronderdeel',
+            ]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class    => function(AfterSheet $event) {
+                $event->sheet->getDelegate()->getStyle('A1:D1')->applyFromArray([
+                    'font' => [     'bold' => true,
+                ],  'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'color' => ['argb' => 'ff0000']
+                ]]);
+            },
         ];
     }
 
