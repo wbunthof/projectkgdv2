@@ -29,7 +29,7 @@ class IndexController extends Controller
 
         $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
 
-        Mail::to($gilden)->send(new remeber_new_questions());
+//        Mail::to($gilden)->send(new remeber_new_questions());
         return ((new remeber_new_questions())->render());
 
     }
