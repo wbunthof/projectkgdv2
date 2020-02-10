@@ -65,7 +65,7 @@ class Antwoord extends Model
 
     public function formOnderdeel()
     {
-        return $this->belongsTo('App\Formonderdeel');
+        return $this->vraag->formOnderdeel();
     }
 
     protected $table = 'antwoorden';
