@@ -139,6 +139,8 @@ Route::prefix('gilde')->group(function () {
     Route::get('/account', 'GildeController@account')->name('gilde.account');
     Route::put('/account', 'GildeController@accountUpdate')->name('gilde.account.update');
 
+    Route::get('/download/{id}/all', 'GildeDownloadController@all')->name('gilde.download.all');
+
     // Alles voor het inschrijfformulier
     Route::prefix('/inschrijffomulier')->group(function (){
 

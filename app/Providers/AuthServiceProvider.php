@@ -41,6 +41,10 @@ class AuthServiceProvider extends ServiceProvider
             return !(isset($lid->gilde_id));
         });
 
+        Gate::define('gilde-download', function (Gilde $user, Gilde $gilde){
+            return $user->id === $gilde->id;
+        });
+
         //
     }
 }
