@@ -242,13 +242,13 @@ function LidOpzoeken(type, str, discipline, url) {
 
   switch (discipline.toLowerCase().trim()) {
     case 'bazuinblazen':
-      discipline = 0;
+      discipline = 6;
       break;
     case 'trommen':
-      discipline = 1;
+      discipline = 10;
       break;
     case 'vendelen':
-      discipline = 2;
+      discipline = 11;
       break;
   }
 

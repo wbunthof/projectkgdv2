@@ -19,9 +19,9 @@
 				{!! Form::hidden('onderdeel', $formonderdeel->id, []) !!}
 
 				{!! Form::label('leden_id', 'Als u het nummer/voornaam/achternaam intypt wordt er automatisch een lid voorgesteld graag deze gebruiken en er zelf geen aan toevoegen.', []) !!}
-				{!! Form::number('leden_id', '', ['autocomplete' => Str::random(55), 'id' => 'id', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(0, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Nummer']) !!}
-				{!! Form::text('voorletter', '', ['autocomplete' => Str::random(55), 'id' => 'voorletter', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(1, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Voornaam']) !!}
-				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => Str::random(55), 'onkeyup' => 'LidOpzoeken(2, this.value, "' . $onderdeel . '", "' . url('') . '")', 'placeholder' => 'Achternaam']) !!}
+				{!! Form::number('leden_id', '', ['autocomplete' => Str::random(55), 'id' => 'id', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(0, this.value, "' . $formonderdeel->onderdeel . '", "' . url('') . '")', 'placeholder' => 'Nummer']) !!}
+				{!! Form::text('voorletter', '', ['autocomplete' => Str::random(55), 'id' => 'voorletter', 'class' => 'form-control mb-2 mr-sm-2', 'onkeyup' => 'LidOpzoeken(1, this.value, "' . $formonderdeel->onderdeel . '", "' . url('') . '")', 'placeholder' => 'Voornaam']) !!}
+				{!! Form::text('achternaam', '', ['id' => 'achternaam', 'class' => 'form-control mb-2 mr-sm-2', 'autocomplete' => Str::random(55), 'onkeyup' => 'LidOpzoeken(2, this.value, "' . $formonderdeel->onderdeel . '", "' . url('') . '")', 'placeholder' => 'Achternaam']) !!}
 				<div class="container" id='tabelVoorLeden'></div>
 				@foreach ($disciplines as $discipline)
 					<div class="form-check">

@@ -55,11 +55,11 @@ class IndexController extends Controller
     public function ajax($type, $input, $discpline) //Request $request
     {
       if ($type == 0) {
-        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("leden_id","LIKE","%{$input}%")->where('discipline_id', '=', $discpline)->limit(5)->get();
+        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("leden_id","LIKE","%{$input}%")->where('formonderdeel_id', '=', $discpline)->limit(5)->get();
       } elseif ($type == 1) {
-        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("voornaam","LIKE","%{$input}%")->where('discipline_id', '=', $discpline)->limit(5)->get();
+        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("voornaam","LIKE","%{$input}%")->where('formonderdeel_id', '=', $discpline)->limit(5)->get();
       } elseif ($type == 2) {
-        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("achternaam","LIKE","%{$input}%")->where('discipline_id', '=', $discpline)->limit(5)->get();
+        $data = Leden::select('leden_id', 'voorletter', 'achternaam')->where("achternaam","LIKE","%{$input}%")->where('formonderdeel_id', '=', $discpline)->limit(5)->get();
       }
     // return response()->json($data);
     return view('raden')->with('data', $data);
