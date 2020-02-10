@@ -65,11 +65,6 @@ class Gilde extends Authenticatable
 {
     use Notifiable;
 
-    static function updateAccount(Gilde $gilde, $onderdeel, $antwoord){
-       $update = new UpdateAccountFactory;
-        $update->updateAccount($gilde, $onderdeel, $antwoord);
-    }
-
     //Relations
     public function antwoorden()
     {
