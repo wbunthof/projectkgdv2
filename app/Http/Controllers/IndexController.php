@@ -8,8 +8,10 @@ use App\Antwoord;
 use App\Exports\ExcelSimpleCollection;
 use App\Leden;
 use App\Gilde;
+use App\Mail\remeber_new_questions;
 use App\Repositories\GildeRepository;
 use App\Services\GildeService;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
 
@@ -23,11 +25,12 @@ class IndexController extends Controller
 
     public function test()
     {
+//        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
 
-        $vorige = Formonderdeel::where('id', '<', Formonderdeel::find(14)->id)->max('id');
-        $volgende = Formonderdeel::where('id', '>', Formonderdeel::find(14)->id)->min('id');
+        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
 
-
+        Mail::to($gilden)->send(new remeber_new_questions());
+        return ((new remeber_new_questions())->render());
 
     }
 
