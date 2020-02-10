@@ -7,47 +7,49 @@
 
 @section('content')
   <!-- Modal -->
-<div class="modal fade" id="hulpControleFormulier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>
-                    Achter de vraag staat het door u gegeven antwoord. <br>
-                    Door op de vraag te klikken kunt u het antwoord wijzigen.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Sluiten</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="justify-content-center">
-{{--    <div class="alert alert-warning text-center" role="alert">--}}
-{{--        <strong>Belangrijk!</strong> U kunt geen gegevens meer wijzigen. Mocht er iets dringends zijn verzoek ik u om een e-mail te sturen naar <a href="mailto:inschrijvenkgd2019@gmail.com">inschrijvenkgd2019@gmail.com</a>--}}
-{{--        --}}{{-- <strong>Belangrijk!</strong> Uw gegevens worden automatisch opgeslagen, daardoor kan het organiserend gilde meteen de gegevens inzien. Dit betekend dat u niks hoeft in te sturen dit gebeurt namelijk automatisch. --}}
-{{--    </div>--}}
-    <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Hallo, {{$gilde->name}}.</h1>
-            <ul>
-                <li>
-                    Ik verzoek u om op <a href="{{route('gilde.account')}}">account</a> te klikken
-                    <ul>
-                        <li>Gegevens aan passen die foutief/niet ingevuld zijn.</li>
-                        <li><b>Elke keer</b> op opslaan te drukken.</li>
-                    </ul>
-                </li>
-                <li>
-                    Hierna vraag ik u om op <a href="{{route('gilde.inschrijfformulier', ['formonderdeel' => 1])}}">inschrijformulier</a> te klikken en dit te doorlopen. <br>
-                    <b>Als u iets intypt of een keuze maakt wordt het automatisch opgeslagen!</b>
-                </li>
-                <li>
-                    Bij vragen kunt u altijd een e-mail sturen naar <a href="mailto:website@kringgildedag.nl">website@kringgildedag.nl</a> of <a href="mailto:{{ setting('email organiserend gilde') }}">{{ setting('email organiserend gilde') }}</a>.
-                </li>
-                <li>
-                    Hieronder staat alle ingevulde gegevens op een rijtje. U kunt de antwoorden van het onderdeel bekijken door op het onderdeel te klikken.
-                </li>
+  <div class="modal fade" id="hulpControleFormulier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-body">
+                  <p>
+                      Achter de vraag staat het door u gegeven antwoord. <br>
+                      Door op de vraag te klikken kunt u het antwoord wijzigen.
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Sluiten</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="justify-content-center">
+      {{--    <div class="alert alert-warning text-center" role="alert">--}}
+      {{--        <strong>Belangrijk!</strong> U kunt geen gegevens meer wijzigen. Mocht er iets dringends zijn verzoek ik u om een e-mail te sturen naar <a href="mailto:inschrijvenkgd2019@gmail.com">inschrijvenkgd2019@gmail.com</a>--}}
+      {{--        --}}{{-- <strong>Belangrijk!</strong> Uw gegevens worden automatisch opgeslagen, daardoor kan het organiserend gilde meteen de gegevens inzien. Dit betekend dat u niks hoeft in te sturen dit gebeurt namelijk automatisch. --}}
+      {{--    </div>--}}
+      <div class="jumbotron">
+          <div class="container">
+              <h1 class="display-3">Hallo, {{$gilde->name}}.</h1>
+              @include('includes.countdown', ['element' => 'countdown', 'time' => setting('Uiterste inlever datum')])
+              <h2>Nog zolang kunt u inschrijven: <div id="countdown"></div></h2>
+              <ul>
+                  <li>
+                      Ik verzoek u om op <a href="{{route('gilde.account')}}">account</a> te klikken
+                      <ul>
+                          <li>Gegevens aan passen die foutief/niet ingevuld zijn.</li>
+                          <li><b>Elke keer</b> op opslaan te drukken.</li>
+                      </ul>
+                  </li>
+                  <li>
+                      Hierna vraag ik u om op <a href="{{route('gilde.inschrijfformulier', ['formonderdeel' => 1])}}">inschrijformulier</a> te klikken en dit te doorlopen. <br>
+                      <b>Als u iets intypt of een keuze maakt wordt het automatisch opgeslagen!</b>
+                  </li>
+                  <li>
+                      Bij vragen kunt u altijd een e-mail sturen naar <a href="mailto:website@kringgildedag.nl">website@kringgildedag.nl</a> of <a href="mailto:{{ setting('email organiserend gilde') }}">{{ setting('email organiserend gilde') }}</a>.
+                  </li>
+                  <li>
+                      Hieronder staat alle ingevulde gegevens op een rijtje. U kunt de antwoorden van het onderdeel bekijken door op het onderdeel te klikken.
+                  </li>
             </ul>
             <a href="{{route('gilde.account')}}" class="btn btn-primary btn-block">Account</a>
         </div>
