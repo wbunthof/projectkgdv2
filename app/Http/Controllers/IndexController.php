@@ -8,6 +8,7 @@ use App\Antwoord;
 use App\Exports\ExcelSimpleCollection;
 use App\Leden;
 use App\Gilde;
+use App\Mail\GildeHerrineringsMailBeginVanHetJaar;
 use App\Mail\remeber_new_questions;
 use App\Repositories\GildeRepository;
 use App\Services\GildeService;
@@ -26,11 +27,16 @@ class IndexController extends Controller
     public function test()
     {
 //        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
-
-        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
-
-//        Mail::to($gilden)->send(new remeber_new_questions());
-        return ((new remeber_new_questions())->render());
+        $error = ['one'];
+//        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
+        foreach (Gilde::where('id', '>', 0)->get() as $gilde) {
+            try {
+                Mail::to($gilde)->queue(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
+            } catch (\Exception $e) {
+                array_push($error, $e);
+            }
+        }
+        return $error;
 
     }
 
