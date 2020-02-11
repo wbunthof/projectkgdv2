@@ -52,7 +52,41 @@
                   </li>
             </ul>
               <a href="{{route('gilde.account')}}" class="btn btn-primary btn-block">Account</a>
-              <a href="{{route('gilde.download.all', ['id' => Auth::id()])}}" class="btn btn-primary btn-block" download>Download gegevens</a>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#downloadUitleg">
+                  Download en print gegevens
+              </button>
+
+              <!-- Modal -->
+              <div class="modal" id="downloadUitleg" tabindex="-1" role="dialog" aria-labelledby="downloadUitlegLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="downloadUitlegLabel">Download gegevens</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <ul>
+                                  <li>
+                                      U kunt door op de onderstaande knop te klikken de gegevens die bij ons zijn opgeslagen downloaden. Dit is een excel bestand, u kunt deze dan eventueel ook uitprinten.
+                                  </li>
+                                  <li>
+                                      <b>Alle wijzigingen die u aanbrengt in het excelbestand worden niet bij ons opgeslagen. 
+                                          En zullen dus niet mee worden genomen bij het organiseren van de kringgildedag.<br></b>
+                                  </li>
+                                  <li>    
+                                      <b>
+                                          Dit bestand is puur ter referentie!</b>
+                                  </li>
+                              </ul>
+                              <a href="{{route('gilde.download.all', ['id' => Auth::id()])}}" class="btn btn-primary btn-block" download>Download gegevens</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                
         </div>
     </div>
         
