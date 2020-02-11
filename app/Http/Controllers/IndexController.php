@@ -29,7 +29,7 @@ class IndexController extends Controller
 //        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
         $error = ['one'];
 //        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
-        foreach (Gilde::where('id', '>', 0)->get() as $gilde) {
+        foreach (['wbunthof@gmail.com'] as $gilde) {
             try {
                 Mail::to($gilde)->queue(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
             } catch (\Exception $e) {
