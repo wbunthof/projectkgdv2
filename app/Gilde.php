@@ -81,6 +81,11 @@ class Gilde extends Authenticatable
       return $this->hasMany('App\Deelnamemeerderewedstrijden', 'NBFS_id');
     }
 
+    public function deelnameMeerdereWedstrijden()
+    {
+        return $this->hasMany('App\Deelnamemeerderewedstrijden', 'NBFS_id');
+    }
+
     public function junioren()
     {
       return $this->hasMany('App\Junioren', 'NBFS_id');

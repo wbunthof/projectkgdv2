@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Junioren whereVoornaam($value)
  * @mixin \Eloquent
  * @property-read \App\Formonderdelendiscipline $discipline
+ * @property-read \App\Gilde $gilde
  */
 class Junioren extends Model
 {

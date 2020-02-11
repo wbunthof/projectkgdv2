@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Leden[] $leden
  * @property-read int|null $leden_count
  * @property-read \App\Formonderdeel $formonderdeel
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Junioren[] $junioren
+ * @property-read int|null $junioren_count
  */
 class Formonderdelendiscipline extends Model
 {
