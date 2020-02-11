@@ -26,8 +26,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="onderdeelDropdown" role="button" aria-haspopup="true" aria-expanded="false">Leden</a>
           <div class="dropdown-menu">
-            @foreach ($disciplines as $discipline)
-              <a class="dropdown-item" href="{{{route('organiser.data.leden', ['id' => $discipline->id])}}}">{{{ucfirst($discipline->discipline)}}}</a>
+            @foreach (App\Formonderdelendiscipline::all() as $discipline)
+              <a class="dropdown-item" href="{{{route('organiser.data.leden', ['id' => $discipline->id])}}}">{{{ucfirst($discipline->naam)}}}</a>
             @endforeach
             <a class="dropdown-item" href="{{{route('organiser.data.leden.deelnameMeerdereWedstrijden')}}}">Deelname Meerdere Wedstrijden</a>
             <a class="dropdown-item" href="{{{route('organiser.data.leden.zonderPas')}}}">Junioren & leden zonder pas</a>

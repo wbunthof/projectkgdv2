@@ -18,7 +18,7 @@
         <!-- Bootstrap -->
         <link href="{{asset('css/all.php')}}" rel="stylesheet">
 
-        @include('organiser.includes.GoogleChartApi')
+{{--        @include('organiser.includes.GoogleChartApi')--}}
 
     </head>
     <body>

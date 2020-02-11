@@ -4,6 +4,7 @@
 //
 namespace App\Http\Controllers;
 
+use App\Leden;
 use Illuminate\Http\Request;
 use App\Gilde;
 use App\Antwoord;
@@ -20,9 +21,9 @@ class OrganiserController extends Controller
   public function index()
   {
       return view('organiser.organiser')
-              ->with('leden', array(    'bazuinblazen' => Bazuinblazen::all(),
-                                        'trommen' => Trommen::all(),
-                                        'vendelen' => Vendelen::all(),
+              ->with('leden', array(    'bazuinblazen' => Leden::whereFormonderdeelId('6')->get(),
+                                        'trommen' => Leden::whereFormonderdeelId('10')->get(),
+                                        'vendelen' => Leden::whereFormonderdeelId('11')->get(),
                                         'junioren' => Junioren::all(),
                                         'deelnameMeerdereWedstrijden' => Deelnamemeerderewedstrijden::all()))
               ->with('antwoorden', Antwoord::all())
