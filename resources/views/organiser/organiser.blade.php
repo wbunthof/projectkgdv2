@@ -201,7 +201,7 @@
                 <div class="col-6">
                     @php($date = Carbon\Carbon::parse($gilde->last_login_at))
 
-                @if($date->year == 2020)
+                @if($date->year == 2020 && $gilde->last_login_at != null)
                         {{ $date->diffForHumans() }} ingelogd.
                     @endif
                 </div>
