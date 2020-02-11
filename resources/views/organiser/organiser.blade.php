@@ -193,17 +193,40 @@
 @section('content')
     <div class="justify-content-center container-fluid">
 {{--      <h1>Aantal vragen ingevuld per Gilde</h1>--}}
+        <div class="row">
+            <div class="col-4">
+                NBFS, Gilde
+            </div>
+            <div class="col-4">
+               Wanneer voor het laatst ingelogd?
+            </div>
+            <div class="col-2">
+                Aantal vragen/Totaal
+            </div>
+            <div class="col-2">
+                Aantal leden
+            </div>
+        </div>
+        @php($vragenCount = $vragen->count())
         @foreach($gilden as $gilde)
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     {{ $gilde->id }} {{ $gilde->name }}
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     @php($date = Carbon\Carbon::parse($gilde->last_login_at))
 
                 @if($date->year == 2020 && $gilde->last_login_at != null)
                         {{ $date->diffForHumans() }} ingelogd.
                     @endif
+                </div>
+                <div class="col-2">
+                    {{ $gilde->antwoorden->count() }}/{{$vragenCount}}
+                </div>
+                <div class="col-2">
+                    {{   $gilde->leden->count() + 
+                        $gilde->junioren->count() + 
+                        $gilde->deelnameMeerdereWedstrijden->count() }}
                 </div>
             </div>
             <hr>
