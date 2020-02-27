@@ -26,17 +26,24 @@ class IndexController extends Controller
 
     public function test()
     {
-//        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
-        $error = ['one'];
-//        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
-        foreach (Gilde::where('id', '>', 0)->get() as $gilde) {
-            try {
-                Mail::to($gilde)->queue(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
-            } catch (\Exception $e) {
-                array_push($error, $e);
-            }
+        $gilden = Gilde::select('email')->where('id','>', 2)->get();
+        foreach ($gilden as $gilde)
+        {
+            $emails[] = $gilde->email;
         }
-        return $error;
+        return view('index')->with('emails', $emails);
+
+////        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
+//        $error = ['one'];
+////        $gilden = (Gilde::whereDate('last_login_at', '>', '01-01-2020')->get());
+//        foreach (Gilde::where('id', '>', 0)->get() as $gilde) {
+//            try {
+//                Mail::to($gilde)->queue(new GildeHerrineringsMailBeginVanHetJaar(Gilde::find(1)));
+//            } catch (\Exception $e) {
+//                array_push($error, $e);
+//            }
+//        }
+//        return $error;
 
     }
 
