@@ -63,7 +63,7 @@ class RaadsheerService
         $onderdelen = [];
 
         foreach (Formonderdeel::all() as $onderdeel) {
-            if($request->input($onderdeel->onderdeel)){
+            if($request->input($onderdeel->id)){
                 array_push($onderdelen, $onderdeel->id);
             }
         }

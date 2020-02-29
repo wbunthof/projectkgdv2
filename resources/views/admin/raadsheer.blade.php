@@ -31,7 +31,7 @@
         {!! Form::text('Naam', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'name', 'placeholder' => 'Naam', 'required']) !!}
         {!! Form::email('E-mailadres', '', ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de Raadsheer', 'required']) !!}
         @foreach($onderdelen as $onderdeel)
-              {!! Form::checkbox($onderdeel->onderdeel, 1) !!}
+              {!! Form::checkbox($onderdeel->id, 1) !!}
               {{ucfirst($onderdeel->onderdeel)}}
             <br>
         @endforeach
@@ -114,7 +114,7 @@
 
                         {!! Form::text('E-mailadres', $raadsheer->email, ['class' => 'form-control mb-2 mr-sm-2', 'name' => 'email', 'placeholder' => 'E-mailadres van de Raadsheer', 'required']) !!}
                         @foreach($onderdelen as $onderdeel)
-                            {!! Form::checkbox($onderdeel->onderdeel, 1, $raadsheer->formOnderdelen()->where('formonderdeel_id', $onderdeel->id)->count() ? true : false) !!}
+                            {!! Form::checkbox($onderdeel->id, 1, $raadsheer->formOnderdelen()->where('formonderdeel_id', $onderdeel->id)->count() ? true : false) !!}
                             {{ucfirst($onderdeel->onderdeel)}}
                             <br>
                         @endforeach
