@@ -36,11 +36,11 @@ class Junioren implements FromQuery, WithMapping, WithHeadings, WithTitle
 
     public function map($lid): array
     {
-        return ([
+        return [
             $lid->voornaam . ' ' . $lid->achternaam,
             $lid->geboortedatum,
             ucfirst($lid->discipline->naam)
-        ]);
+        ];
     }
 
     public function headings(): array

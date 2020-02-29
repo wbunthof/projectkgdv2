@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="check when gilde last login">
+    <list default="true" id="10eba97e-3b37-4948-a452-ab7fe83263f3" name="Default Changelist" comment="Excel download voor raadsheren">
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/DeelnameMeerdereWedstrijden.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/FormonderdeelExport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/Junioren.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/Leden.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/Vragen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Exports/FormonderdeelData/VragenOverzicht.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/raadsheer/vraag.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exports/GildeData/Junioren.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/GildeData/Junioren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exports/GildeData/Vragen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/GildeData/Vragen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerDisciplineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerDisciplineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RaadsheerVraagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/disciplineData.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/disciplineData.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/onderdeel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/raadsheer/raadsheer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
-    <list id="6b75c214-3b58-45d0-961c-6a5958a1a64f" name="Organiser" comment="" />
+    <list id="6b75c214-3b58-45d0-961c-6a5958a1a64f" name="Organiser" comment="Download excel voor raadsheren">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganiserDataController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganiserDownloadController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/organiser/formonderdeel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mails/mail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mails/mail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/organiser/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/organiser/includes/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/organiser/organiser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/organiser/organiser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +70,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="12d3809dcb1e570f7acf2df9d962dfbbe183052c" />
+        <entry key="$PROJECT_DIR$" value="Organiser" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +81,42 @@
         <option value="https://github.com/wbunthof/projectkgdv2.git" />
       </set>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/routes/web.php">
+      <ranges>
+        <range start1="69" end1="73" start2="69" end2="73" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="74" end1="82" start2="74" end2="89" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="115" end1="115" start2="122" end2="123" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="14" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="5" end1="6" start2="15" end2="27" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="7" end1="8" start2="28" end2="29" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="48" end1="49" start2="69" end2="70" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="184" end1="185" start2="205" end2="206" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="189" end1="189" start2="210" end2="217" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="190" end1="190" start2="218" end2="220" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="193" end1="199" start2="223" end2="223" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="235" end1="235" start2="259" end2="260" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="310" end1="353" start2="335" end2="341" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="655" end1="656" start2="643" end2="686" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="686" end1="691" start2="716" end2="716" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="711" end1="712" start2="736" end2="742" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="719" end1="719" start2="749" end2="753" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="745" end1="746" start2="779" end2="780" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
+        <range start1="754" end1="755" start2="788" end2="789" changelist="10eba97e-3b37-4948-a452-ab7fe83263f3" />
+        <range start1="813" end1="814" start2="847" end2="848" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="818" end1="819" start2="852" end2="853" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="824" end1="825" start2="858" end2="859" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="832" end1="833" start2="866" end2="867" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="871" end1="872" start2="905" end2="906" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="877" end1="878" start2="911" end2="912" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+        <range start1="880" end1="881" start2="914" end2="915" changelist="6b75c214-3b58-45d0-961c-6a5958a1a64f" />
+      </ranges>
+    </file>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -182,21 +242,24 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Exports/GildeData" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Exports/FormonderdeelData" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projectkgdv2\app\Exports\FormonderdeelData" />
+      <recent name="C:\xampp\htdocs\projectkgdv2\public\img" />
+      <recent name="C:\xampp\htdocs\projectkgdv2\app\Exports\GildeData" />
+      <recent name="C:\xampp\htdocs\projectkgdv2\public\attachments" />
+      <recent name="C:\xampp\htdocs\projectkgdv2\public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projectkgdv2\app\Exports\FormonderdeelData" />
+      <recent name="C:\xampp\htdocs\projectkgdv2\resources\views\mails" />
       <recent name="C:\xampp\htdocs\projectkgdv2\app\Exports\GildeData" />
       <recent name="C:\xampp\htdocs\projectkgdv2\app\Services" />
       <recent name="C:\xampp\htdocs\projectkgdv2\app\Repositories" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\projectkgdv2\app\Exports\GildeData" />
-      <recent name="C:\xampp\htdocs\projectkgdv2\public\attachments" />
-      <recent name="C:\xampp\htdocs\projectkgdv2\public\img" />
-      <recent name="C:\xampp\htdocs\projectkgdv2\public" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -232,6 +295,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -308,49 +372,12 @@
       <workItem from="1581342325059" duration="16880000" />
       <workItem from="1581369607089" duration="982000" />
       <workItem from="1581409257726" duration="3067000" />
-      <workItem from="1581417909407" duration="7599000" />
-    </task>
-    <task id="LOCAL-00073" summary="Disclaimer added">
-      <created>1580144279555</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1580144279555</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Changemail fix + AdminController.php refactored to AdminGildeController.php">
-      <created>1580144407402</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1580144407402</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Delete users mail added">
-      <created>1580144470378</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1580144470378</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Mails in try catch">
-      <created>1580144534874</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1580144534874</updated>
-    </task>
-    <task id="LOCAL-00077" summary="GildeHerrineringsMailBeginVanHetJaar">
-      <created>1580144968630</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1580144968630</updated>
-    </task>
-    <task id="LOCAL-00078" summary="GildeHerrineringsMailBeginVanHetJaar">
-      <created>1580202889098</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1580202889098</updated>
+      <workItem from="1581417909407" duration="16031000" />
+      <workItem from="1581493797042" duration="63000" />
+      <workItem from="1581493884151" duration="41000" />
+      <workItem from="1581493943319" duration="4493000" />
+      <workItem from="1582829987949" duration="2476000" />
+      <workItem from="1582977539732" duration="14824000" />
     </task>
     <task id="LOCAL-00079" summary="Misc">
       <created>1580202900485</created>
@@ -653,7 +680,49 @@
       <option name="project" value="LOCAL" />
       <updated>1581425641102</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Misc">
+      <created>1581428220620</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1581428220620</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Misc">
+      <created>1581428239155</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1581428239155</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Email to gilde">
+      <created>1581448474704</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1581448474704</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Test">
+      <created>1581448559391</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1581448559391</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Final mail">
+      <created>1581448777656</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1581448777656</updated>
+    </task>
+    <task id="LOCAL-00127" summary="All emailadresses">
+      <created>1582833407222</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1582833407222</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -684,12 +753,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update mailadressen" />
-    <MESSAGE value="Removed banner which had a message that you can't fill in answers" />
-    <MESSAGE value="Cleanup" />
-    <MESSAGE value="IDE updates" />
-    <MESSAGE value="Boolean type added at settings.blade.php" />
-    <MESSAGE value="Warning that gildes are filling in questions." />
     <MESSAGE value="Bootstrap mark up" />
     <MESSAGE value="Message fade away after x sec" />
     <MESSAGE value="Dubbele melding gefixt" />
@@ -709,7 +772,13 @@
     <MESSAGE value="check when gilde last login" />
     <MESSAGE value="Update DocBlock" />
     <MESSAGE value="More information" />
-    <option name="LAST_COMMIT_MESSAGE" value="More information" />
+    <MESSAGE value="Misc" />
+    <MESSAGE value="Email to gilde" />
+    <MESSAGE value="Test" />
+    <MESSAGE value="Final mail" />
+    <MESSAGE value="All emailadresses" />
+    <MESSAGE value="Excel download voor raadsheren" />
+    <option name="LAST_COMMIT_MESSAGE" value="Excel download voor raadsheren" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -717,6 +786,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" width="816" height="729" key="#Intentions/0.0.1920.1040@0.0.1920.1040" timestamp="1581347749311" />
+    <state x="552" y="179" key="#Log_Highlighting_(ideolog)" timestamp="1581493918604">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Log_Highlighting_(ideolog)/0.0.1920.1040@0.0.1920.1040" timestamp="1581493918604" />
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577108799234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -743,7 +816,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="449" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1581352941602" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1581428219323">
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2" timestamp="1582995216895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1577105860497" />
@@ -752,7 +825,7 @@
     <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580387065495" />
     <state x="2266" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580291928676" />
     <state x="346" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1577535631108" />
-    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581428219323" />
+    <state x="346" y="0" width="1463" height="1040" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582995216895" />
     <state x="116" y="117" width="1688" height="806" key="DiffContextDialog" timestamp="1579620915382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

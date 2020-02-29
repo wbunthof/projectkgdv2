@@ -312,8 +312,16 @@ class RaadsheerVraagController extends Controller
         return redirect()->back()->with(['error' => 'Succesvol permanent verwijderd!']);
     }
 
-    public function data($id)
+    public function data(Vraag $id)
     {
-        return redirect()->back()->with(['error' => 'Nog niet klaar']);
+        $id->load('antwoord', 'antwoord.gilden');
+        return view('raadsheer.vraag')->with('vraag', $id);
+//        return redirect()->back()->with(['error' => 'Nog niet klaar']);
+    }
+
+// TODO Exeldownload maken
+    public function excel()
+    {
+
     }
 }

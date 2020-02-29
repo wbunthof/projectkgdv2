@@ -113,6 +113,7 @@ Route::prefix('raadsheer')->group(function () {
       Route::delete('{id}/destroy', 'RaadsheerDisciplineController@destroy')->name('raadsheer.discipline.destroy');
       Route::patch('{id}/update', 'RaadsheerDisciplineController@update')->name('raadsheer.discipline.update');
       Route::get('{id}/data', 'RaadsheerDisciplineController@data')->name('raadsheer.discipline.data');
+      Route::get('{id}/download', 'RaadsheerDisciplineController@excelOnderdeelDownload')->name('raadsheer.discipline.excelDownload');
   });
 
   Route::prefix('leden')->group(function (){

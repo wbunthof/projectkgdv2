@@ -1,7 +1,12 @@
 @extends('raadsheer.layouts.app')
 @section('content')
+    
+    
+    <br>
 
-    <h1>{{ ucfirst($formonderdeel->onderdeel) }}</h1>
+    <h1>{{ ucfirst($formonderdeel->onderdeel) }} 
+{{--        <a><button class="btn btn-primary">Download (alles van dit onderdeel)</button></a>--}}
+    </h1>
 
     @if($formonderdeel->vragen)
         <h2>
@@ -146,7 +151,7 @@
 
                 {{ $vraag->tekst }}
                 <div class="btn btn-group float-right">
-                    <a href="{{ route('raadsheer.vraag.data', ['id' => $vraag->id]) }}"><button class="btn btn-secondary" type="submit">Data</button></a>
+                    <a href="{{ route('raadsheer.vraag.data', ['id' => $vraag->id]) }}"><button class="btn btn-secondary" type="submit">Antwoorden</button></a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateVraag{{$vraag->id}}Modal">Bewerken</button>
                     <a class="btn btn-warning" href="{{ route('raadsheer.vraag.destroy', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteVraag{{$vraag->id}}').submit();">Deactiveren</a>
                     {!! Form::open(['id' => 'deleteVraag' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.destroy', ['id' => $vraag->id]), 'method' => 'POST']) !!}
@@ -220,7 +225,7 @@
         @foreach($formonderdeel->formonderdelendiscipline as $discipline)
             {{ $discipline->naam }}
             <div class="btn btn-group float-right">
-                <a href="{{ route('raadsheer.discipline.data', ['id' => $discipline->id]) }}"><button class="btn btn-secondary" type="submit">Data</button></a>
+                <a href="{{ route('raadsheer.discipline.data', ['id' => $discipline->id]) }}"><button class="btn btn-secondary" type="submit">Gegevens</button></a>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateDiscipline{{$discipline->id}}Modal">Bewerken</button>
                 <a class="btn btn-danger" href="{{ route('raadsheer.discipline.destroy', ['id' => $discipline->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteDiscipline-{{$discipline->id}}').submit();">Verwijderen</a>
                 {!! Form::open(['id' => 'deleteDiscipline-' . $discipline->id,'class' => 'form', 'url' => route('raadsheer.discipline.destroy', ['id' => $discipline->id]), 'method' => 'POST']) !!}
@@ -340,8 +345,8 @@
                         <div class="col col-lg-4">
                             {{ $lid->plaats }}
                         </div>
-                        <div class="col-md-auto btn btn-group">
-                            <button class="btn btn-secondary" type="submit">Data</button>
+                        <div class="btn btn-group float-right">
+                            <a href="#"><button class="btn btn-secondary" type="submit">Gegevens</button></a>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateLidModal{{$lid->id}}">Bewerken</button>
                             <a class="btn btn-danger" href="{{ route('raadsheer.leden.destroy', ['id' => $lid->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteLeden{{$lid->id}}').submit();">Verwijderen</a>
                             {!! Form::open(['id' => 'deleteLeden' . $lid->id,'class' => 'form', 'url' => route('raadsheer.leden.destroy', ['id' => $lid->id]), 'method' => 'POST']) !!}

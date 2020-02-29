@@ -31,10 +31,12 @@
                         <a href="{{ route('raadsheer.onderdeel', ['id' => $onderdeel->id]) }}">
                             {{ ucfirst($onderdeel->onderdeel) }}
                         </a>
+                        <span class="float-right"><a href="{{ route('raadsheer.discipline.excelDownload', ['id' => $onderdeel->id]) }}">Download excel bestand met gegevens</a></span>
+                        <hr style="margin-bottom: 0; margin-top: 0;">
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
-</>
+</div>
 @endsection

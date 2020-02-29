@@ -29,6 +29,8 @@ class RaadsheerController extends Controller
 //            'leden' => $id->leden()->get(),
             'deletedVragen' => $id->vraag()->onlyTrashed()->get()]);
     }
+
+
 }
 
 //

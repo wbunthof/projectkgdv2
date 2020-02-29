@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FormonderdeelData\FormonderdeelExport;
 use App\Formonderdeel;
 use App\Formonderdelendiscipline;
 use App\Services\DisciplineService;
 use Auth;
+use Carbon\Carbon;
 use Exception;
 use Gate;
 use Illuminate\Http\Request;
@@ -91,10 +93,21 @@ class RaadsheerDisciplineController extends Controller
 
     public function data(Formonderdelendiscipline $id)
     {
-        if ($id->formonderdeel()->first()->id == 10){
-            return view('raadsheer.disciplineData')->with(['discipline' => $id]);
-        } else {
-            return redirect()->back()->with(['error' => 'Nog niet klaar']);
+        return view('raadsheer.disciplineData')->with(['discipline' => $id]);
+    }
+
+
+    // TODO Exceldownload maken
+    public function excelOnderdeelDownload(Formonderdeel $id)
+    {
+        if (Gate::denies('raadsheer-onderdeel', $id)){
+            return abort(403);
         }
+        try {
+            $excelfile = (new FormonderdeelExport($id))->download('Kringgildedag' . $id->onderdeel . ' ' . Carbon::now()->year . '.xlsx');
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => 'Something went wrong, error: ' . $e->getMessage()]);
+        }
+        return $excelfile;
     }
 }

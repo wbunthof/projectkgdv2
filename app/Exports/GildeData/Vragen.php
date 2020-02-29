@@ -31,6 +31,18 @@ class Vragen implements FromQuery, WithMapping, WithHeadings, WithTitle, WithEve
         return 'Vragen';
     }
 
+
+    /**
+     * @inheritDoc
+     */
+    public function query()
+    {
+        return $this->gilde->antwoorden();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function map($antwoord): array
     {
         /*
@@ -77,11 +89,4 @@ class Vragen implements FromQuery, WithMapping, WithHeadings, WithTitle, WithEve
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function query()
-    {
-        return $this->gilde->antwoorden();
-    }
 }
