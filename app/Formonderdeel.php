@@ -84,6 +84,16 @@ class Formonderdeel extends Model
         return $this->belongsToMany('App\Raadsheer');
     }
 
+    public function deelnameMeerdereWedstrijden()
+    {
+        return Deelnamemeerderewedstrijden::query();
+    }
+
+    public function junioren()
+    {
+        return Junioren::query();
+    }
+
     //Atributes
     protected $table = 'formonderdelen';
     protected $fillable = [

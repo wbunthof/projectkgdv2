@@ -418,6 +418,71 @@
                 @endforeach
         </div>
     @endif
+
+    @if($formonderdeel->meerderewedstrijden) 
+        <h3><b>
+            <div class="row">
+                <div class="col-4">
+                    Naam
+                </div>
+                <div class="col-4">
+                    Disciplines
+                </div>
+                <div class="col-4">
+                    Gilden
+                </div>
+            </div>
+        </b></h3>
+        @foreach($formonderdeel->deelnameMeerdereWedstrijden()->get() as $lid)
+            <div class="row">
+                <div class="col-4">
+                    {{ $lid->naam }}
+                </div>
+                <div class="col-4">
+                    {{ $lid->disciplines }}
+                </div>
+                <div class="col-4">
+                    {{ $lid->gilde->id }} {{ $lid->gilde->name }}
+                </div>
+            </div>
+            <hr>
+        @endforeach
+    @endif
+    
+    @if($formonderdeel->junioren)
+        <h3><b>
+                <div class="row">
+                    <div class="col-3">
+                        Naam
+                    </div>
+                    <div class="col-3">
+                        Discipline
+                    </div>
+                    <div class="col-3">
+                        Geboortedatum
+                    </div> <div class="col-3">
+                        Gilden
+                    </div>
+                </div>
+            </b></h3>
+        @foreach($formonderdeel->junioren()->get() as $lid)
+            <div class="row">
+                <div class="col-3">
+                    {{ $lid->voornaam }} {{ $lid->achternaam }}
+                </div>
+                <div class="col-3">
+                    {{ $lid->discipline->naam }}
+                </div>
+                <div class="col-3">
+                    {{ $lid->geboortedatum }}
+                </div>
+                <div class="col-3">
+                    {{ $lid->gilde->id }} {{ $lid->gilde->name }}
+                </div>
+            </div>
+            <hr>
+            @endforeach
+    @endif
     
 @endsection
 
