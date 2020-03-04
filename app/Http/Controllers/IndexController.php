@@ -12,6 +12,7 @@ use App\Mail\GildeHerrineringsMailBeginVanHetJaar;
 use App\Mail\remeber_new_questions;
 use App\Repositories\GildeRepository;
 use App\Services\GildeService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
@@ -26,12 +27,12 @@ class IndexController extends Controller
 
     public function test()
     {
-        $gilden = Gilde::select('email')->where('id','>', 2)->get();
-        foreach ($gilden as $gilde)
-        {
-            $emails[] = $gilde->email;
-        }
-        return view('index')->with('emails', $emails);
+        $gilden = Gilde::where('id','>', 2)
+                       ->whereKeyNot(1209)
+                       ->whereKeyNot(1269)
+                       ->whereYear('last_login_at', '!=', Carbon::today()->toDateString())
+                       ->get();
+        return view('index')->with('gilden', $gilden);
 
 ////        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
 //        $error = ['one'];
