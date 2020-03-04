@@ -12,6 +12,9 @@
             <strong>Opletten!</strong> De gilden zijn de vragen aan het invullen, veranderingen kunnen dus door gilden die al klaar zijn niet meer opgemerkt worden.
         </div>
     @endif
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Opletten!</strong> Nog niet alle gilden hebben ingevuld, de informatie is dus mogelijk nog incompleet. Hier wordt actie op ondernomen en zo snel mogelijk opgelost.
+        </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
