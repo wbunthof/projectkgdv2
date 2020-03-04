@@ -30,7 +30,7 @@ class IndexController extends Controller
         $gilden = Gilde::where('id','>', 2)
                        ->whereKeyNot(1209)
                        ->whereKeyNot(1269)
-                       ->whereYear('last_login_at', '!=', Carbon::today()->toDateString())
+                       ->where('last_login_at')
                        ->get();
         return view('index')->with('gilden', $gilden);
 
