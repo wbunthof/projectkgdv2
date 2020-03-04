@@ -15,24 +15,24 @@
           <a class="nav-link" href="{{ route('organiser.dashboard')}}">Home</a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="onderdeelDropdown" role="button" aria-haspopup="true" aria-expanded="false">Vragen</a>
-          <div class="dropdown-menu">
+{{--        <li class="nav-item dropdown">--}}
+{{--          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="onderdeelDropdown" role="button" aria-haspopup="true" aria-expanded="false">Inschrijfformulier</a>--}}
+{{--          <div class="dropdown-menu">--}}
 {{--            @foreach ($formonderdelen as $onderdeel)--}}
-{{--              <a class="dropdown-item" href="{{{route('organiser.data.onderdeel', ['id' => $onderdeel->id])}}}">{{{ucfirst($onderdeel->onderdeel)}}}</a>--}}
+{{--              <a class="dropdown-item" href="{{route('organiser.onderdeel', ['formonderdeel' => $onderdeel->id])}}">{{{ucfirst($onderdeel->onderdeel)}}}</a>--}}
 {{--            @endforeach--}}
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="onderdeelDropdown" role="button" aria-haspopup="true" aria-expanded="false">Leden</a>
-          <div class="dropdown-menu">
+{{--          </div>--}}
+{{--        </li>--}}
+{{--        <li class="nav-item dropdown">--}}
+{{--          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="onderdeelDropdown" role="button" aria-haspopup="true" aria-expanded="false">Leden</a>--}}
+{{--          <div class="dropdown-menu">--}}
 {{--            @foreach (App\Formonderdelendiscipline::all() as $discipline)--}}
 {{--              <a class="dropdown-item" href="{{{route('organiser.data.leden', ['id' => $discipline->id])}}}">{{{ucfirst($discipline->naam)}}}</a>--}}
 {{--            @endforeach--}}
 {{--            <a class="dropdown-item" href="{{{route('organiser.data.leden.deelnameMeerdereWedstrijden')}}}">Deelname Meerdere Wedstrijden</a>--}}
 {{--            <a class="dropdown-item" href="{{{route('organiser.data.leden.zonderPas')}}}">Junioren & leden zonder pas</a>--}}
-          </div>
-        </li>
+{{--          </div>--}}
+{{--        </li>--}}
           {{-- <li class="nav-item dropdown">
               <a id="navbarDropdownInschrijfformulier" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Inschrijffomrulier <span class="caret"></span>

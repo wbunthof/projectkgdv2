@@ -67,20 +67,36 @@ Route::prefix('organiser')->group(function () {
   });
 
   Route::middleware('auth:organiser')->group(function () {
-    Route::get('/dashboard', 'OrganiserController@index')->name('organiser.dashboard');
-    Route::get('/account', 'OrganiserController@account')->name('organiser.account');
-    Route::put('/account', 'OrganiserController@accountUpdate')->name('organiser.account.update');
-    Route::get('/data', 'OrganiserController@data');
+      Route::get('/dashboard', 'OrganiserController@index')->name('organiser.dashboard');
+      Route::get('/account', 'OrganiserController@account')->name('organiser.account');
+      Route::put('/account', 'OrganiserController@accountUpdate')->name('organiser.account.update');
 
-    Route::prefix('data')->group(function () {
-      Route::get('/{NBFS}/gilde', 'DataController@gilde')->name('organiser.data.gilde');
-      Route::get('/{ID}/onderdeel', 'DataController@onderdeel')->name('organiser.data.onderdeel');
-      Route::get('/onderdeel', 'DataController@alleOnderdelen')->name('organiser.data.alleOnderdelen');
-      Route::get('/{ID}/vraag', 'DataController@vraag')->name('organiser.data.vraag');
-      Route::get('/{ID}/leden', 'DataController@leden')->name('organiser.data.leden');
-      Route::get('/leden/zonderPas', 'DataController@zonderPas')->name('organiser.data.leden.zonderPas');
-      Route::get('/leden/deelnameMeerdereWedstrijden', 'DataController@deelnameMeerdereWedstrijden')->name('organiser.data.leden.deelnameMeerdereWedstrijden');
-    });
+      Route::get('gilden', 'OrganiserGildeController@algemeen')->name('organiser.gilden.algemeen');
+      Route::get('gilden/download', 'OrganiserGildeController@algemeenDownload')->name('organiser.gilden.algemeen.download');
+      Route::get('/{gilde}/gilde/download', 'OrganiserDownloadController@gilde')->name('organiser.download.gilde');
+
+      Route::get('formulieronderdeel', 'OrganiserFormulieronderdeelController@algemeen')->name('organiser.formulieronderdeel.algemeen');
+      Route::get('{formulieronderdeel}/formulieronderdeel', 'OrganiserFormulieronderdeelController@show')->name('organiser.formulieronderdeel');
+      Route::get('{formulieronderdeel}/formulieronderdeel/download', 'OrganiserFormulieronderdeelController@download')->name('organiser.formulieronderdeel.download');
+
+
+
+
+//      Route::get('/data', 'OrganiserController@data');
+//
+//      //Downloads
+//      Route::get('/{formonderdeel}/formonderdeel', 'OrganiserDataController@formonderdeel')->name('organiser.onderdeel');
+//      Route::get('/{formonderdeel}/formonderdeel/download', 'OrganiserDownloadController@formonderdeel')->name('organiser.download.formonderdeel');
+//
+//      Route::prefix('data')->group(function () {
+//          Route::get('/{NBFS}/gilde', 'DataController@gilde')->name('organiser.data.gilde');
+//          Route::get('/{ID}/onderdeel', 'DataController@onderdeel')->name('organiser.data.onderdeel');
+//          Route::get('/onderdeel', 'DataController@alleOnderdelen')->name('organiser.data.alleOnderdelen');
+//          Route::get('/{ID}/vraag', 'DataController@vraag')->name('organiser.data.vraag');
+//          Route::get('/{ID}/leden', 'DataController@leden')->name('organiser.data.leden');
+//          Route::get('/leden/zonderPas', 'DataController@zonderPas')->name('organiser.data.leden.zonderPas');
+//          Route::get('/leden/deelnameMeerdereWedstrijden', 'DataController@deelnameMeerdereWedstrijden')->name('organiser.data.leden.deelnameMeerdereWedstrijden');
+//    });
   });
 });
 

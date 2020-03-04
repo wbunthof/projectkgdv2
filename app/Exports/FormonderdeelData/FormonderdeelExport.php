@@ -27,7 +27,6 @@ class FormonderdeelExport implements WithMultipleSheets
     public function sheets(): array
     {
         $return = [];
-
         if ($this->formonderdeel->vragen)
         {
                 $return[] = new VragenOverzicht($this->formonderdeel);
