@@ -35,7 +35,7 @@ class DeelnameMeerdereWedstrijden implements FromQuery, WithMapping, WithHeading
     {
         return [
             $lid->naam,
-            $lid->NBFS_id . $lid->gilde->name,
+            $lid->NBFS_id . ' ' .  $lid->gilde->name,
             $lid->disciplines
         ];
     }

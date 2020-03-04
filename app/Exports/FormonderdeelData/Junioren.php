@@ -35,7 +35,7 @@ class Junioren implements FromQuery, WithMapping, WithHeadings, WithTitle
         return [
             $lid->voornaam . ' ' . $lid->achternaam,
             $lid->geboortedatum,
-            $lid->gilde_id . $lid->gilde->name,
+            $lid->NBFS_id . ' ' . $lid->gilde->name,
             $lid->discipline->naam
         ];
     }
