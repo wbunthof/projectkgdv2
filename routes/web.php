@@ -73,7 +73,7 @@ Route::prefix('organiser')->group(function () {
 
       Route::get('gilden', 'OrganiserGildeController@algemeen')->name('organiser.gilden.algemeen');
       Route::get('gilden/download', 'OrganiserGildeController@algemeenDownload')->name('organiser.gilden.algemeen.download');
-      Route::get('/{gilde}/gilde/download', 'OrganiserDownloadController@gilde')->name('organiser.download.gilde');
+      Route::get('/{gilde}/gilde/download', 'OrganiserGildeController@download')->name('organiser.download.gilde');
 
       Route::get('formulieronderdeel', 'OrganiserFormulieronderdeelController@algemeen')->name('organiser.formulieronderdeel.algemeen');
       Route::get('{formulieronderdeel}/formulieronderdeel', 'OrganiserFormulieronderdeelController@show')->name('organiser.formulieronderdeel');
