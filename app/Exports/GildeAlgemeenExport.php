@@ -26,7 +26,7 @@ class GildeAlgemeenExport implements FromQuery, WithMapping, WithHeadings, WithT
      */
     public function headings(): array
     {
-        return ['NBFS', 'Naam', 'E-mailadres', 'Locatie'];
+        return ['NBFS', 'Naam', 'E-mailadres', 'Locatie', 'Dit jaar ingelogd?', 'Laatste login'];
     }
 
     /**
@@ -34,7 +34,7 @@ class GildeAlgemeenExport implements FromQuery, WithMapping, WithHeadings, WithT
      */
     public function map($row): array
     {
-        return [$row->id, $row->name, $row->email, $row->locatie];
+        return [$row->id, $row->name, $row->email, $row->locatie, true ? 'Ja' : 'Nee', ];
     }
 
     /**

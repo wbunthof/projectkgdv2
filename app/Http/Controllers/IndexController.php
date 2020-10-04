@@ -15,7 +15,9 @@ use App\Services\GildeService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use phpDocumentor\Reflection\DocBlock\Tags\Version;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
+
 
 
 class IndexController extends Controller
@@ -27,12 +29,13 @@ class IndexController extends Controller
 
     public function test()
     {
-        $gilden = Gilde::where('id','>', 2)
-                       ->whereKeyNot(1209)
-                       ->whereKeyNot(1269)
-                       ->where('last_login_at')
-                       ->get();
-        return view('index')->with('gilden', $gilden);
+
+//        $gilden = Gilde::where('id','>', 2)
+//                       ->whereKeyNot(1209)
+//                       ->whereKeyNot(1269)
+//                       ->where('last_login_at')
+//                       ->get();
+//        return view('index')->with('gilden', $gilden);
 
 ////        dd(date('Y-m-d', mktime(0,0,0,1,1,2020)));
 //        $error = ['one'];
