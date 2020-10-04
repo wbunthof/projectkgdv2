@@ -177,6 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
     </include_path>
   </component>
   <component name="ProjectId" id="1UkKEQiyyJMXz4X4KPxVJLAH1Va" />
@@ -322,7 +323,7 @@
       <workItem from="1583247802443" duration="9500000" />
       <workItem from="1583329832880" duration="5001000" />
       <workItem from="1583413749248" duration="405000" />
-      <workItem from="1601802804206" duration="2662000" />
+      <workItem from="1601802804206" duration="3004000" />
     </task>
     <task id="LOCAL-00089" summary="Mail">
       <created>1580225460484</created>
