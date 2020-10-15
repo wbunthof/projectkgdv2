@@ -268,7 +268,7 @@ class  inschrijfformulierController extends Controller
     {
       // Junioren
         $junioren = Junioren::where('NBFS_id', Auth::user()->id)->get();
-        $emptyJunioren = (empty($junioren{0})) ? true : false;
+        $emptyJunioren = empty($junioren->first());
 
         $klasse = Formonderdelendiscipline::all();
 
@@ -334,7 +334,7 @@ class  inschrijfformulierController extends Controller
         list($koloms, $KolommenDieKunnenVeranderen, $KolommenDieKunnenVeranderenMetSpatie) = inschrijfformulierController::GetKolommen('DeelnameMeerdereWedstrijden');
 
 
-        if (empty($leden{0})) {
+        if (empty($leden->first())) {
             $empty = true;
         } else {
             $empty = false;

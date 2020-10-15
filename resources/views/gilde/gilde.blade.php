@@ -114,7 +114,7 @@
           <div class="card-body">
               @if($onderdeel->vraag->count())
                   @forelse ($onderdeel->antwoorden()->with('vraag')->where('NBFS', Auth::id())->get() as $antwoord)
-                      <a href="{{route('gilde.inschrijfformulier', ['id' => $onderdeel->id]) . '#' . $antwoord->vraag->id}}">
+                      <a href="{{route('gilde.inschrijfformulier', ['formonderdeel' => $onderdeel->id]) . '#' . $antwoord->vraag->id}}">
                           {{$antwoord->vraag->tekst}}
                       </a>
                       <b><span class="float-right">
