@@ -109,7 +109,7 @@
                                 {{--                        {!! Form::label('type' . $vraag->id, 'Type: Als je dit aanpast worden de ingevulde antwoorden gewist! Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het wordt alleen ingekort indien nodig. ') !!}--}}
                                 <label for="type{{ $vraag->id }}">Type:
                                     <br> Als je dit aanpast worden de ingevulde antwoorden gewist!
-                                    <br>Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het wordt alleen ingekort indien nodig. </label>
+                                    <br>Tenzij dat er van "Tekst vraag (lang antwoord)" van of naar "Tekst vraag (kort antwoord)" wordt het alleen ingekort indien nodig. </label>
                                 @php($data =
                                             [['name' => 'Ja/Nee vraag', 'type' => 'B', 'extra' => []],
                                             ['name' => 'Nummer vraag', 'type' => 'N', 'extra' => ['minimum', 'maximum', 'placeholder']],
@@ -153,7 +153,7 @@
                 <div class="btn btn-group float-right">
                     <a href="{{ route('raadsheer.vraag.data', ['id' => $vraag->id]) }}"><button class="btn btn-secondary" type="submit">Antwoorden</button></a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateVraag{{$vraag->id}}Modal">Bewerken</button>
-                    <a class="btn btn-warning" href="{{ route('raadsheer.vraag.destroy', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteVraag{{$vraag->id}}').submit();">Deactiveren</a>
+                    <a class="btn btn-warning" href="{{ route('raadsheer.vraag.destroy', ['id' => $vraag->id]) }}" onclick="this.preventDefault(); if(confirm('Weet u zeker dat u de vraag wilt deactiveren?')){ document.getElementById('deleteVraag{{$vraag->id}}').submit();}">Deactiveren</a>
                     {!! Form::open(['id' => 'deleteVraag' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.destroy', ['id' => $vraag->id]), 'method' => 'POST']) !!}
                     {!! Form::hidden('_method', 'DELETE') !!}
                     {!! Form::close() !!}
@@ -172,7 +172,7 @@
                         {!! Form::open(['id' => 'undeleteVraag' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.undelete', ['id' => $vraag->id]), 'method' => 'POST']) !!}
                         {!! Form::hidden('_method', 'PATCH') !!}
                         {!! Form::close() !!}
-                        <a class="btn btn-danger" href="{{ route('raadsheer.vraag.permanentDelete', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); document.getElementById('permanentdelete-{{$vraag->id}}').submit();">Permanent verwijderen!</a>
+                        <a class="btn btn-danger" href="{{ route('raadsheer.vraag.permanentDelete', ['id' => $vraag->id]) }}" onclick="event.preventDefault(); if(confirm('Weet u zeker dat u de vraag permanent wilt verwijderen? Kan niet terug gedraaid worden!')){document.getElementById('permanentdelete-{{$vraag->id}}').submit();}">Permanent verwijderen!</a>
                         {!! Form::open(['id' => 'permanentdelete-' . $vraag->id,'class' => 'form', 'url' => route('raadsheer.vraag.permanentDelete', ['id' => $vraag->id]), 'method' => 'POST']) !!}
                         {!! Form::hidden('_method', 'DELETE') !!}
                         {!! Form::close() !!}
@@ -227,7 +227,7 @@
             <div class="btn btn-group float-right">
                 <a href="{{ route('raadsheer.discipline.data', ['id' => $discipline->id]) }}"><button class="btn btn-secondary" type="submit">Gegevens</button></a>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateDiscipline{{$discipline->id}}Modal">Bewerken</button>
-                <a class="btn btn-danger" href="{{ route('raadsheer.discipline.destroy', ['id' => $discipline->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteDiscipline-{{$discipline->id}}').submit();">Verwijderen</a>
+                <a class="btn btn-danger" href="{{ route('raadsheer.discipline.destroy', ['id' => $discipline->id]) }}" onclick="event.preventDefault(); if(confirm('Weet u zeker dat u deze klasse wil verwijderen? Kan niet terug gedraaid worden!')){document.getElementById('deleteDiscipline-{{$discipline->id}}').submit();}">Verwijderen</a>
                 {!! Form::open(['id' => 'deleteDiscipline-' . $discipline->id,'class' => 'form', 'url' => route('raadsheer.discipline.destroy', ['id' => $discipline->id]), 'method' => 'POST']) !!}
                 {!! Form::hidden('_method', 'DELETE') !!}
                 {!! Form::close() !!}
@@ -348,7 +348,7 @@
                         <div class="btn btn-group float-right">
                             <a href="#"><button class="btn btn-secondary" type="submit">Gegevens</button></a>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateLidModal{{$lid->id}}">Bewerken</button>
-                            <a class="btn btn-danger" href="{{ route('raadsheer.leden.destroy', ['id' => $lid->id]) }}" onclick="event.preventDefault(); document.getElementById('deleteLeden{{$lid->id}}').submit();">Verwijderen</a>
+                            <a class="btn btn-danger" href="{{ route('raadsheer.leden.destroy', ['id' => $lid->id]) }}" onclick="event.preventDefault(); if(confirm('Weet u zeker dat u de lid wilt verwijderen? Kan niet terug gedraaid worden!')){document.getElementById('deleteLeden{{$lid->id}}').submit();}">Verwijderen</a>
                             {!! Form::open(['id' => 'deleteLeden' . $lid->id,'class' => 'form', 'url' => route('raadsheer.leden.destroy', ['id' => $lid->id]), 'method' => 'POST']) !!}
                             {!! Form::hidden('_method', 'DELETE') !!}
                             {!! Form::close() !!}
